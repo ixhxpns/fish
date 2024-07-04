@@ -1,0 +1,64 @@
+﻿@page "/ManageOrder"
+@using FISH.Model
+@using Newtonsoft.Json
+@inject HttpClient Http
+@inject IHttpClientFactory HttpClientFactory
+<h3>ManageOrders</h3>
+<section>
+    <Table TItem="Orders" Items="@Items" IsBordered="true" IsExcel="true" IsFixedHeader="true" Height="500">
+        <TableColumns>
+            <TableColumn Field="@context.Name" Width="80">
+                <EditTemplate Context="row">
+                    <div class="d-flex disabled">
+                        <div>
+                            <div> </div>
+                            @* <img src="row.Id" class="bb-avatar" /> *@
+                        </div>
+                        <div class="ps-2">
+                            <div>@row.Id</div>
+                            <div class="bb-sub">@row.OrderAmount</div>
+                            <div class="bb-sub">@row.OrderType</div>
+                        </div>
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+            <TableColumn Field="@context.DeliveryMethod" >
+                <EditTemplate Context="row">
+                    <div class="d-flex">
+                        <div>
+                            <TableColumn Field="@row.DeliveryMethod"/>
+                            <TableColumn Field="@row.DeliveryTime"/>
+                        </div>
+                        <div class="ps-2">
+                            <div class="bb-sub">@row.DeliveryAddress</div>
+                            <div class="bb-sub">@row.OrderType</div>
+                        </div>
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+            <TableColumn Field="@context.DeliveryMethod" Width="160" />
+            <TableColumn Field="@context.OrderDetail" Width="160">
+                <EditTemplate Context="row">
+                    <div class="disabled">
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+            <TableColumn Field="@context.IsDelivered" Align="Alignment.Center" Width="80" />
+            <TableColumn Field="@context.IsPaid" Align="Alignment.Center" Width="80" />
+            <TableColumn Field="@context.IsPrinted" Align="Alignment.Center" Width="80" />
+        </TableColumns>
+    </Table>
+</section>
+
+@code {
+    private IEnumerable<Orders> Items { get; set; } // 初始化 Items 以避免 null 問題
+    private HttpClient? httpClient; // 標記為可為 null
+
+    protected override async Task OnInitializedAsync()
+    {
+        httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+        var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+        Items = orders ?? new List<Orders>(); // 檢查返回值是否為 null
+        StateHasChanged();
+    }
+}

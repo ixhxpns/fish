@@ -8,15 +8,15 @@
 
     public class CaptchaController : Controller
     {
-        public IActionResult GenerateCaptcha()
+        public async Task<IActionResult> GenerateCaptcha()
         {
             var captchaCode = GenerateRandomCode();
-            HttpContext.Session.SetString("CaptchaCode", captchaCode);
-            var captchaImage = GenerateCaptchaImage(captchaCode);
-            return File(captchaImage, "image/jpeg");
+            HttpContext.Session.SetString("CaptchaCode", captchaCode.Result);
+            var captchaImage = GenerateCaptchaImage(captchaCode.Result);
+            return File(captchaImage.Result, "image/jpeg");
         }
 
-        private string GenerateRandomCode()
+        private async Task<string> GenerateRandomCode()
         {
             // 生成隨機的驗證碼
             var random = new Random();
@@ -24,7 +24,7 @@
             return captchaCode;
         }
 
-        private byte[] GenerateCaptchaImage(string captchaCode)
+        private async Task<byte[]> GenerateCaptchaImage(string captchaCode)
         {
             // 創建驗證碼圖片
             using var bitmap = new Bitmap(100, 40);

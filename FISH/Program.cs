@@ -28,7 +28,13 @@ namespace FISH
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddBootstrapBlazor();
-
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20); // 設置 Session 的過期時間
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:7229/"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -43,6 +49,8 @@ namespace FISH
                 app.UseHsts();
             }
 
+            app.UseSession(); // 啟用 Session
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
@@ -53,6 +61,13 @@ namespace FISH
 
             app.MapControllers();
             app.MapBlazorHub();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
             app.MapFallbackToPage("/_Host");
 
             app.Run();

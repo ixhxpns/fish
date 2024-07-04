@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EYBu9rZADo8idq3Ca4Zokk67tKP4k7CCebzLME2A36/CJ73kHTR7mcvQIPn0v7xShYXIlMhmVNUCfpnxS5F0IA==",
+  "dgSpecHash": "x4uqzh8H7ZvmOahjN4i1Mj31pHYVv/NC6Qeuif1RajH+e/NS6hn36DDLE4HqrWSZRSPAsF/eumYzbZbcQG0c3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\FISH.csproj",
+  "projectFilePath": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\FISH.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jason\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

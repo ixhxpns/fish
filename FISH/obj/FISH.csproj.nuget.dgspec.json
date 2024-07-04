@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\FISH.csproj": {}
+    "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\FISH.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\FISH.csproj": {
+    "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\FISH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\FISH.csproj",
+        "projectUniqueName": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\FISH.csproj",
         "projectName": "FISH",
-        "projectPath": "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\FISH.csproj",
+        "projectPath": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\FISH.csproj",
         "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jason\\source\\repos\\Fish\\Fish\\obj\\",
+        "outputPath": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
