@@ -2,6 +2,27 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Aspose.HTML/24.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.0",
+          "System.Diagnostics.DiagnosticSource": "7.0.0",
+          "System.Drawing.Common": "4.7.3",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Security.Permissions": "4.5.0",
+          "System.Text.Encoding.CodePages": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Aspose.HTML.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aspose.HTML.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Azure.Core/1.35.0": {
         "type": "package",
         "dependencies": {
@@ -46,6 +67,30 @@
           }
         }
       },
+      "Blazored.LocalStorage/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Blazored.LocalStorage.dll": {}
+        }
+      },
+      "Blazored.SessionStorage/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.1"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        }
+      },
       "BootstrapBlazor/8.7.0": {
         "type": "package",
         "dependencies": {
@@ -71,6 +116,23 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/BootstrapBlazor.props": {}
+        }
+      },
+      "BootstrapBlazor.Html2Pdf/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "BootstrapBlazor": "8.5.1",
+          "PuppeteerSharp": "18.0.2"
+        },
+        "compile": {
+          "lib/net8.0/BootstrapBlazor.Html2Pdf.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/BootstrapBlazor.Html2Pdf.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Humanizer/2.14.1": {
@@ -2638,6 +2700,24 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
         }
       },
+      "PuppeteerSharp/18.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
+          "Microsoft.Extensions.Logging": "2.0.2",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/PuppeteerSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/PuppeteerSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "type": "package",
         "dependencies": {
@@ -3357,7 +3437,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
             "related": ".xml"
           }
         },
@@ -3483,6 +3563,22 @@
     }
   },
   "libraries": {
+    "Aspose.HTML/24.6.0": {
+      "sha512": "IazzLBh48TdUxb/4q0jLqmDtKS3cMdVzj83NbsNfuBqp4+jl/Cx53thKsOGjglfPW1hdog7oBCGSDxt6g2PO2Q==",
+      "type": "package",
+      "path": "aspose.html/24.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspose.html.24.6.0.nupkg.sha512",
+        "aspose.html.nuspec",
+        "images/aspose_html-for-net.png",
+        "lib/netstandard2.0/Aspose.HTML.dll",
+        "lib/netstandard2.0/Aspose.HTML.xml",
+        "license/Aspose_End-User-License-Agreement.txt",
+        "license/thirdpartylicenses-Aspose.Html for .NET.pdf"
+      ]
+    },
     "Azure.Core/1.35.0": {
       "sha512": "hENcx03Jyuqv05F4RBEPbxz29UrM3Nbhnr6Wl6NQpoU9BCIbL3XLentrxDCTrH54NLS11Exxi/o8MYgT/cnKFA==",
       "type": "package",
@@ -3523,6 +3619,36 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Blazored.LocalStorage/4.5.0": {
+      "sha512": "6nZuJwA7zNIKx83IsObiHXZb09ponJOpCClU3en+hI8ZFvrOKXeOw+H7TegQZQrvdR1n9fkrVkEBQZg8vx6ZTw==",
+      "type": "package",
+      "path": "blazored.localstorage/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "blazored.localstorage.4.5.0.nupkg.sha512",
+        "blazored.localstorage.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.LocalStorage.dll",
+        "lib/net7.0/Blazored.LocalStorage.dll",
+        "lib/net8.0/Blazored.LocalStorage.dll"
+      ]
+    },
+    "Blazored.SessionStorage/2.4.0": {
+      "sha512": "e3XXH+zGGxDq1zC7YzLDD8mfvtoC6ESwTWOGD25H+FbPJlB7yQeL72hDY76tqkcrh98fh+y12r4BNhyQVV9YKw==",
+      "type": "package",
+      "path": "blazored.sessionstorage/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.sessionstorage.2.4.0.nupkg.sha512",
+        "blazored.sessionstorage.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.SessionStorage.dll",
+        "lib/net7.0/Blazored.SessionStorage.dll"
       ]
     },
     "BootstrapBlazor/8.7.0": {
@@ -3636,6 +3762,24 @@
         "staticwebassets/modules/viewer.js",
         "staticwebassets/scss/theme/bootstrap.blazor.css",
         "staticwebassets/scss/theme/bootstrap.blazor.scss"
+      ]
+    },
+    "BootstrapBlazor.Html2Pdf/8.1.1": {
+      "sha512": "5CLUw7BRITtVgyTQXCme3Ns4R/f9sDhadCVk98VdxWAp30NYTUdZkYn8wmJ6Q9vFiWyVcqflBCX8iF0nZPkObQ==",
+      "type": "package",
+      "path": "bootstrapblazor.html2pdf/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bootstrapblazor.html2pdf.8.1.1.nupkg.sha512",
+        "bootstrapblazor.html2pdf.nuspec",
+        "lib/net6.0/BootstrapBlazor.Html2Pdf.dll",
+        "lib/net6.0/BootstrapBlazor.Html2Pdf.xml",
+        "lib/net7.0/BootstrapBlazor.Html2Pdf.dll",
+        "lib/net7.0/BootstrapBlazor.Html2Pdf.xml",
+        "lib/net8.0/BootstrapBlazor.Html2Pdf.dll",
+        "lib/net8.0/BootstrapBlazor.Html2Pdf.xml",
+        "logo.png"
       ]
     },
     "Humanizer/2.14.1": {
@@ -8096,6 +8240,19 @@
         "nuget.versioning.nuspec"
       ]
     },
+    "PuppeteerSharp/18.0.2": {
+      "sha512": "ddAS99mMeJ0bnpUvWBugRgIj2/eFI+pDn9r1uS8n7bnlxTN032VwgzBnfmP4sM+06XuCXFpHokZJNuDJtiKB8Q==",
+      "type": "package",
+      "path": "puppeteersharp/18.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/PuppeteerSharp.dll",
+        "lib/netstandard2.0/PuppeteerSharp.xml",
+        "puppeteersharp.18.0.2.nupkg.sha512",
+        "puppeteersharp.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "sha512": "BmAf6XWt4TqtowmiWe4/5rRot6GerAeklmOPfviOvwLoF5WwgxcJHAxZtySuyW9r9w+HLILnm8VfJFLCUJYW8A==",
       "type": "package",
@@ -9576,7 +9733,11 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Aspose.Html >= 24.6.0",
+      "Blazored.LocalStorage >= 4.5.0",
+      "Blazored.SessionStorage >= 2.4.0",
       "BootstrapBlazor >= 8.7.0",
+      "BootstrapBlazor.Html2Pdf >= 8.1.1",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.6",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.6",
       "Microsoft.AspNetCore.Identity.UI >= 8.0.6",
@@ -9637,9 +9798,25 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Aspose.Html": {
+            "target": "Package",
+            "version": "[24.6.0, )"
+          },
+          "Blazored.LocalStorage": {
+            "target": "Package",
+            "version": "[4.5.0, )"
+          },
+          "Blazored.SessionStorage": {
+            "target": "Package",
+            "version": "[2.4.0, )"
+          },
           "BootstrapBlazor": {
             "target": "Package",
             "version": "[8.7.0, )"
+          },
+          "BootstrapBlazor.Html2Pdf": {
+            "target": "Package",
+            "version": "[8.1.1, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",

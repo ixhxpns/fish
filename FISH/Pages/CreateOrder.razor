@@ -1,59 +1,48 @@
 ﻿@page "/createorder"
 @using FISH.Model
+@using FISH.Shared.Component
 @inject HttpClient Http
 @inject IHttpClientFactory HttpClientFactory
-
+@inject ILocalStorage localStorage
+@inject SwalService SwalService
 <style>
-    .col-12{
-        /* font-size:smaller; */
-    }
-
-    div.col-12.disable {
-        font-size: smaller;
-    }
-    DateTimePicker{
-        font-size: smaller;
-    }
-    InputText{
-        font-size: smaller;
-    }
-    InputTextArea{
+    input {
         font-size: smaller;
     }
 
 </style>
 <PageTitle>Daily Order Form</PageTitle>
 
-<EditForm Model="dailyOrder" OnValidSubmit="HandleValidSubmit" >
+<EditForm Model="dailyOrder" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div class="row">
-        <div class="col-6  col-md-6">
+    @* <div class="row"> *@
+@*         <div class="col-6  col-md-6">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">訂單編號</label>
-                <div class="col-12 disabled">
-                    <InputNumber id="Id" class="form-control disabled" @bind-Value="dailyOrder.Id" />
+                <div class="col-12">
+                    <BootstrapInput id="Id" IsDisabled="true" class="form-control disabled inputtxt" @bind-Value="@dailyOrder.Id" />
                 </div>
             </div>
-        </div>
-        <div class="col-6 col-md-6">
+        </div> *@
+        @* <div class="col-6 col-md-6">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">建單時間</label>
                 <div class="col-12 disabled">
-                    <DateTimePicker   ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.OrderCreateDateTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="OnOrderCreateDateTimeChanged">
-                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
+                    <DateTimePicker class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.OrderCreateDateTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="OnOrderCreateDateTimeChanged">
+                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="true" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> *@
+    @* </div> *@
     <div class="row">
         <div class="col-6 col-md-6">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">姓名</label>
                 <div class="col-12">
-                    <InputText id="Name" class="form-control" @bind-Value="dailyOrder.Name" />
+                    <InputText id="Name" class="form-control inputtxt" @bind-Value="dailyOrder.Name" />
                 </div>
             </div>
         </div>
@@ -61,33 +50,16 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">連絡電話</label>
                 <div class="col-12">
-                    <InputText id="ContactNumber" class="form-control" @bind-Value="dailyOrder.ContactNumber" />
+                    <InputText id="ContactNumber" class="form-control inputtxt" @bind-Value="dailyOrder.ContactNumber" />
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-3">
-            <div class="row mb-3">
-                <label class="col-12 col-form-label">交貨時間</label>
-                <div class="col-12 disabled">
-                    <DateTimePicker ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.DeliveryTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="DeliveryTimeChanged">
-                        <TimePickerSetting  ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
-                    </DateTimePicker>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="row mb-3">
-                <label class="col-12 col-form-label">交貨方法</label>
-                <div class="col-12">
-                    <InputText id="DeliveryMethod" class="form-control" @bind-Value="dailyOrder.DeliveryMethod" />
-                </div>
-            </div>
-        </div>
+
         <div class="col-6 col-md-3">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">自取時間</label>
                 <div class="col-12">
-                    <DateTimePicker ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.GetMySelfDateTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="OnGetMySelfDateTimeChanged">
+                    <DateTimePicker style="font-size:smaller" class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.GetMySelfDateTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="OnGetMySelfDateTimeChanged">
                         <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
@@ -97,39 +69,111 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">訂單類型</label>
                 <div class="col-12">
-                    <select id="OrderType" class="form-control" @bind="dailyOrder.OrderType">
+                    <select id="OrderType" class="form-control  inputtxt" @bind="dailyOrder.OrderType">
                         <option value="每日拼盤">每日拼盤</option>
                         <option value="自訂拼盤">自訂拼盤</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="row mb-3">
-            <label class="col-12 col-form-label">交貨地址</label>
-            <div class="col-12">
-                <InputText id="DeliveryAddress" class="form-control" @bind-Value="dailyOrder.DeliveryAddress" />
+        <div class="col-6 col-md-3">
+            <div class="row mb-3">
+                <label class="col-12 col-form-label">交貨時間</label>
+                <div class="col-12 disabled">
+                    <DateTimePicker class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.DeliveryTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="DeliveryTimeChanged">
+                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
+                    </DateTimePicker>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="row mb-3">
+                <label class="col-12 col-form-label">交貨方法</label>
+                <div class="col-12">
+                    <select id="DeliveryMethod" class="form-control inputtxt" @bind="dailyOrder.DeliveryMethod">
+                        <option value="定點取">定點取</option>
+                        <option value="外送 【僅限青埔】">外送 【僅限青埔】</option>
+                        <option value="自取">自取</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
-    
+
+    @if (dailyOrder.DeliveryMethod == "定點取")
+    {
+        <div class="row mb-3">
+            <label class="col-12 col-form-label">選擇地區</label>
+            <select id="DeliverRegion" class="form-control inputtxt" @bind="DilyverRegion">
+                <option>青埔地區</option>
+                <option>大園地區</option>
+                <option>過嶺地區</option>
+                <option>大竹地區</option>
+            </select>
+        </div>
+    }
+    else if (dailyOrder.DeliveryMethod == "自取")
+    {
+        DilyverRegion = "";
+        dailyOrder.DeliveryAddress = "皇家八街２號";
+    }
+    else if (dailyOrder.DeliveryMethod == "外送 【僅限青埔】")
+    {
+        DilyverRegion = "";
+        dailyOrder.DeliveryAddress = "";
+    }
+    else
+    {
+        DilyverRegion = "";
+        dailyOrder.DeliveryAddress = "";
+    }
     <div class="col-12">
-        <label class="col-12 col-form-label">訂單明細</label>
+        <label class="col-12 col-form-label">訂單地址</label>
         <div class="col-12">
-            <InputTextArea id="OrderDetail" class="form-control" @bind-Value="dailyOrder.OrderDetail" />
+ 
+            @if (DilyverRegion == "青埔地區")
+            {
+                dailyOrder.DeliveryAddress = "皆可外送至指定社區管理室";
+            }
+            else if(DilyverRegion == "大園地區")
+            {
+                dailyOrder.DeliveryAddress = "大觀路20號彩卷行（仁壽宮旁）";
+            }
+            else if(DilyverRegion == "過嶺地區")
+            {
+                dailyOrder.DeliveryAddress = "民族路五段326號（全家高嶺店）";
+            }
+            else if(DilyverRegion == "大竹地區")
+            {
+                dailyOrder.DeliveryAddress = "上竹四街53號";
+            }   
+            <InputText @bind-Value="dailyOrder.DeliveryAddress" class="form-control  inputtxt" />
         </div>
     </div>
 
+    <div class="col-12">
+        <label class="col-12 col-form-label">訂單明細</label>
+        <div class="col-12">
+            <InputTextArea id="OrderDetail" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderDetail" />
+        </div>
+    </div>
+    <div class="col-12">
+        <label class="col-12 col-form-label">訂單明細</label>
+        <div class="col-12">
+            <InputTextArea id="OrderDetail" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderDetail" />
+        </div>
+    </div>
     <div class="row mb-3">
         <label class="col-12 col-form-label">訂單總金額</label>
         <div class="col-12">
-            <InputNumber id="OrderAmount" class="form-control" @bind-Value="dailyOrder.OrderAmount" />
+            <InputNumber id="OrderAmount" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderAmount" />
         </div>
     </div>
 
     <div class="row mb-3">
         <label class="col-12 col-form-label">付款方式</label>
         <div class="col-12">
-            <InputText id="PricingMethod" class="form-control" @bind-Value="dailyOrder.PricingMethod" />
+            <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" />
         </div>
     </div>
 
@@ -168,57 +212,106 @@
         </div>
     </div>
 
-    <div class="row mb-3 Visibility">
-        <label class="col-12 col-form-label">驗證碼</label>
-        <div class="col-12">
-            <img src="/Captcha/GenerateCaptcha" alt="Captcha" />
-            <InputText id="CaptchaInput" class="form-control" @bind-Value="captchaInput" />
-        </div>
-    </div>
-
+    @* 修改提交按鈕的行為 *@
     <div class="row mb-3 Visibility">
         <div class="col-12 offset2">
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button type="button" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</button>
         </div>
     </div>
 
 </EditForm>
 
+
+@if (showCaptchaModal)
+{
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">機器人驗證</h5>
+                    <button type="button" class="btn-close" @onclick="() => showCaptchaModal = false"></button>
+                </div>
+                <div class="modal-body">
+                    <Verification OnValidAsync="HandleCaptchaValid" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
 @code {
     private Orders dailyOrder = new()
     {
+        OrderType = "每日拼盤",
         OrderCreateDateTime = DateTime.Now,
         GetMySelfDateTime = DateTime.Now,
         DeliveryTime = DateTime.Now
     };
+    private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage)
+    {
+        var op = new SwalOption()
+            {
+                Category = aSwalCategory,
+                Title = aOrderMessage,
+                Content = "",
+                ShowFooter = true,
+                IsAutoHide = true,
+                Delay = 4000,
+            };
+        await SwalService.Show(op);
+    }
+
     private string captchaInput;
 
     private HttpClient httpClient;
 
-    protected override void OnInitialized()
+    private string DilyverRegion { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync()
     {
         httpClient = HttpClientFactory.CreateClient("FishServerAPI");
     }
+    private bool showCaptchaModal = false;
+
+    private async Task ShowCaptchaModal()
+    {
+        this.showCaptchaModal = true;
+        await Task.CompletedTask;
+    }
+    private async Task HandleCaptchaValid(bool isValid)
+    {
+        if (isValid)
+        {
+            this.showCaptchaModal = false;
+            await HandleValidSubmit(); // 當驗證碼通過後，執行原本的提交邏輯
+        }
+        else
+        {
+            // 驗證碼驗證失敗，保持模態對話框開啟，讓用戶重試
+            this.showCaptchaModal = true;
+        }
+    }
+
+
 
     private async Task HandleValidSubmit()
     {
-        // 驗證驗證碼
-        var captchaIsValid = await VerifyCaptcha(captchaInput);
-        if (!captchaIsValid)
-        {
-            // 處理驗證碼錯誤
-            return;
-        }
+
 
         // 在这里处理表单提交，例如将数据发送到服务器
         var response = await httpClient.PostAsJsonAsync("api/order", dailyOrder);
         if (response.IsSuccessStatusCode)
         {
             // 提交成功后的处理
+            await ShowAutoCloseSwal(SwalCategory.Success , "訂單完成");
         }
         else
         {
             // 提交失败后的处理
+            await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤");
         }
     }
     private async Task OnOrderCreateDateTimeChanged(DateTime adateTime)
@@ -238,13 +331,25 @@
         dailyOrder.DeliveryTime = adateTime;
         await Task.CompletedTask; // 假設這裡有異步操作
     }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // 這裡可以在首次渲染後執行一些操作
+           
+
+        }
+    }
 
     private async Task<bool> VerifyCaptcha(string inputCaptcha)
     {
         // 在這裡實現驗證碼的驗證邏輯，例如發送請求到後端進行驗證
         // 假設這是驗證請求的結果
-        var captchaCode = await httpClient.GetStringAsync("CaptchaCode");
+        var captchaCode = await localStorage.GetItem("CaptchCode");//localSessionStorage.GetItem("CaptchaCode").Result;
         return captchaCode == inputCaptcha;
+
+        // aaaa = 30;
+        // bbbb = 40;
+        // cccc = 50;
     }
 }
-

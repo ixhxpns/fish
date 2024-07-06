@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\FISH.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\asset\\img\\IMG_0170.JPG",
+      "PackagePath": "staticwebassets\\asset\\img\\IMG_0170.JPG"
+    },
+    {
       "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
@@ -55,6 +59,14 @@
     {
       "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha0.jpg",
+      "PackagePath": "staticwebassets\\images\\captcha0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha1.jpg",
+      "PackagePath": "staticwebassets\\images\\captcha1.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FISH.Microsoft.AspNetCore.StaticWebAssets.props",

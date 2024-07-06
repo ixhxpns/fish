@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OR/7jv5YYZH/koiRueL6I8EgBfhICx2xHfKp9VPYHUY=",
+  "Hash": "e9uGoMqRMol1KT+0qTYsZ5ZcKHiQCcLfIhE8wiwyd6g=",
   "Source": "FISH",
   "BasePath": "_content/FISH",
   "Mode": "Default",
@@ -2905,6 +2905,25 @@
       "OriginalItemSpec": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FISH.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\asset\\img\\IMG_0170.JPG",
+      "SourceId": "FISH",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "BasePath": "_content/FISH",
+      "RelativePath": "asset/img/IMG_0170.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\asset\\img\\IMG_0170.JPG"
+    },
+    {
       "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "FISH",
       "SourceType": "Discovered",
@@ -3150,6 +3169,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha0.jpg",
+      "SourceId": "FISH",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "BasePath": "_content/FISH",
+      "RelativePath": "images/captcha0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\captcha0.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha1.jpg",
+      "SourceId": "FISH",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "BasePath": "_content/FISH",
+      "RelativePath": "images/captcha1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\captcha1.jpg"
     }
   ]
 }

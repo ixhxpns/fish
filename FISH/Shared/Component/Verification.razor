@@ -1,0 +1,27 @@
+﻿@using System.Diagnostics.CodeAnalysis
+
+<Captcha ImagesPath="@ImagesPath" ImagesName="@ImagesName" @ref="NormalCaptcha" Max="2" OnValidAsync="@((bool isValid) => HandleValidationAsync(isValid))"/>
+@code {
+    [Parameter]
+    public string ImagesPath { get; set; } = "./images";
+    [Parameter]
+    public string ImagesName { get; set; } = "captcha.jpg";
+    [NotNull]
+    private Captcha? NormalCaptcha { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidAsync { get; set; }
+
+    private async Task HandleValidationAsync(bool isValid)
+    {
+        var result = isValid ? "成功" : "失败";
+        System.Console.WriteLine($"验证码结果 -> {result}");
+        if (isValid)
+        {
+            await Task.Delay(1000);
+            await NormalCaptcha.Reset();
+        }
+        await OnValidAsync.InvokeAsync(isValid);
+    }
+   
+}

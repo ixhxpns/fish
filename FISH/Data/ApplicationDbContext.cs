@@ -1,7 +1,8 @@
-using Microsoft.EntityFrameworkCore;
 using FISH.Model;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore; // 確保引入包含 Order 類的命名空間
+using Microsoft.EntityFrameworkCore;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {

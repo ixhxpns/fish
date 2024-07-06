@@ -3,62 +3,141 @@
 @using Newtonsoft.Json
 @inject HttpClient Http
 @inject IHttpClientFactory HttpClientFactory
+
+
+
 <h3>ManageOrders</h3>
 <section>
-    <Table TItem="Orders" Items="@Items" IsBordered="true" IsExcel="true" IsFixedHeader="true" Height="500">
+    <Table TItem="Orders" Items="@Items" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
+           IsStriped="true" IsBordered="true" ShowToolbar="true" ShowColumnList="true" ShowDefaultButtons="false" ShowRefresh="false" >
         <TableColumns>
-            <TableColumn Field="@context.Name" Width="80">
+            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
-                        <div>
-                            <div> </div>
-                            @* <img src="row.Id" class="bb-avatar" /> *@
-                        </div>
                         <div class="ps-2">
                             <div>@row.Id</div>
-                            <div class="bb-sub">@row.OrderAmount</div>
-                            <div class="bb-sub">@row.OrderType</div>
+                            <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
+                            <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
+                            <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
+                            <div class="bb-sub">交貨方式   :@Order_DeliveryMethod(row!.Id)</div>
+                            <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
                         </div>
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn Field="@context.DeliveryMethod" >
+            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true">
                 <EditTemplate Context="row">
-                    <div class="d-flex">
-                        <div>
-                            <TableColumn Field="@row.DeliveryMethod"/>
-                            <TableColumn Field="@row.DeliveryTime"/>
-                        </div>
+                    <div class="d-flex disabled">
                         <div class="ps-2">
-                            <div class="bb-sub">@row.DeliveryAddress</div>
-                            <div class="bb-sub">@row.OrderType</div>
+                            <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
+                            <div class="bb-sub">交貨時間   :@Order_DeliveryTime(row!.Id)</div>
+                            <div class="bb-sub">自取時間   :@Order_GetMySelfDateTime(row!.Id)</div>
                         </div>
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn Field="@context.DeliveryMethod" Width="160" />
-            <TableColumn Field="@context.OrderDetail" Width="160">
+            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true">
                 <EditTemplate Context="row">
-                    <div class="disabled">
+                    <div class="d-flex disabled">
+                        <div class="ps-2">
+                            @foreach (var item in @Order_Detail(row!.Id))
+                            {
+                                <div>@item</div>
+                            } 
+                        </div>
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn Field="@context.IsDelivered" Align="Alignment.Center" Width="80" />
-            <TableColumn Field="@context.IsPaid" Align="Alignment.Center" Width="80" />
-            <TableColumn Field="@context.IsPrinted" Align="Alignment.Center" Width="80" />
         </TableColumns>
     </Table>
+   @*  <Table TItem="Orders" Items="@Items" IsBordered="true" IsExcel="true" IsFixedHeader="true" Height="500" >
+        <TableColumns>
+            <TableColumn @bind-Field="@context.Id" Width="80" >
+                <Template Context="value">
+                    <div class="text-success">@value.Value</div>
+                    <div> @value.Row.PricingMethod.ToString()</div>
+                </Template>
+            </TableColumn>
+        </TableColumns>
+    </Table> *@
 </section>
 
 @code {
     private IEnumerable<Orders> Items { get; set; } // 初始化 Items 以避免 null 問題
     private HttpClient? httpClient; // 標記為可為 null
+    private List<Orders> OrdersList { get; set; } = new List<Orders>();
 
     protected override async Task OnInitializedAsync()
     {
         httpClient = HttpClientFactory.CreateClient("FishServerAPI");
         var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
         Items = orders ?? new List<Orders>(); // 檢查返回值是否為 null
-        StateHasChanged();
+        OrdersList = new List<Orders>(Items);
+    }
+
+    public string Order_Name(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.Name;
+        return bResult;
+    } 
+    public string Order_ContactNumber(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.ContactNumber;
+        return bResult;
+    }
+    public string Order_DeliveryMethod(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.DeliveryMethod;
+        return bResult;
+    }
+    public string Order_DeliveryTime(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.DeliveryTime.ToString();
+        return bResult;
+    }
+    public string Order_DeliveryAddress(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.DeliveryAddress;
+        return bResult;
+    }
+    public string Order_OrderType(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.OrderType;
+        return bResult;
+    }
+    public string Order_OrderCreateDateTime(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.OrderCreateDateTime.ToString();
+        return bResult;
+    }
+    public string Order_GetMySelfDateTime(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.GetMySelfDateTime.ToString();
+        return bResult;
+    }
+    public IEnumerable<string> Order_Detail(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.OrderDetail.ToString().Replace("\n","").Split(";",StringSplitOptions.RemoveEmptyEntries);
+        var sResult = new List<string>();
+        if (aResult.OrderDetail.IndexOf(';') == -1)
+        {
+            sResult.Add(aResult.OrderDetail);
+            return sResult;
+        }
+        foreach (var item in bResult)
+        {
+            sResult.Add($"{item.Split("=")[0]} -> ${item.Split("=")[1]}");
+        }
+        
+        return sResult;
     }
 }

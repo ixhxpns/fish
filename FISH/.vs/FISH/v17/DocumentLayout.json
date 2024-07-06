@@ -3,44 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\createorder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\createorder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\manageorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\manageorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\data\\migrations_1\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:data\\migrations_1\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\createorder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\createorder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\morders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\morders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\printpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\printpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\pages\\manageorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:pages\\manageorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\controllers\\captchacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:controllers\\captchacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|c:\\users\\jason\\source\\repos\\fish\\pigfish\\fish\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15C8A071-BB9A-4928-AA61-A4BF2B88652B}|FISH.csproj|solutionrelative:shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 488,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -81,129 +69,95 @@
               "Name": "ST:1:0:{7f40df72-066b-4810-a08b-c0fbed76c948}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "ManageOrders.razor",
               "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\ManageOrders.razor",
               "RelativeDocumentMoniker": "Pages\\ManageOrders.razor",
               "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\ManageOrders.razor",
               "RelativeToolTip": "Pages\\ManageOrders.razor",
-              "ViewState": "AQIAAAYAAACAmJmZmZkewCoAAAAaAAAA",
+              "ViewState": "AQIAAAAAAACAmZmZmRkmwAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-03T15:37:45.235Z"
+              "WhenOpened": "2024-07-06T23:51:55.114Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAACoAAABA//////8kwCIAAAAyAAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAAADoAAAB6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:34:15.453Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Data\\Migrations_1\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Data\\Migrations_1\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Data\\Migrations_1\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Data\\Migrations_1\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AQIAAAoAAAAAmZmZmZkewCEAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T04:54:25.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAgAAADgy8zMzMwbwA0AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T04:38:17.536Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateOrder.razor",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\CreateOrder.razor",
-              "RelativeDocumentMoniker": "Pages\\CreateOrder.razor",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\CreateOrder.razor",
-              "RelativeToolTip": "Pages\\CreateOrder.razor",
-              "ViewState": "AQIAAHMAAAAAJjMzMzMbwIYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-03T04:15:01.216Z",
+              "WhenOpened": "2024-07-06T05:46:56.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "PrintPage.razor",
+              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\PrintPage.razor",
+              "RelativeDocumentMoniker": "Pages\\PrintPage.razor",
+              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\PrintPage.razor",
+              "RelativeToolTip": "Pages\\PrintPage.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-06T05:16:33.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\App.razor",
+              "RelativeDocumentMoniker": "App.razor",
+              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\App.razor",
+              "RelativeToolTip": "App.razor",
+              "ViewState": "AQIAAAEAAABgZmZmZmYUwAkAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-06T05:14:42.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Shared\\MainLayout.razor",
               "RelativeDocumentMoniker": "Shared\\MainLayout.razor",
               "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Shared\\MainLayout.razor",
               "RelativeToolTip": "Shared\\MainLayout.razor",
-              "ViewState": "AQIAAAQAAACgmZmZmdkhwAoAAAAnAAAA",
+              "ViewState": "AQIAAAEAAACg/////38ZwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-03T00:43:26.716Z"
+              "WhenOpened": "2024-07-06T05:11:25.301Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\_Imports.razor",
-              "RelativeDocumentMoniker": "_Imports.razor",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\_Imports.razor",
-              "RelativeToolTip": "_Imports.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CreateOrder.razor",
+              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\CreateOrder.razor",
+              "RelativeDocumentMoniker": "Pages\\CreateOrder.razor",
+              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\CreateOrder.razor",
+              "RelativeToolTip": "Pages\\CreateOrder.razor",
+              "ViewState": "AQIAAJwAAAAAOjMzM7MiwKUAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-03T00:42:41.444Z"
+              "WhenOpened": "2024-07-06T04:28:50.342Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Shared\\NavMenu.razor",
-              "RelativeDocumentMoniker": "Shared\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Shared\\NavMenu.razor",
-              "RelativeToolTip": "Shared\\NavMenu.razor",
-              "ViewState": "AQIAABAAAACAZmZmZuYswA8AAAAOAAAA",
+              "DocumentIndex": 3,
+              "Title": "MOrders.razor",
+              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\MOrders.razor",
+              "RelativeDocumentMoniker": "Pages\\MOrders.razor",
+              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Pages\\MOrders.razor",
+              "RelativeToolTip": "Pages\\MOrders.razor",
+              "ViewState": "AQIAAHMAAAAAZGZmZmYEwHwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-03T00:43:31.5Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AQIAABgAAAAAMTMzM3MmwCAAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T17:14:52.699Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CaptchaController.cs",
-              "DocumentMoniker": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Controllers\\CaptchaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CaptchaController.cs",
-              "ToolTip": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\Controllers\\CaptchaController.cs",
-              "RelativeToolTip": "Controllers\\CaptchaController.cs",
-              "ViewState": "AQIAAAQAAACAmJmZmRkWwAsAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T17:14:37.97Z"
+              "WhenOpened": "2024-07-06T04:21:21.621Z",
+              "EditorCaption": ""
             }
           ]
         }

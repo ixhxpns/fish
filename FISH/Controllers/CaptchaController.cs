@@ -1,5 +1,8 @@
 ﻿namespace FISH.Controllers
 {
+    using FISH.Services.Interface;
+
+    using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Mvc;
 
     using System.Drawing;
@@ -8,10 +11,20 @@
 
     public class CaptchaController : Controller
     {
+        private readonly Blazored.LocalStorage.ILocalStorageService localStorage;                                                            
+        private readonly IHttpContextAccessor httpContextAccessor;
+
+        public CaptchaController(IHttpContextAccessor httpContextAccessor, Blazored.LocalStorage.ILocalStorageService localStorage)
+        {
+            this.httpContextAccessor = httpContextAccessor;
+            this.localStorage = localStorage;
+        }
+
         public async Task<IActionResult> GenerateCaptcha()
         {
             var captchaCode = GenerateRandomCode();
-            HttpContext.Session.SetString("CaptchaCode", captchaCode.Result);
+            await this.localStorage.SetItemAsync("CaptchaCode", captchaCode.Result);
+            httpContextAccessor.HttpContext.Session.SetString("CaptchaCode", captchaCode.Result);
             var captchaImage = GenerateCaptchaImage(captchaCode.Result);
             return File(captchaImage.Result, "image/jpeg");
         }

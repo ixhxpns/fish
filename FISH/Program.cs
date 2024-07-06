@@ -1,11 +1,15 @@
-﻿using FISH.Areas.Identity;
-using FISH.Data;
+﻿
 
-using Microsoft.AspNetCore.Components;
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
+
+using FISH.Areas.Identity;
+using FISH.Data;
+using FISH.Services;
+using FISH.Services.Interface;
+
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 
 namespace FISH
@@ -28,15 +32,32 @@ namespace FISH
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddBootstrapBlazor();
+            builder.Services.AddHttpClient();
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20); // 設置 Session 的過期時間
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            builder.Services.AddBlazoredSessionStorage();
+            builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddBootstrapBlazorHtml2PdfService();
+
+            builder.Services.AddScoped<ILocalStorage, LocalStorage>();
+            //builder.Services.AddBlazoredSessionStorage(config => {
+            //    config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+            //    config.JsonSerializerOptions.IgnoreNullValues = true;
+            //    config.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+            //    config.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+            //    config.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            //    config.JsonSerializerOptions.ReadCommentHandling = JsonCommentHandling.Skip;
+            //    config.JsonSerializerOptions.WriteIndented = false;
+            //}
+            //);
+
             builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:7229/"));
             var app = builder.Build();
-
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

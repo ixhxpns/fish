@@ -306,6 +306,8 @@ C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\FISH.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\FISH.pdb
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Blazored.SessionStorage.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\BootstrapBlazor.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Humanizer.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -576,3 +578,6 @@ C:\Users\jason\source\repos\Fish\pigfish\FISH\obj\Debug\net8.0\refint\FISH.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\obj\Debug\net8.0\FISH.pdb
 C:\Users\jason\source\repos\Fish\pigfish\FISH\obj\Debug\net8.0\FISH.genruntimeconfig.cache
 C:\Users\jason\source\repos\Fish\pigfish\FISH\obj\Debug\net8.0\ref\FISH.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\BootstrapBlazor.Html2Pdf.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\PuppeteerSharp.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Aspose.HTML.dll

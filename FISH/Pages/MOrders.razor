@@ -1,0 +1,199 @@
+﻿@page "/morders"
+@layout PrintLayout
+@using Aspose.Html
+@using Aspose.Html.Converters
+@using Aspose.Html.Saving
+@using FISH.Model
+@using System.Diagnostics.CodeAnalysis
+
+@inject IHttpClientFactory HttpClientFactory
+
+<style>
+    /* 非列印樣式 */
+    .a4-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm;
+        margin: 10mm auto;
+        background: white;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    }
+
+    .order-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: smaller;
+        border-radius: 5px;
+    }
+
+    @@media print {
+        body, html {
+            width: 210mm;
+            height: 297mm;
+        }
+
+        .a4-page {
+            page-break-after: always; /* 每個a4-page後都開始新的一頁 */
+            display: block; /* 改為block布局以適應分頁 */
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0;
+            padding: 20mm;
+            background: white;
+            box-shadow: none; /* 列印時不顯示陰影 */
+        }
+
+        .order-card {
+            border: 1px solid #ccc;
+            width:207px;
+            padding: 10px;
+            font-size: smaller;
+            border-radius: 5px;
+            break-inside: avoid; /* 避免order-card被分割到不同頁面 */
+        }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const orders = document.querySelectorAll('.order-card');
+        let currentPage = document.querySelector('.a4-page');
+        let currentPageHeight = 0;
+        const pageMaxHeight = 297; // 假設 A4 頁面的高度為 297mm
+
+        orders.forEach(order => {
+            currentPage.appendChild(order);
+            currentPageHeight += order.offsetHeight;
+
+            if (currentPageHeight > pageMaxHeight) {
+                // 創建新的分頁容器
+                const newPage = document.createElement('div');
+                newPage.className = 'a4-page';
+                document.body.appendChild(newPage);
+
+                // 重置當前頁面和高度計數器
+                currentPage = newPage;
+                currentPageHeight = order.offsetHeight;
+            }
+        });
+    });
+</script>
+<ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
+<Button OnClickWithoutRender="OnExportAsync" Text="导出 Pdf"></Button>
+<Button OnClick="Html2PDF" Text="Html2PDF"></Button>
+<div id="a4page" class="a4-page">
+        @foreach (var order in OrdersList)
+        {
+            <div class="order-card">
+                <strong>姓名:</strong> @order.Name <br >
+                <strong>連絡電話:</strong> @order.ContactNumber<br>
+                <strong>交貨方式:</strong> @order.DeliveryMethod<br>
+                <strong>交貨地址:</strong> @order.DeliveryAddress<br>
+                <strong>交貨時間:</strong> @order.DeliveryTime<br>
+                <strong>建單時間:</strong> @order.OrderCreateDateTime.ToString("yyyy-MM-dd HH:mm")<br>
+                <strong>訂單類型:</strong> @order.OrderType<br>
+                <strong>訂單明細:</strong> @order.OrderDetail<br>
+                <strong>訂單數量:</strong> @order.Count<br>
+                <strong>訂單總金額:</strong> @order.OrderAmount.ToString("C")<br>
+                <strong>是否已交貨:</strong> @order.IsDelivered<br>
+                <strong>是否已付款:</strong> @order.IsPaid<br>
+                <strong>是否已列印:</strong> @order.IsPrinted<br>
+             </div>
+        }
+    </div>
+@code {
+    [Parameter]
+    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
+    private int runi { get; set; } =0;
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
+    private Task OnBeforeExport() => ToastService.Information("導出Pdf", "導出PDF文件");
+    private Task OnAfterDownload(string fileName) => ToastService.Success("下载 Pdf", fileName,true);
+    private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+        var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+        OrdersList = orders ?? new List<Orders>(); // 直接對 OrdersList 進行檢查和初始化
+
+
+
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+
+        }
+    }
+
+
+
+    [Inject]
+    [NotNull]
+    private IHtml2Pdf? Html2PdfService { get; set; }
+
+    [Inject]
+    [NotNull]
+    private DownloadService? DownloadService { get; set; }
+
+    [Inject]
+    [NotNull]
+    private IJSRuntime? JSRuntime { get; set; }
+    [Inject]
+    [NotNull]
+    private NavigationManager? NavigationManager { get; set; }
+
+    private async Task OnExportAsync()
+    {
+        // 通过脚本 getHtml 获得 table 表格 Html
+        var module = await JSRuntime.LoadUtility();
+        var html = await module.GetHtml("a4page");
+        if (!string.IsNullOrEmpty(html))
+        {
+            // 通过模板生成完整的 Html
+            var htmlString = @"
+                <!DOCTYPE html>
+
+                <html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+                <head>
+                    <meta charset=""utf-8"" />
+                </head>
+                <body class=""p-3"">";
+
+            htmlString += html;
+
+            htmlString += @"
+                </body>
+                </html>
+                ";
+
+            // 增加网页所需样式表文件
+            using var stream = await Html2PdfService.PdfStreamFromHtmlAsync(htmlString, [$"{NavigationManager.BaseUri}_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css"]);
+
+            // 下载 Pdf 文件
+            await DownloadService.DownloadFromStreamAsync($"table-{DateTime.Now:HHmmss}.pdf", stream);
+
+            // 提示文件下载成功
+            await ToastService.Success("Pdf 导出", "通过表格 Id 导出 Pdf 文件成功");
+        }
+        
+    }
+    public async Task Html2PDF()
+    {
+        // 網址
+        Url url = new Url("https://localhost:7229/morders"); // 修正 URL
+
+        // 初始化 PdfSaveOptions
+        var options = new PdfSaveOptions();
+
+        // 將 HTML 代碼轉換為 PDF
+        Converter.ConvertHTML(url, options, "~/");
+    }
+}

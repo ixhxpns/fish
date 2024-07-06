@@ -50,9 +50,25 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Aspose.Html": {
+              "target": "Package",
+              "version": "[24.6.0, )"
+            },
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "Blazored.SessionStorage": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
             "BootstrapBlazor": {
               "target": "Package",
               "version": "[8.7.0, )"
+            },
+            "BootstrapBlazor.Html2Pdf": {
+              "target": "Package",
+              "version": "[8.1.1, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
