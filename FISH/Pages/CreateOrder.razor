@@ -1,6 +1,7 @@
 ﻿@page "/createorder"
 @using FISH.Model
 @using FISH.Shared.Component
+@using System.Diagnostics.CodeAnalysis
 @inject HttpClient Http
 @inject IHttpClientFactory HttpClientFactory
 @inject ILocalStorage localStorage
@@ -151,33 +152,45 @@
         </div>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 mb-3">
         <label class="col-12 col-form-label">訂單明細</label>
         <div class="col-12">
-            <InputTextArea id="OrderDetail" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderDetail" />
+            <InputTextArea id="OrderDetail" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderDetail" disabled />
         </div>
     </div>
-    <div class="col-12">
-        <label class="col-12 col-form-label">訂單明細</label>
-        <div class="col-12">
-            <InputTextArea id="OrderDetail" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderDetail" />
+
+    <div class="col-12 mb-2">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6">
+                <BootstrapInputGroup>
+                    <BootstrapInputGroupLabel DisplayText="魚種" />
+                    <BootstrapInput @bind-Value="@FishName" />
+                </BootstrapInputGroup>
+            </div>
+            <div class="col-12 col-sm-6">
+                <BootstrapInputGroup>
+                    <BootstrapInputNumber @bind-Value="@FishAmount" />
+                    <Button OnClick="@AddFish">加入 </Button>
+                    <Button OnClick="@ClearFish" Color="Color.Danger">清除</Button>
+                </BootstrapInputGroup>
+            </div>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-12 col-form-label">訂單總金額</label>
         <div class="col-12">
-            <InputNumber id="OrderAmount" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderAmount" />
+            <InputNumber id="OrderAmount" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderAmount" disabled />
         </div>
     </div>
 
     <div class="row mb-3">
         <label class="col-12 col-form-label">付款方式</label>
         <div class="col-12">
-            <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" />
+            <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" disabled />
         </div>
     </div>
 
-    <div class="row mb-3 Visibility">
+   @*  <div class="row mb-3 Visibility">
         <label class="col-12 col-form-label">是否已刪除</label>
         <div class="col-12">
             <InputCheckbox id="IsDeleted" class="form-check-input" @bind-Value="dailyOrder.IsDeleted" />
@@ -210,12 +223,12 @@
         <div class="col-12">
             <InputCheckbox id="IsPaid" class="form-check-input" @bind-Value="dailyOrder.IsPaid" />
         </div>
-    </div>
+    </div> *@
 
     @* 修改提交按鈕的行為 *@
     <div class="row mb-3 Visibility">
         <div class="col-12 offset2">
-            <button type="button" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</button>
+            <Button IsAsync="true" type="button" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</Button>
         </div>
     </div>
 
@@ -246,7 +259,9 @@
         OrderType = "每日拼盤",
         OrderCreateDateTime = DateTime.Now,
         GetMySelfDateTime = DateTime.Now,
-        DeliveryTime = DateTime.Now
+        DeliveryTime = DateTime.Now,
+
+
     };
     private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage)
     {
@@ -268,6 +283,9 @@
 
     private string DilyverRegion { get; set; }
 
+    private string FishName { get; set; }
+
+    private int FishAmount { get; set; }
 
 
     protected override async Task OnInitializedAsync()
@@ -336,7 +354,7 @@
         if (firstRender)
         {
             // 這裡可以在首次渲染後執行一些操作
-           
+
 
         }
     }
@@ -352,4 +370,30 @@
         // bbbb = 40;
         // cccc = 50;
     }
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
+    private async Task AddFish()
+    {
+        if (!String.IsNullOrEmpty(FishName) & FishAmount != 0)
+        {
+            dailyOrder.OrderDetail += $"{FishName}={FishAmount};\n";
+            dailyOrder.OrderAmount += FishAmount;
+            FishName = "";
+            FishAmount = 0;
+        }
+        else
+        {
+            await ToastService.Error("輸入錯誤","魚種與金額皆須填寫!!");
+        }
+
+    }
+    private async Task ClearFish()
+    {
+        dailyOrder.OrderAmount = 0;
+        dailyOrder.OrderDetail = "";
+
+    }
+   
+    
 }

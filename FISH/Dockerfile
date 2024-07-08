@@ -1,8 +1,18 @@
-﻿                                                                   # 使用微軟官方的ASP.NET Core運行時映像作為基礎映像
+﻿# 使用基礎映像
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+
+# 復制證書
+COPY ["./aspnetapp.pfx", "/https/"]
+
+# 設置環境變量
+ENV ASPNETCORE_URLS="https://+;http://+"
+ENV ASPNETCORE_HTTPS_PORT=443
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password="Jason_76114"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path="/https/aspnetapp.pfx"
+
 
 # 使用微軟官方的SDK映像來構建專案
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build

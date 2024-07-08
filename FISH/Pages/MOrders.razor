@@ -1,5 +1,5 @@
 ﻿@page "/morders"
-@layout PrintLayout
+@* @layout PrintLayout *@
 @using Aspose.Html
 @using Aspose.Html.Converters
 @using Aspose.Html.Saving
@@ -80,10 +80,62 @@
         });
     });
 </script>
-<ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
-<Button OnClickWithoutRender="OnExportAsync" Text="导出 Pdf"></Button>
-<Button OnClick="Html2PDF" Text="Html2PDF"></Button>
-<div id="a4page" class="a4-page">
+@* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton> *@
+<Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
+<BootstrapInputGroup>
+        <div class="row g-3">
+            <div class="col-12 col-sm-auto">
+                <DateTimePicker @bind-Value="@SearchStartDate" />
+            </div>
+            <div class="col-12 col-sm-auto align-self-end">
+            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+            </div>
+        </div>
+</BootstrapInputGroup>
+@* <Button OnClick="Html2PDF" Text="Html2PDF"></Button> *@
+<Table TItem="Orders" Items="@OrdersList" Id="a4page" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
+       IsStriped="true" IsBordered="true" ShowToolbar="true" ShowColumnList="true" ShowDefaultButtons="false" ShowRefresh="false">
+    <TableColumns>
+        <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true">
+            <EditTemplate Context="row">
+                <div class="d-flex disabled">
+                    <div class="ps-2">
+                        <div>@row.Id</div>
+                        <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
+                        <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
+                        <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
+                        <div class="bb-sub">交貨方式   :@Order_DeliveryMethod(row!.Id)</div>
+                        <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
+                    </div>
+                </div>
+            </EditTemplate>
+        </TableColumn>
+        <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true">
+            <EditTemplate Context="row">
+                <div class="d-flex disabled">
+                    <div class="ps-2">
+                        <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
+                        <div class="bb-sub">交貨時間   :@Order_DeliveryTime(row!.Id)</div>
+                        <div class="bb-sub">自取時間   :@Order_GetMySelfDateTime(row!.Id)</div>
+                    </div>
+                </div>
+            </EditTemplate>
+        </TableColumn>
+        <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true">
+            <EditTemplate Context="row">
+                <div class="d-flex disabled">
+                    <div class="ps-2">
+                        @foreach (var item in @Order_Detail(row!.Id))
+                        {
+                            <div>@item</div>
+                        }
+                    </div>
+                </div>
+            </EditTemplate>
+        </TableColumn>
+    </TableColumns>
+</Table>
+@* <div id="a4page" class="a4-page">
         @foreach (var order in OrdersList)
         {
             <div class="order-card">
@@ -102,10 +154,16 @@
                 <strong>是否已列印:</strong> @order.IsPrinted<br>
              </div>
         }
-    </div>
+    </div> *@
 @code {
+     @using System.Globalization;
+
     [Parameter]
-    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
+    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>(); 
+    [Parameter]
+    public DateTime SearchStartDate { get; set; } 
+    public DateTime SearchEndDate { get; set; }
+
     private int runi { get; set; } =0;
     [Inject]
     [NotNull]
@@ -114,16 +172,30 @@
     private Task OnAfterDownload(string fileName) => ToastService.Success("下载 Pdf", fileName,true);
     private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
 
-    protected override async Task OnInitializedAsync()
-    {
 
+    protected override async Task OnInitializedAsync()
+    {   
+        SearchStartDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 0:0:0");
+        SearchEndDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 23:59:59");
         var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
         var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
-        OrdersList = orders ?? new List<Orders>(); // 直接對 OrdersList 進行檢查和初始化
 
-
-
+        OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
     }
+        //orders?.Where(x => SearchEndDate <= x.OrderCreateDateTime).ToList();
+       //OrdersList = orders ?? new List<Orders>(); // 直接對 OrdersList 進行檢查和初始化
+    
+    public async Task OnSearchAsync()
+    {
+        var nowing = SearchStartDate;
+        SearchStartDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 0:0:0");
+        SearchEndDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 23:59:59");
+        var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+        var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+
+        OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -195,5 +267,77 @@
 
         // 將 HTML 代碼轉換為 PDF
         Converter.ConvertHTML(url, options, "~/");
+    }
+
+    public string? Order_Name(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.Name;
+        return bResult;
+    }
+    public string? Order_ContactNumber(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.ContactNumber;
+        return bResult;
+    }
+    public string? Order_DeliveryMethod(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryMethod;
+        return bResult;
+    }
+    public string? Order_DeliveryTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryTime.ToString();
+        return bResult;
+    }
+    public string? Order_DeliveryAddress(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryAddress;
+        return bResult;
+    }
+    public string? Order_OrderType(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderType;
+        return bResult;
+    }
+    public string? Order_OrderCreateDateTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderCreateDateTime.ToString();
+        return bResult;
+    }
+    public string? Order_GetMySelfDateTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.GetMySelfDateTime.ToString();
+        return bResult;
+    }
+    public string? Order_OrderAmount(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderAmount.ToString();
+        return bResult;
+    }
+    public IEnumerable<string> Order_Detail(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.OrderDetail.ToString().Replace("\n", "").Split(";", StringSplitOptions.RemoveEmptyEntries);
+        var sResult = new List<string>();
+        if (aResult.OrderDetail.IndexOf(';') == -1)
+        {
+            sResult.Add(aResult.OrderDetail);
+            return sResult;
+        }
+        foreach (var item in bResult)
+        {
+            sResult.Add($"{item.Split("=")[0]} -> ${item.Split("=")[1]}");
+        }
+
+        return sResult;
     }
 }

@@ -45,6 +45,7 @@ namespace FISH
             builder.Services.AddBootstrapBlazorHtml2PdfService();
 
             builder.Services.AddScoped<ILocalStorage, LocalStorage>();
+
             //builder.Services.AddBlazoredSessionStorage(config => {
             //    config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
             //    config.JsonSerializerOptions.IgnoreNullValues = true;
