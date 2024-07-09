@@ -1,4 +1,4 @@
-﻿@page "/createorder"
+﻿@page "/"
 @using FISH.Model
 @using FISH.Shared.Component
 @using System.Diagnostics.CodeAnalysis
@@ -161,13 +161,13 @@
 
     <div class="col-12 mb-2">
         <div class="row g-3">
-            <div class="col-12 col-sm-6">
+            <div class="col-6 col-sm-6">
                 <BootstrapInputGroup>
                     <BootstrapInputGroupLabel DisplayText="魚種" />
                     <BootstrapInput @bind-Value="@FishName" />
                 </BootstrapInputGroup>
             </div>
-            <div class="col-12 col-sm-6">
+            <div class="col-6 col-sm-6">
                 <BootstrapInputGroup>
                     <BootstrapInputNumber @bind-Value="@FishAmount" />
                     <Button OnClick="@AddFish">加入 </Button>
@@ -228,7 +228,7 @@
     @* 修改提交按鈕的行為 *@
     <div class="row mb-3 Visibility">
         <div class="col-12 offset2">
-            <Button IsAsync="true" type="button" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</Button>
+            <Button IsAsync="true" type="submit" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</Button>
         </div>
     </div>
 
@@ -237,7 +237,7 @@
 
 @if (showCaptchaModal)
 {
-    <div class="modal" tabindex="-1" style="display:block;">
+    <div class="modal"  tabindex="1" style="display:block;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -260,6 +260,8 @@
         OrderCreateDateTime = DateTime.Now,
         GetMySelfDateTime = DateTime.Now,
         DeliveryTime = DateTime.Now,
+        DeliveryMethod = "定點取",
+        DeliveryAddress = "皆可外送至指定社區管理室",
 
 
     };
@@ -281,17 +283,19 @@
 
     private HttpClient httpClient;
 
-    private string DilyverRegion { get; set; }
-
-    private string FishName { get; set; }
-
-    private int FishAmount { get; set; }
+    [Parameter]
+    public string? DilyverRegion { get; set; }
+    [Parameter]
+    public string? FishName { get; set; }
+    [Parameter]
+    public int FishAmount { get; set; }
 
 
     protected override async Task OnInitializedAsync()
     {
         httpClient = HttpClientFactory.CreateClient("FishServerAPI");
     }
+
     private bool showCaptchaModal = false;
 
     private async Task ShowCaptchaModal()

@@ -581,3 +581,6 @@ C:\Users\jason\source\repos\Fish\pigfish\FISH\obj\Debug\net8.0\ref\FISH.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\BootstrapBlazor.Html2Pdf.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\PuppeteerSharp.dll
 C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\Aspose.HTML.dll
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\wwwroot\images\captcha0.jpg
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\wwwroot\images\captcha1.jpg
+C:\Users\jason\source\repos\Fish\pigfish\FISH\bin\Debug\net8.0\wwwroot\images\warnning\IMG_0170.JPG

@@ -29,6 +29,7 @@ namespace FISH
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            builder.Services.AddSignalR();
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddBootstrapBlazor();
@@ -57,7 +58,8 @@ namespace FISH
             //}
             //);
 
-            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:7229/"));
+            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/"));
+            builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             var app = builder.Build();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -88,6 +90,7 @@ namespace FISH
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
             app.MapFallbackToPage("/_Host");
