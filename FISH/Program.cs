@@ -59,6 +59,7 @@ namespace FISH
             //);
 
             builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/"));
+            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:8668/"));
             builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             var app = builder.Build();
             // Configure the HTTP request pipeline.
