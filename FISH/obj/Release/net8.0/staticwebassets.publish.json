@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "52sajBemnish7CPIfru9k580D22uJtfDeolbZrUJG68=",
+  "Hash": "jfQh7x9U4yMIdqWXxRP3M4IS0eGIL/gTviyRIVr20Dw=",
   "Source": "FISH",
   "BasePath": "_content/FISH",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "FISH\\wwwroot",
       "Source": "FISH",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "Pattern": "**"
     }
@@ -2867,10 +2867,10 @@
       "OriginalItemSpec": "C:\\Users\\jason\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\8.0.6\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\FISH.styles.css",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\FISH.styles.css",
       "SourceId": "FISH",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/FISH",
       "RelativePath": "FISH.styles.css",
       "AssetKind": "All",
@@ -2883,13 +2883,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\FISH.styles.css"
+      "OriginalItemSpec": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\bundle\\FISH.styles.css"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\FISH.bundle.scp.css",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\FISH.bundle.scp.css",
       "SourceId": "FISH",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/FISH",
       "RelativePath": "FISH.bundle.scp.css",
       "AssetKind": "All",
@@ -2902,13 +2902,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\FISH.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\FISH.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2943,10 +2943,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -2962,10 +2962,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -2981,10 +2981,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -3000,10 +3000,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -3019,10 +3019,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -3038,10 +3038,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -3057,10 +3057,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -3076,10 +3076,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -3095,10 +3095,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -3114,10 +3114,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\css\\site.css",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -3133,10 +3133,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\favicon.png",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -3152,10 +3152,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha0.jpg",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\captcha0.jpg",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "images/captcha0.jpg",
       "AssetKind": "All",
@@ -3171,10 +3171,10 @@
       "OriginalItemSpec": "wwwroot\\images\\captcha0.jpg"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\captcha1.jpg",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\captcha1.jpg",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "images/captcha1.jpg",
       "AssetKind": "All",
@@ -3190,10 +3190,10 @@
       "OriginalItemSpec": "wwwroot\\images\\captcha1.jpg"
     },
     {
-      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\images\\warnning\\IMG_0170.JPG",
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\warnning\\IMG_0170.JPG",
       "SourceId": "FISH",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish\\FISH\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
       "BasePath": "_content/FISH",
       "RelativePath": "images/warnning/IMG_0170.JPG",
       "AssetKind": "All",

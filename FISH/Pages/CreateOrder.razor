@@ -4,8 +4,11 @@
 @using System.Diagnostics.CodeAnalysis
 @inject HttpClient Http
 @inject IHttpClientFactory HttpClientFactory
-@inject ILocalStorage localStorage
+@inject ILocalStorageService localStorage
 @inject SwalService SwalService
+@inject IHttpContextAccessor httpContextAccessor 
+
+
 <style>
     input {
         font-size: smaller;
@@ -60,7 +63,7 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">自取時間</label>
                 <div class="col-12">
-                    <DateTimePicker style="font-size:smaller" class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.GetMySelfDateTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="OnGetMySelfDateTimeChanged">
+                    <DateTimePicker style="font-size:smaller" class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.GetMySelfDateTime" DateTimeFormat="yyyy-MM-dd" OnValueChanged="OnGetMySelfDateTimeChanged">
                         <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
@@ -81,7 +84,7 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">交貨時間</label>
                 <div class="col-12 disabled">
-                    <DateTimePicker class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.DeliveryTime" DateTimeFormat="yyyy-MM-dd HH:mm" OnValueChanged="DeliveryTimeChanged">
+                    <DateTimePicker class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.DeliveryTime" DateTimeFormat="yyyy-MM-dd" OnValueChanged="DeliveryTimeChanged">
                         <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
@@ -120,8 +123,11 @@
     }
     else if (dailyOrder.DeliveryMethod == "外送 【僅限青埔】")
     {
-        DilyverRegion = "";
-        dailyOrder.DeliveryAddress = "";
+        if (dailyOrder.DeliveryAddress == "")
+        {
+            DilyverRegion = "";
+            dailyOrder.DeliveryAddress = "";
+        }
     }
     else
     {
@@ -186,7 +192,25 @@
     <div class="row mb-3">
         <label class="col-12 col-form-label">付款方式</label>
         <div class="col-12">
-            <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" disabled />
+            <select id="PricingMethod" class="form-control inputtxt" @bind="dailyOrder.PricingMethod">
+                <option value="現金">現金</option>
+                <option value="匯款">匯款</option>
+            </select>
+
+            @if (dailyOrder.PricingMethod == "匯款")
+            {
+                <div class="row mb-3">
+                    <label class="col-12 col-form-label">銀行代號</label>
+                    <div class="col-12">
+                        <BootstrapLabel id="BankAccount" class="form-control" Value="聯邦銀行  803" />
+                    </div>
+                    <label class="col-12 col-form-label">匯款帳號</label>
+                    <div class="col-12">
+                        <BootstrapLabel id="BankAccount" class="form-control" Value="007501048173" />
+                    </div>
+                </div>
+            }
+           @*  <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" disabled /> *@
         </div>
     </div>
 
@@ -226,16 +250,45 @@
     </div> *@
 
     @* 修改提交按鈕的行為 *@
+@*     <div class="row mb-3 Visibility">
+        <label class="col-12 col-form-label">驗證碼</label>
+        <div class="col-12">
+            <img class="mb-2" src="/Captcha/GenerateCaptcha" alt="Captcha" />
+            <InputText id="CaptchaInput" class="form-control" @bind-Value="captchaInput" />
+        </div>
+    </div> *@
+
     <div class="row mb-3 Visibility">
         <div class="col-12 offset2">
-            <Button IsAsync="true" type="submit" class="btn btn-primary" @onclick="ShowCaptchaModal">提交</Button>
+            <Button IsAsync="true" type="submit" IsDisabled="@isEnable" class="btn btn-primary" OnClick="HandleValidSubmit">提交</Button>
         </div>
     </div>
 
 </EditForm>
-
-
-@if (showCaptchaModal)
+@* @if (showCaptchaModal)
+{
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">圖形驗證</h5>
+                    <button type="button" class="btn-close" @onclick="() => showCaptchaModal = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p>請輸入下方圖片中的數字：</p>
+                    
+                    <img src="captchaImageUrl" alt="圖形驗證碼" />
+                    <InputText @bind-Value="captchaInput" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="() => VerifyCaptcha(captchaInput)">驗證</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+ *@
+@* @if (showCaptchaModal)
 {
     <div class="modal"  tabindex="1" style="display:block;">
         <div class="modal-dialog">
@@ -250,21 +303,43 @@
             </div>
         </div>
     </div>
+} *@
+@* 在模態對話框中顯示驗證碼圖片 *@
+@* @if (showCaptchaModal)
+{
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">圖形驗證</h5>
+                    <button type="button" class="btn-close" @onclick="() => showCaptchaModal = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p>請輸入下方圖片中的數字：</p>
+                    <img src="/Captcha/GenerateCaptcha" alt="圖形驗證碼" />
+                    <InputText @bind-Value="captchaInput" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="() => VerifyCaptcha(captchaInput)">驗證</button>
+                </div>
+            </div>
+        </div>
+    </div>
 }
-
+ *@
 
 @code {
+    private bool isEnable { get; set; } = false;
     private Orders dailyOrder = new()
     {
         OrderType = "每日拼盤",
-        OrderCreateDateTime = DateTime.Now,
-        GetMySelfDateTime = DateTime.Now,
-        DeliveryTime = DateTime.Now,
+        OrderCreateDateTime = DateTime.Now.AddHours(8),
+            GetMySelfDateTime = DateTime.Now.AddHours(8),
+            DeliveryTime = DateTime.Now.AddHours(8),
         DeliveryMethod = "定點取",
         DeliveryAddress = "皆可外送至指定社區管理室",
-
-
     };
+
     private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage)
     {
         var op = new SwalOption()
@@ -279,30 +354,65 @@
         await SwalService.Show(op);
     }
 
-    private string captchaInput;
-
-    private HttpClient httpClient;
-
-    [Parameter]
-    public string? DilyverRegion { get; set; }
-    [Parameter]
-    public string? FishName { get; set; }
-    [Parameter]
-    public int FishAmount { get; set; }
 
 
-    protected override async Task OnInitializedAsync()
-    {
-        httpClient = HttpClientFactory.CreateClient("FishServerAPI");
-    }
+    private string? GetCaptchaCode { get; set; } = "";
+
+    private string? captchaInput;
+
+    private string? captchaImageUrl;
 
     private bool showCaptchaModal = false;
 
-    private async Task ShowCaptchaModal()
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
+
+    [Parameter]
+    public string? DilyverRegion { get; set; }
+
+    [Parameter]
+    public string? FishName { get; set; }
+
+    [Parameter]
+    public int FishAmount { get; set; }
+
+    [Inject]
+    [NotNull]
+    private NavigationManager? NavigationManager { get; set; }
+    protected override async Task OnInitializedAsync()
     {
-        this.showCaptchaModal = true;
-        await Task.CompletedTask;
+        var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+
+        await LoadCaptchaImageAsync();
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+
+
+        }
+    }
+
+    private async Task LoadCaptchaImageAsync()
+    {
+
+        StateHasChanged(); // 通知Blazor更新UI
+    }
+    // private async Task ShowCaptchaModal()
+    // {
+    //     // this.showCaptchaModal = true;
+    //     // await Task.CompletedTask;
+
+    //     this.showCaptchaModal = true;
+    //     await LoadCaptchaImage();
+
+    // }
+
+
     private async Task HandleCaptchaValid(bool isValid)
     {
         if (isValid)
@@ -317,25 +427,61 @@
         }
     }
 
+    private async Task<bool> VerifyCaptcha(string inputCaptcha)
+    {
+        // 調用後端API驗證輸入的驗證碼是否正確
+        var captchaCode = localStorage.GetItemAsStringAsync("CaptchaCode").Result;//httpContextAccessor?.HttpContext?.Session.GetString("CaptchaCode");
+                                                                                  // var captchaCode = await localStorage.GetItemAsStringAsync("CaptchaCode");
+        if (captchaCode == inputCaptcha)
+        {
+            // 驗證碼正確
+            showCaptchaModal = false;
+            return true;
+        }
+        else
+        {
+            // 驗證碼錯誤
+            await ToastService.Error("驗證碼錯誤", "請重新輸入驗證碼");
+            return false;
+        }
+    }
 
+    private async Task ShowCaptchaModal()
+    {
+        this.showCaptchaModal = true;
+        await LoadCaptchaImage();
+    }
+
+    private async Task LoadCaptchaImage()
+    {
+        // 假設後端API接口為 "/api/captcha"，這裡調用該接口獲取圖形驗證碼圖片的URL
+        var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+        captchaImageUrl = await httpClient.GetStringAsync("api/captcha");
+        StateHasChanged(); // 通知Blazor更新UI
+    }
 
     private async Task HandleValidSubmit()
     {
-
-
+        isEnable = true;
         // 在这里处理表单提交，例如将数据发送到服务器
+        var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
         var response = await httpClient.PostAsJsonAsync("api/order", dailyOrder);
         if (response.IsSuccessStatusCode)
         {
             // 提交成功后的处理
             await ShowAutoCloseSwal(SwalCategory.Success , "訂單完成");
+            NavigationManager.NavigateTo("/AtentionPage");
         }
-        else
-        {
-            // 提交失败后的处理
-            await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤");
-        }
+            else
+            {
+                // 提交失败后的处理
+                await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤");
+            }
+
+        isEnable = false;
+
     }
+
     private async Task OnOrderCreateDateTimeChanged(DateTime adateTime)
     {
         // 這裡實現當日期時間選擇器的值改變時的邏輯
@@ -343,40 +489,20 @@
         await Task.CompletedTask; // 假設這裡有異步操作
                                   // 你可能需要根據 e.Value 來更新 order.OrderCreateDateTime 或進行其他操作
     }
+
     private async Task OnGetMySelfDateTimeChanged(DateTime adateTime)
     {
         dailyOrder.GetMySelfDateTime = adateTime;
         await Task.CompletedTask; // 假設這裡有異步操作
     }
+
     private async Task DeliveryTimeChanged(DateTime adateTime)
     {
         dailyOrder.DeliveryTime = adateTime;
         await Task.CompletedTask; // 假設這裡有異步操作
     }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // 這裡可以在首次渲染後執行一些操作
 
 
-        }
-    }
-
-    private async Task<bool> VerifyCaptcha(string inputCaptcha)
-    {
-        // 在這裡實現驗證碼的驗證邏輯，例如發送請求到後端進行驗證
-        // 假設這是驗證請求的結果
-        var captchaCode = await localStorage.GetItem("CaptchCode");//localSessionStorage.GetItem("CaptchaCode").Result;
-        return captchaCode == inputCaptcha;
-
-        // aaaa = 30;
-        // bbbb = 40;
-        // cccc = 50;
-    }
-    [Inject]
-    [NotNull]
-    private ToastService? ToastService { get; set; }
     private async Task AddFish()
     {
         if (!String.IsNullOrEmpty(FishName) & FishAmount != 0)
@@ -392,12 +518,12 @@
         }
 
     }
+
     private async Task ClearFish()
     {
         dailyOrder.OrderAmount = 0;
         dailyOrder.OrderDetail = "";
 
     }
-   
-    
+
 }

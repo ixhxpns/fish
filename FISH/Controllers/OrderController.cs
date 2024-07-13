@@ -11,12 +11,27 @@ namespace FISH.Controllers
     public class OrderController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly AesEncryptionService encryptionService;
 
         public OrderController(ApplicationDbContext context)
         {
+            var encryptionKey = "Jason_76114";
+            encryptionService = new AesEncryptionService(encryptionKey);
             _context = context;
         }
+        //public async Task<IActionResult<string>> EncryptString(string input)
+        //{
+        //    var encryptedString = encryptionService.Encrypt(input);
+        //    // 做一些事情，比如將加密的字符串存儲或返回給客戶端
+        //    return Ok(encryptedString);
+        //}
 
+        //public IActionResult DecryptString(string input)
+        //{
+        //    var decryptedString = encryptionService.Decrypt(input);
+        //    // 做一些事情，比如返回解密的字符串給客戶端
+        //    return Ok(decryptedString);
+        //}
         // POST: api/Order
         [HttpPost]
         public async Task<ActionResult<Orders>> PostOrder(Orders order)
@@ -52,7 +67,10 @@ namespace FISH.Controllers
 
             return order;
         }
+        //字串加密
+        
 
+        
         // 其他 CRUD 操作...
     }
 }

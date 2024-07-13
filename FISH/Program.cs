@@ -38,13 +38,12 @@ namespace FISH
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20); // 設置 Session 的過期時間
-                options.Cookie.HttpOnly = true;
+                //options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
             builder.Services.AddBlazoredSessionStorage();
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddBootstrapBlazorHtml2PdfService();
-
             builder.Services.AddScoped<ILocalStorage, LocalStorage>();
 
             //builder.Services.AddBlazoredSessionStorage(config => {
@@ -58,8 +57,13 @@ namespace FISH
             //}
             //);
 
-            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/"));
-            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:8668/"));
+            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
+            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
+            {
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback = delegate { return true; };
+                return handler;
+            });
             builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             var app = builder.Build();
             // Configure the HTTP request pipeline.
@@ -73,6 +77,7 @@ namespace FISH
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
 
             app.UseSession(); // 啟用 Session
 

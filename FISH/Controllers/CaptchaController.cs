@@ -1,9 +1,12 @@
 ﻿namespace FISH.Controllers
 {
+    using Blazored.LocalStorage;
+
     using FISH.Services.Interface;
 
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Build.Framework;
 
     using System.Drawing;
     using System.Drawing.Imaging;
@@ -11,27 +14,29 @@
 
     public class CaptchaController : Controller
     {
-        private readonly Blazored.LocalStorage.ILocalStorageService localStorage;                                                            
         private readonly IHttpContextAccessor httpContextAccessor;
-
-        public CaptchaController(IHttpContextAccessor httpContextAccessor, Blazored.LocalStorage.ILocalStorageService localStorage)
+        private readonly ILocalStorageService localStorageService;
+        public CaptchaController(IHttpContextAccessor _httpContextAccessor, ILocalStorageService localStorageService)
         {
-            this.httpContextAccessor = httpContextAccessor;
-            this.localStorage = localStorage;
+            httpContextAccessor = _httpContextAccessor;
+            this.localStorageService = localStorageService;
         }
 
         public async Task<IActionResult> GenerateCaptcha()
         {
-            var captchaCode = GenerateRandomCode();
-            await this.localStorage.SetItemAsync("CaptchaCode", captchaCode.Result);
-            httpContextAccessor.HttpContext.Session.SetString("CaptchaCode", captchaCode.Result);
-            var captchaImage = GenerateCaptchaImage(captchaCode.Result);
-            return File(captchaImage.Result, "image/jpeg");
+            
+            var captchaCode = await GenerateRandomCode();
+            // 將驗證碼存儲在 LocalStorage 中
+            await this.localStorageService.SetItemAsync("CaptchaCode", captchaCode);
+
+            var captchaImage = await GenerateCaptchaImage(captchaCode);
+            // 可以選擇通過響應頭或另一個方式將驗證碼發送給客戶端
+            //Response.Headers.Append("CaptchaCode", captchaCode);
+            return File(captchaImage, "image/jpeg");
         }
 
         private async Task<string> GenerateRandomCode()
         {
-            // 生成隨機的驗證碼
             var random = new Random();
             var captchaCode = random.Next(1000, 9999).ToString();
             return captchaCode;
@@ -39,7 +44,6 @@
 
         private async Task<byte[]> GenerateCaptchaImage(string captchaCode)
         {
-            // 創建驗證碼圖片
             using var bitmap = new Bitmap(100, 40);
             using var graphics = Graphics.FromImage(bitmap);
             graphics.Clear(Color.White);
