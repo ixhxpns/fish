@@ -2,11 +2,7 @@
 {
     using Blazored.LocalStorage;
 
-    using FISH.Services.Interface;
-
-    using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Build.Framework;
 
     using System.Drawing;
     using System.Drawing.Imaging;
@@ -24,7 +20,7 @@
 
         public async Task<IActionResult> GenerateCaptcha()
         {
-            
+
             var captchaCode = await GenerateRandomCode();
             // 將驗證碼存儲在 LocalStorage 中
             await this.localStorageService.SetItemAsync("CaptchaCode", captchaCode);

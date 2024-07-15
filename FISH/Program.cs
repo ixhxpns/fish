@@ -10,6 +10,7 @@ using FISH.Services.Interface;
 
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace FISH
@@ -45,7 +46,18 @@ namespace FISH
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddBootstrapBlazorHtml2PdfService();
             builder.Services.AddScoped<ILocalStorage, LocalStorage>();
+            builder.Services.AddBootstrapBlazorTableExportService();
+            builder.Services.Configure<HubOptions>
+            (
+                option =>
+                {
+                    option.MaximumReceiveMessageSize = 1000000;
+                    option.EnableDetailedErrors = true;
+                    option.HandshakeTimeout = TimeSpan.FromSeconds(30);
+                    option.KeepAliveInterval = TimeSpan.FromSeconds(15);
+                }
 
+            );
             //builder.Services.AddBlazoredSessionStorage(config => {
             //    config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
             //    config.JsonSerializerOptions.IgnoreNullValues = true;
@@ -57,7 +69,8 @@ namespace FISH
             //}
             //);
 
-            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
+            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
+            builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:7777/")).ConfigurePrimaryHttpMessageHandler(h =>
             //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
             {
                 var handler = new HttpClientHandler();
@@ -77,7 +90,7 @@ namespace FISH
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
 
             app.UseSession(); // 啟用 Session
 

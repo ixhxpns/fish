@@ -1,7 +1,233 @@
 ﻿@page "/printpage"
+@using FISH.Model
+@using System.Diagnostics.CodeAnalysis
 @layout PrintLayout
+@inject IHttpClientFactory HttpClientFactory
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+<h1>訂單列表</h1>
 
-
+@if (String.IsNullOrEmpty(NotPriority))
+{
+    <h3>
+        沒有權限 ! 請登入管理帳號  
+    </h3>
+}
+else
+{
+    @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
+    <Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
+    <Button OnClickWithoutRender="Html2PDF" Text="導出 Pdf"></Button> *@
+    <Button Text="返回" OnClick="GoBack"></Button>
+    <BootstrapInputGroup>
+        <div class="row g-3">
+            <div class="col-12 col-sm-auto">
+                <DateTimePicker @bind-Value="@SearchStartDate" />
+            </div>
+            <div class="col-12 col-sm-auto align-self-end">
+                <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+            </div>
+        </div>
+    </BootstrapInputGroup>
+  
+    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
+           IsStriped="true" IsBordered="true" IsMultipleSelect="true" AllowResizing="true">
+        <TableColumns>
+            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="260">
+                <EditTemplate Context="row">
+                    <div class="d-flex disabled">
+                        <div class="ps-2">
+                            <div>@row.Id</div>
+                            <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
+                            <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
+                            <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
+                            <div class="bb-sub">交貨方式   :@Order_DeliveryMethod(row!.Id)</div>
+                            <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
+                        </div>
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true" Width="250">
+                <EditTemplate Context="row">
+                    <div class="d-flex disabled">
+                        <div class="ps-2">
+                            <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
+                            <div class="bb-sub">交貨時間   :@Order_DeliveryTime(row!.Id)</div>
+                            <div class="bb-sub">自取時間   :@Order_GetMySelfDateTime(row!.Id)</div>
+                            <div class="bb-sub">定價方式   :@Order_PricingMethod(row!.Id)</div>
+                        </div>
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true" Width="250">
+                <EditTemplate Context="row">
+                    <div class="d-flex disabled">
+                        <div class="ps-2">
+                            @foreach (var item in @Order_Detail(row!.Id))
+                            {
+                                <div>@item</div>
+                            }
+                            <hr />
+                            <div>合計</div>
+                            <hr />
+                            <h3>@Order_OrderAmount(row!.Id)</h3>
+                        </div>
+                    </div>
+                </EditTemplate>
+            </TableColumn>
+        </TableColumns>
+    </Table>
+}
 @code {
+    [Parameter]
+    public string LoginEmail { get; set; }
+    [Parameter]
+    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
+    [Parameter]
+    public DateTime SearchStartDate { get; set; }
 
+    public DateTime SearchEndDate { get; set; }
+
+    private int runi { get; set; } = 0;
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
+    private Task OnBeforeExport() => ToastService.Information("導出Pdf", "導出PDF文件");
+    private Task OnAfterDownload(string fileName) => ToastService.Success("下载 Pdf", fileName, true);
+    private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
+    [Parameter]
+    public string? NotPriority { get; set; } = "";
+    public async Task GoBack()
+    {
+        NavigationManager.NavigateTo("/morders");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            LoginEmail = authState.User.Identity.Name;
+            if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
+            {
+                NotPriority = LoginEmail;
+                SearchStartDate = DateTime.Parse($"{DateTime.Now.AddHours(8).Year}/{DateTime.Now.AddHours(8).Month}/{DateTime.Now.AddHours(8).Day} 0:0:0");
+                SearchEndDate = DateTime.Parse($"{DateTime.Now.AddHours(8).Year}/{DateTime.Now.AddHours(8).Month}/{DateTime.Now.AddHours(8).Day} 23:59:59");
+                var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+                var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+
+                OrdersList = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+            }
+            else{
+                NotPriority = null;
+            }
+        }
+
+    }
+    public async Task OnSearchAsync()
+    {
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            LoginEmail = authState.User.Identity.Name;
+            if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
+            {
+                var nowing = SearchStartDate.AddHours(8);
+                SearchStartDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 0:0:0");
+                SearchEndDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 23:59:59");
+                var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+                var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+
+                OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+
+
+            }
+        }
+        else
+        {
+
+        }
+        StateHasChanged();
+    }
+
+    public string? Order_Name(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.Name;
+        return bResult;
+    }
+    public string? Order_ContactNumber(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.ContactNumber;
+        return bResult;
+    }
+    public string? Order_DeliveryMethod(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryMethod;
+        return bResult;
+    }
+    public string? Order_DeliveryTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryTime.ToString();
+        return bResult;
+    }
+    public string? Order_DeliveryAddress(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.DeliveryAddress;
+        return bResult;
+    }
+    public string? Order_OrderType(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderType;
+        return bResult;
+    }
+    public string? Order_OrderCreateDateTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderCreateDateTime.ToString();
+        return bResult;
+    }
+    public string? Order_GetMySelfDateTime(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.GetMySelfDateTime.ToString();
+        return bResult;
+    }
+    public string? Order_OrderAmount(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.OrderAmount.ToString();
+        return bResult;
+    }
+    public string? Order_PricingMethod(int Id)
+    {
+        var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult?.PricingMethod.ToString();
+        return bResult;
+    }
+    public IEnumerable<string> Order_Detail(int Id)
+    {
+        var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
+        var bResult = aResult.OrderDetail.ToString().Replace("\n", "").Split(";", StringSplitOptions.RemoveEmptyEntries);
+        var sResult = new List<string>();
+        if (aResult.OrderDetail.IndexOf(';') == -1)
+        {
+            sResult.Add(aResult.OrderDetail);
+            return sResult;
+        }
+        foreach (var item in bResult)
+        {
+            sResult.Add($"{item.Split("=")[0]} -> ${item.Split("=")[1]}");
+        }
+
+        return sResult;
+    }
 }

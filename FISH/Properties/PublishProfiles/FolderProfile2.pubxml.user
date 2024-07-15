@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>U:\Fishpublish\demo</_PublishTargetUrl>
+    <History>True|2024-07-15T13:10:27.0362372Z;True|2024-07-15T15:04:40.7951187+08:00;True|2024-07-15T15:02:55.5725132+08:00;True|2024-07-15T14:22:28.7994741+08:00;True|2024-07-14T21:01:30.0033206+08:00;True|2024-07-14T04:55:08.5581115+08:00;True|2024-07-14T04:54:32.4322428+08:00;True|2024-07-14T02:54:59.8600917+08:00;True|2024-07-13T23:59:06.9247434+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

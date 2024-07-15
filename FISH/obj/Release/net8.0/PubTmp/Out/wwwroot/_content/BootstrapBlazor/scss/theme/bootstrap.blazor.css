@@ -83,6 +83,19 @@ a, a:hover, a:focus {
   border-bottom-left-radius: 0;
 }
 
+.table-resizer-popover {
+  --bs-popover-min-width: 80px;
+  --bs-popover-header-font-size: 12px;
+  --bs-popover-header-padding-x: 0.5rem;
+  --bs-popover-header-padding-y: 0.5rem;
+  --bs-popover-body-padding-x: 0.5rem;
+  --bs-popover-body-padding-y: 0.5rem;
+}
+
+.table-resizer-popover .col-width-tip {
+  margin-left: 0.5rem;
+}
+
 ::view-transition-old(root) {
   animation: none;
 }
@@ -2978,6 +2991,7 @@ section > h2 {
   --bb-multi-filter-body-item-bg: #fff;
   --bb-multi-filter-body-item-hover-bg: #fff;
   --bb-multi-filter-body-item-margin: .5rem;
+  position: relative;
 }
 .bb-multi-filter .bb-multi-filter-search {
   margin-bottom: var(--bb-multi-filter-search-margin-bottom);
@@ -3012,6 +3026,17 @@ section > h2 {
 }
 .bb-multi-filter .bb-multi-filter-list .bb-multi-filter-body .bb-multi-filter-body-item:hover {
   background-color: var(--bb-multi-filter-body-item-hover-bg);
+}
+.bb-multi-filter .bb-multi-filter-loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bs-body-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter-item {
@@ -8461,8 +8486,10 @@ form .table .table-cell > textarea {
   --bb-tree-item-active-bg: rgba(var(--bs-body-color-rgb), 0.08);
   --bb-tree-item-hover-bg: rgba(var(--bs-body-color-rgb), 0.12);
   --bb-tree-icon-margin-right: 0.5rem;
-  --bb-tree-disabled-opacity: .5;
+  --bb-tree-disabled-opacity: 0.5;
+  --bb-tree-search-height: 43px;
   position: relative;
+  height: 100%;
 }
 .tree-view .tree-search {
   margin-bottom: 0.5rem;
@@ -8471,6 +8498,10 @@ form .table .table-cell > textarea {
 .tree-view .tree-root {
   padding: var(--bb-tree-padding);
   margin: var(--bb-tree-margin);
+}
+
+.tree-view.is-fixed-search .tree-root {
+  height: calc(100% - var(--bb-tree-search-height));
 }
 
 .tree-view .tree-ul {

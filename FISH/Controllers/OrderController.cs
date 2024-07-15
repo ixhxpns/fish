@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using FISH.Model;
-using FISH.Data;
-using System.Threading.Tasks;
+﻿using FISH.Model;
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FISH.Controllers
@@ -68,9 +67,9 @@ namespace FISH.Controllers
             return order;
         }
         //字串加密
-        
 
-        
+
+
         // 其他 CRUD 操作...
     }
 }

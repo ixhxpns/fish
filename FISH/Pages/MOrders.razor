@@ -92,8 +92,10 @@
 }
 else
 {
-    @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton> *@
+    <Button Text="列印" OnClick="GoBack"></Button>
+    @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
     <Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
+    <Button OnClickWithoutRender="Html2PDF" Text="導出 Pdf"></Button> *@
     <BootstrapInputGroup>
         <div class="row g-3">
             <div class="col-12 col-sm-auto">
@@ -104,15 +106,15 @@ else
             </div>
         </div>
     </BootstrapInputGroup>
-    @* <Button OnClick="Html2PDF" Text="Html2PDF"></Button> *@
+  
     <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
-           IsStriped="true" IsBordered="true"  ShowToolbar="true" ShowDefaultButtons="true" ShowRefresh="true">
+           IsStriped="true" IsBordered="true"    IsMultipleSelect="true" ShowToolbar="false" >
         <TableColumns>
-            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true">
+            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="260">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
-                            <div>@row.Id</div>
+                            <div>@row.Id</div> 
                             <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
                             <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
                             <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
@@ -122,7 +124,7 @@ else
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true">
+            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true" Width="250">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
@@ -134,7 +136,7 @@ else
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true">
+            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true" Width="250">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
@@ -153,26 +155,7 @@ else
         </TableColumns>
     </Table>
 }
-@* <div id="a4page" class="a4-page">
-        @foreach (var order in OrdersList)
-        {
-            <div class="order-card">
-                <strong>姓名:</strong> @order.Name <br >
-                <strong>連絡電話:</strong> @order.ContactNumber<br>
-                <strong>交貨方式:</strong> @order.DeliveryMethod<br>
-                <strong>交貨地址:</strong> @order.DeliveryAddress<br>
-                <strong>交貨時間:</strong> @order.DeliveryTime<br>
-                <strong>建單時間:</strong> @order.OrderCreateDateTime.ToString("yyyy-MM-dd HH:mm")<br>
-                <strong>訂單類型:</strong> @order.OrderType<br>
-                <strong>訂單明細:</strong> @order.OrderDetail<br>
-                <strong>訂單數量:</strong> @order.Count<br>
-                <strong>訂單總金額:</strong> @order.OrderAmount.ToString("C")<br>
-                <strong>是否已交貨:</strong> @order.IsDelivered<br>
-                <strong>是否已付款:</strong> @order.IsPaid<br>
-                <strong>是否已列印:</strong> @order.IsPrinted<br>
-             </div>
-        }
-    </div> *@
+
 @code {
     [Parameter]
     public string LoginEmail { get; set; }
@@ -216,9 +199,13 @@ else
         }
 
     }
+    public async Task GoBack()
+    {
+        NavigationManager.NavigateTo("/printpage");
+    }
     //orders?.Where(x => SearchEndDate <= x.OrderCreateDateTime).ToList();
     //OrdersList = orders ?? new List<Orders>(); // 直接對 OrdersList 進行檢查和初始化
-
+    public IEnumerable<DataTransfer> dataTransfers { get; set; } = new List<DataTransfer>();
     public async Task OnSearchAsync()
     {
 
@@ -236,12 +223,15 @@ else
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
 
                 OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+
+                
             }
         }
         else
         {
-            
+
         }
+        StateHasChanged();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -281,7 +271,7 @@ else
             var htmlString = @"
                 <!DOCTYPE html>
 
-                <html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+                <html lang=""cn"" xmlns=""http://www.w3.org/1999/xhtml"">
                 <head>
                     <meta charset=""utf-8"" />
                 </head>
@@ -301,20 +291,20 @@ else
             await DownloadService.DownloadFromStreamAsync($"table-{DateTime.Now:HHmmss}.pdf", stream);
 
             // 提示文件下载成功
-            await ToastService.Success("Pdf 导出", "通过表格 Id 导出 Pdf 文件成功");
+            await ToastService.Success("Pdf 導出", "通过表格 Id 導出 Pdf 文件成功");
         }
 
     }
     public async Task Html2PDF()
     {
         // 網址
-        Url url = new Url("https://localhost:7229/morders"); // 修正 URL
+        Url url = new Url("https://localhost:8666/morders"); // 修正 URL
 
         // 初始化 PdfSaveOptions
         var options = new PdfSaveOptions();
 
         // 將 HTML 代碼轉換為 PDF
-        Converter.ConvertHTML(url, options, "~/");
+        Converter.ConvertHTML(url, options, ".");
     }
 
     public string? Order_Name(int Id)
@@ -394,4 +384,5 @@ else
 
         return sResult;
     }
+
 }

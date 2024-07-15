@@ -1,5 +1,4 @@
 ﻿using FISH.Services.Interface;
-using Blazored.LocalStorage;
 
 namespace FISH.Services
 {
@@ -17,7 +16,7 @@ namespace FISH.Services
             await this.localStorage.SetItemAsync(key, value);
         }
 
-        public async  Task<string> GetItem(string key)
+        public async Task<string> GetItem(string key)
         {
             return await localStorage.GetItemAsync<string>(key);
         }
@@ -29,7 +28,7 @@ namespace FISH.Services
 
         public async Task Clear()
         {
-           await this.localStorage.ClearAsync();
+            await this.localStorage.ClearAsync();
         }
     }
 }
