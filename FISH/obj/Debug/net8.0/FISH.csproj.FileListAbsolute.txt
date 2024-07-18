@@ -100,7 +100,6 @@ C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Reflectio
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\af\Humanizer.resources.dll
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Debug\net8.0\ar\Humanizer.resources.dll

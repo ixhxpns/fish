@@ -69,8 +69,9 @@ namespace FISH
             //}
             //);
 
-            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
+            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:8666/")).ConfigurePrimaryHttpMessageHandler(h =>
             builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:7777/")).ConfigurePrimaryHttpMessageHandler(h =>
+            //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://g-mate.org:7531/")).ConfigurePrimaryHttpMessageHandler(h =>
             //builder.Services.AddHttpClient("FishServerAPI", client => client.BaseAddress = new Uri("https://localhost:8668/")).ConfigurePrimaryHttpMessageHandler(h =>
             {
                 var handler = new HttpClientHandler();

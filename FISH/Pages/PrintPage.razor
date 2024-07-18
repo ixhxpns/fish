@@ -19,25 +19,50 @@ else
     <Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
     <Button OnClickWithoutRender="Html2PDF" Text="導出 Pdf"></Button> *@
     <Button Text="返回" OnClick="GoBack"></Button>
-    <BootstrapInputGroup>
-        <div class="row g-3">
-            <div class="col-12 col-sm-auto">
-                <DateTimePicker @bind-Value="@SearchStartDate" />
-            </div>
-            <div class="col-12 col-sm-auto align-self-end">
-                <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
-            </div>
+    <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
+
+
+    <div class="row g-3">
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">訂單日期</label>
+            <DateTimePicker @bind-Value="@SearchStartDate" />
         </div>
-    </BootstrapInputGroup>
-  
-    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
-           IsStriped="true" IsBordered="true" IsMultipleSelect="true" AllowResizing="true">
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">交貨方法</label>
+            <select id="DeliveryMethod" class="form-control inputtxt" @bind="DeliveryMethod">
+                <option value="全部">全部</option>
+                <option value="定點取">定點取</option>
+                <option value="外送 【僅限青埔】">外送 【僅限青埔】</option>
+                <option value="自取">自取</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-sm-auto align-self-end">
+            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+        </div>
+    </div>
+
+
+    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsBordered="true" IsMultipleSelect="true" ShowToolbar="true" RenderMode="TableRenderMode.Table" ShowDefaultButtons="false"
+           ShowExportButton="true" ShowExportCsvButton="true" ShowExportPdfButton="true"  AllowResizing="true" TableSize="TableSize.Compact">
         <TableColumns>
-            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="260">
-                <EditTemplate Context="row">
+            <TableColumn @bind-Field="@context.Id" Text="訂單資訊" Width="130">
+             <Template Context="v">
+                 <div class="d-flex disabled">
+                        <div class="ps-2">
+                            <div>@v.Value</div>
+                            <pre>大名:@Order_Name(v.Value)</pre>
+                            <pre>電話:@Order_ContactNumber(v.Value)</pre>
+                            <pre>訂單種類:@Order_OrderType(v.Value)</pre>
+                            <pre>交貨方式:@Order_DeliveryMethod(v.Value)</pre>
+                            <pre>交貨點:@Order_DeliveryAddress(v.Value)</pre>
+                        </div>
+                  </div>
+             </Template>
+                @* <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
-                            <div>@row.Id</div>
+                            <div>@row.Id</div> 
                             <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
                             <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
                             <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
@@ -45,10 +70,20 @@ else
                             <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
                         </div>
                     </div>
-                </EditTemplate>
+                </EditTemplate> *@
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true" Width="250">
-                <EditTemplate Context="row">
+            <TableColumn @bind-Field="@context.Id" Text="訂單時間(創單時間/交貨時間/自取時間)"  Width="171" >
+               <Template Context="v">
+                   <div class="d-flex disabled">
+                        <div class="ps-2">
+                            <pre>創單時間:@Order_OrderCreateDateTime(v.Value)</pre>
+                            <pre>交貨時間:@Order_DeliveryTime(v.Value)</pre>
+                            <pre>自取時間:@Order_GetMySelfDateTime(v.Value)</pre>
+                            <pre>付款方式:@Order_PricingMethod(v.Value)</pre>
+                        </div>
+                    </div>
+               </Template>
+                @*  <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
                             <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
@@ -57,23 +92,25 @@ else
                             <div class="bb-sub">定價方式   :@Order_PricingMethod(row!.Id)</div>
                         </div>
                     </div>
-                </EditTemplate>
+                </EditTemplate> *@
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true" Width="250">
-                <EditTemplate Context="row">
+            <TableColumn @bind-Field="@context.Id" Text="訂單明細"  Width="120">
+                <Template Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
-                            @foreach (var item in @Order_Detail(row!.Id))
+                            @foreach (var item in @Order_Detail(row!.Value))
                             {
                                 <div>@item</div>
                             }
                             <hr />
-                            <div>合計</div>
+                            <div>
+                                <pre><h4>合計 @Order_OrderAmount(row!.Value)</h4></pre>
+                            </div>
                             <hr />
-                            <h3>@Order_OrderAmount(row!.Id)</h3>
+                           
                         </div>
                     </div>
-                </EditTemplate>
+                </Template>
             </TableColumn>
         </TableColumns>
     </Table>
@@ -87,6 +124,7 @@ else
     public DateTime SearchStartDate { get; set; }
 
     public DateTime SearchEndDate { get; set; }
+    private string? DeliveryMethod { get; set; } = "全部";
 
     private int runi { get; set; } = 0;
     [Inject]
@@ -97,6 +135,16 @@ else
     private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
     [Parameter]
     public string? NotPriority { get; set; } = "";
+    [Inject]
+    [NotNull]
+    private IJSRuntime? JSRuntime { get; set; }
+    [Inject]
+    [NotNull]
+    private IHtml2Pdf? Html2PdfService { get; set; }
+
+    [Inject]
+    [NotNull]
+    private DownloadService? DownloadService { get; set; }
     public async Task GoBack()
     {
         NavigationManager.NavigateTo("/morders");
@@ -117,7 +165,16 @@ else
                 var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
 
-                OrdersList = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                if (DeliveryMethod == "全部")
+                {
+
+                }
+                else
+                {
+                    OrdersList = orders = orders?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
+                }
+
             }
             else{
                 NotPriority = null;
@@ -142,8 +199,14 @@ else
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
 
                 OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                if (DeliveryMethod == "全部")
+                {
 
-
+                }
+                else
+                {
+                    OrdersList = orders = orders?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
+                }
             }
         }
         else
@@ -152,7 +215,41 @@ else
         }
         StateHasChanged();
     }
+    private async Task OnExportAsync()
+    {
+        // 通过脚本 getHtml 获得 table 表格 Html
+        var module = await JSRuntime.LoadUtility();
+        var html = await module.GetHtml("a4page");
+        if (!string.IsNullOrEmpty(html))
+        {
+            // 通过模板生成完整的 Html
+            var htmlString = @"
+                <!DOCTYPE html>
 
+                <html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+                <head>
+                    <meta charset=""utf-8"" />
+                </head>
+                <body class=""p-3"">";
+
+            htmlString += html;
+
+            htmlString += @"
+                </body>
+                </html>
+                ";
+
+            // 增加网页所需样式表文件
+            using var stream = await Html2PdfService.PdfStreamFromHtmlAsync(htmlString, [$"{NavigationManager.BaseUri}_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css"]);
+
+            // 下载 Pdf 文件
+            await DownloadService.DownloadFromStreamAsync($"table-{DateTime.Now:HHmmss}.pdf", stream);
+
+            // 提示文件下载成功
+            await ToastService.Success("Pdf 導出", "通过表格 Id 導出 Pdf 文件成功");
+        }
+
+    }
     public string? Order_Name(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();

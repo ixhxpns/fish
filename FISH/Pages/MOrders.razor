@@ -93,24 +93,33 @@
 else
 {
     <Button Text="列印" OnClick="GoBack"></Button>
-    @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton>
+    @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton> *@
     <Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
-    <Button OnClickWithoutRender="Html2PDF" Text="導出 Pdf"></Button> *@
-    <BootstrapInputGroup>
-        <div class="row g-3">
-            <div class="col-12 col-sm-auto">
-                <DateTimePicker @bind-Value="@SearchStartDate" />
-            </div>
-            <div class="col-12 col-sm-auto align-self-end">
-                <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
-            </div>
+    @* <Button OnClickWithoutRender="Html2PDF" Text="導出 Pdf"></Button> *@
+    <div class="row g-3">
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">訂單日期</label>
+            <DateTimePicker @bind-Value="@SearchStartDate" />
         </div>
-    </BootstrapInputGroup>
-  
-    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
-           IsStriped="true" IsBordered="true"    IsMultipleSelect="true" ShowToolbar="false" >
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">交貨方法</label>
+            <select id="DeliveryMethod" class="form-control inputtxt" @bind="DeliveryMethod">
+                <option value="全部">全部</option>
+                <option value="定點取">定點取</option>
+                <option value="外送 【僅限青埔】">外送 【僅限青埔】</option>
+                <option value="自取">自取</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-sm-auto align-self-end">
+            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+        </div>
+    </div>
+
+    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" @ref="TableRows" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
+           IsStriped="true" IsBordered="true" IsMultipleSelect="true" AllowResizing="true" ShowColumnWidthTooltip="true" ShowToolbar="false">
         <TableColumns>
-            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="260">
+            <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="180">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
@@ -124,7 +133,7 @@ else
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true" Width="250">
+            <TableColumn @bind-Field="@context.Name" Text="訂單時間(創單時間/交貨時間/自取時間)" TextWrap="true" Width="150">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
@@ -136,7 +145,7 @@ else
                     </div>
                 </EditTemplate>
             </TableColumn>
-            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true" Width="250">
+            <TableColumn @bind-Field="@context.Name" Text="訂單明細" TextWrap="true" Width="150">
                 <EditTemplate Context="row">
                     <div class="d-flex disabled">
                         <div class="ps-2">
@@ -145,9 +154,11 @@ else
                                 <div>@item</div>
                             }
                             <hr />
-                            <div>合計</div>
+                            <div>
+                                <pre><h4>合計 @Order_OrderAmount(row!.Id)</h4></pre>
+                            </div>
                             <hr />
-                            <h3>@Order_OrderAmount(row!.Id)</h3>
+                           
                         </div>
                     </div>
                 </EditTemplate>
@@ -165,7 +176,7 @@ else
     public DateTime SearchStartDate { get; set; }
 
     public DateTime SearchEndDate { get; set; }
-
+    private string? DeliveryMethod { get; set; } = "全部";
     private int runi { get; set; } = 0;
     [Inject]
     [NotNull]
@@ -175,6 +186,8 @@ else
     private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
     [Parameter]
     public string? NotPriority { get; set; } = "";
+    [NotNull]
+    private Table<Orders>? TableRows { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -192,6 +205,15 @@ else
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
 
                 OrdersList = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                if (DeliveryMethod == "全部")
+                {
+
+                }
+                else
+                {
+                    OrdersList = OrdersList?.Where(x=>x.DeliveryMethod == DeliveryMethod).ToList();
+                }
+
             }
             else{
                 NotPriority = null;
@@ -221,8 +243,18 @@ else
                 SearchEndDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 23:59:59");
                 var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+                if (DeliveryMethod == "全部")
+                {
 
+                }
+                else
+                {
+                    OrdersList = orders = orders?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
+                }
                 OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                
+                
+                
 
                 
             }
@@ -271,7 +303,7 @@ else
             var htmlString = @"
                 <!DOCTYPE html>
 
-                <html lang=""cn"" xmlns=""http://www.w3.org/1999/xhtml"">
+                <html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
                 <head>
                     <meta charset=""utf-8"" />
                 </head>
