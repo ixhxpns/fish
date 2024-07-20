@@ -92,6 +92,8 @@
 }
 else
 {
+    <ExportPdfButton ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true"></ExportPdfButton>
+
     <Button Text="列印" OnClick="GoBack"></Button>
     @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton> *@
     <Button OnClickWithoutRender="OnExportAsync" Text="導出 Pdf"></Button>
@@ -199,8 +201,8 @@ else
             if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
             {
                 NotPriority = LoginEmail;
-                SearchStartDate = DateTime.Parse($"{DateTime.Now.AddHours(8).Year}/{DateTime.Now.AddHours(8).Month}/{DateTime.Now.AddHours(8).Day} 0:0:0");
-                SearchEndDate = DateTime.Parse($"{DateTime.Now.AddHours(8).Year}/{DateTime.Now.AddHours(8).Month}/{DateTime.Now.AddHours(8).Day} 23:59:59");
+                SearchStartDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 0:0:0");
+                SearchEndDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 23:59:59");
                 var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
                 var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
 
@@ -238,7 +240,7 @@ else
             LoginEmail = authState.User.Identity.Name;
             if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
             {
-                var nowing = SearchStartDate.AddHours(8);
+                var nowing = SearchStartDate;
                 SearchStartDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 0:0:0");
                 SearchEndDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 23:59:59");
                 var httpClient = HttpClientFactory.CreateClient("FishServerAPI");

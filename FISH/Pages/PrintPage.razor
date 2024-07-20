@@ -42,78 +42,80 @@ else
         </div>
     </div>
 
-
-    <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsBordered="true" IsMultipleSelect="true" ShowToolbar="true" RenderMode="TableRenderMode.Table" ShowDefaultButtons="false"
-           ShowExportButton="true" ShowExportCsvButton="true" ShowExportPdfButton="true"  AllowResizing="true" TableSize="TableSize.Compact">
-        <TableColumns>
-            <TableColumn @bind-Field="@context.Id" Text="訂單資訊" Width="130">
-             <Template Context="v">
-                 <div class="d-flex disabled">
-                        <div class="ps-2">
-                            <div>@v.Value</div>
-                            <pre>大名:@Order_Name(v.Value)</pre>
-                            <pre>電話:@Order_ContactNumber(v.Value)</pre>
-                            <pre>訂單種類:@Order_OrderType(v.Value)</pre>
-                            <pre>交貨方式:@Order_DeliveryMethod(v.Value)</pre>
-                            <pre>交貨點:@Order_DeliveryAddress(v.Value)</pre>
-                        </div>
-                  </div>
-             </Template>
-                @* <EditTemplate Context="row">
-                    <div class="d-flex disabled">
-                        <div class="ps-2">
-                            <div>@row.Id</div> 
-                            <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
-                            <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
-                            <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
-                            <div class="bb-sub">交貨方式   :@Order_DeliveryMethod(row!.Id)</div>
-                            <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
-                        </div>
-                    </div>
-                </EditTemplate> *@
-            </TableColumn>
-            <TableColumn @bind-Field="@context.Id" Text="訂單時間(創單時間/交貨時間/自取時間)"  Width="171" >
-               <Template Context="v">
-                   <div class="d-flex disabled">
-                        <div class="ps-2">
-                            <pre>創單時間:@Order_OrderCreateDateTime(v.Value)</pre>
-                            <pre>交貨時間:@Order_DeliveryTime(v.Value)</pre>
-                            <pre>自取時間:@Order_GetMySelfDateTime(v.Value)</pre>
-                            <pre>付款方式:@Order_PricingMethod(v.Value)</pre>
-                        </div>
-                    </div>
-               </Template>
-                @*  <EditTemplate Context="row">
-                    <div class="d-flex disabled">
-                        <div class="ps-2">
-                            <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
-                            <div class="bb-sub">交貨時間   :@Order_DeliveryTime(row!.Id)</div>
-                            <div class="bb-sub">自取時間   :@Order_GetMySelfDateTime(row!.Id)</div>
-                            <div class="bb-sub">定價方式   :@Order_PricingMethod(row!.Id)</div>
-                        </div>
-                    </div>
-                </EditTemplate> *@
-            </TableColumn>
-            <TableColumn @bind-Field="@context.Id" Text="訂單明細"  Width="120">
-                <Template Context="row">
-                    <div class="d-flex disabled">
-                        <div class="ps-2">
-                            @foreach (var item in @Order_Detail(row!.Value))
-                            {
-                                <div>@item</div>
-                            }
-                            <hr />
-                            <div>
-                                <pre><h4>合計 @Order_OrderAmount(row!.Value)</h4></pre>
+    <div style="width:828px">
+        <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" IsBordered="true" IsMultipleSelect="true" ShowToolbar="false" RenderMode="TableRenderMode.Table" ShowDefaultButtons="false"
+               ShowExportButton="false" ShowExportCsvButton="true" ShowExportPdfButton="true" AllowResizing="true" TableSize="TableSize.Compact">
+            <TableColumns>
+                <TableColumn @bind-Field="@context.Id" Text="訂單資訊" TextWrap="true" Width="190">
+                 <Template Context="v">
+                        <div class="d-flex disabled" style="text-wrap: wrap;">
+                            <div class="ps-2">
+                                <div>@v.Value</div>
+                                <pre>大名:@Order_Name(v.Value)</pre>
+                                <pre>電話:@Order_ContactNumber(v.Value)</pre>
+                                <pre>訂單種類:@Order_OrderType(v.Value)</pre>
+                                <pre>交貨方式:@Order_DeliveryMethod(v.Value)</pre>
+                                <div>交貨點:@Order_DeliveryAddress(v.Value)</div>
                             </div>
-                            <hr />
-                           
+                      </div>
+                 </Template>
+                    @* <EditTemplate Context="row">
+                        <div class="d-flex disabled">
+                            <div class="ps-2">
+                                <div>@row.Id</div> 
+                                <div class="bb-sub">大名       :@Order_Name(row!.Id)</div>
+                                <div class="bb-sub">電話       :@Order_ContactNumber(row!.Id)</div>
+                                <div class="bb-sub">訂單種類   :@Order_OrderType(row!.Id)</div>
+                                <div class="bb-sub">交貨方式   :@Order_DeliveryMethod(row!.Id)</div>
+                                <div class="bb-sub">交貨點     :@Order_DeliveryAddress(row!.Id)</div>
+                            </div>
                         </div>
-                    </div>
-                </Template>
-            </TableColumn>
-        </TableColumns>
-    </Table>
+                    </EditTemplate> *@
+                </TableColumn>
+                <TableColumn @bind-Field="@context.Id" Text="訂單時間(創單時間/交貨時間/自取時間)"  Width="171" >
+                   <Template Context="v">
+                       <div class="d-flex disabled">
+                            <div class="ps-2">
+                                <pre>創單時間:@Order_OrderCreateDateTime(v.Value)</pre>
+                                <pre>交貨時間:@Order_DeliveryTime(v.Value)</pre>
+                                <pre>自取時間:@Order_GetMySelfDateTime(v.Value)</pre>
+                                <pre>付款方式:@Order_PricingMethod(v.Value)</pre>
+                            </div>
+                        </div>
+                   </Template>
+                    @*  <EditTemplate Context="row">
+                        <div class="d-flex disabled">
+                            <div class="ps-2">
+                                <div class="bb-sub">創單時間   :@Order_OrderCreateDateTime(row!.Id)</div>
+                                <div class="bb-sub">交貨時間   :@Order_DeliveryTime(row!.Id)</div>
+                                <div class="bb-sub">自取時間   :@Order_GetMySelfDateTime(row!.Id)</div>
+                                <div class="bb-sub">定價方式   :@Order_PricingMethod(row!.Id)</div>
+                            </div>
+                        </div>
+                    </EditTemplate> *@
+                </TableColumn>
+                <TableColumn @bind-Field="@context.Id" Text="訂單明細"  Width="120">
+                    <Template Context="row">
+                        <div class="d-flex disabled">
+                            <div class="ps-2">
+                                @foreach (var item in @Order_Detail(row!.Value))
+                                {
+                                    <div>@item</div>
+                                }
+                                <hr />
+                                <div>
+                                    <pre><h4>合計 @Order_OrderAmount(row!.Value)</h4></pre>
+                                </div>
+                                <hr />
+                           
+                            </div>
+                        </div>
+                    </Template>
+                </TableColumn>
+            </TableColumns>
+        </Table>
+
+    </div>
 }
 @code {
     [Parameter]
@@ -238,7 +240,6 @@ else
                 </body>
                 </html>
                 ";
-
             // 增加网页所需样式表文件
             using var stream = await Html2PdfService.PdfStreamFromHtmlAsync(htmlString, [$"{NavigationManager.BaseUri}_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css"]);
 
