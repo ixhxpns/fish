@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+3T+twZ0o/+xWcVc8FdIUjhJEgCgPLS4jQQ6CvxXOGM=",
+  "Hash": "B0FfuHRSuLVGpxn47FgoUbCE+OeDH8OO34ZZbq1akHQ=",
   "Source": "FISH",
   "BasePath": "_content/FISH",
   "Mode": "Default",
@@ -3226,6 +3226,25 @@
       "CopyToOutputDirectory": "Always",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\warnning\\IMG_0170.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\js\\publicscript.js",
+      "SourceId": "FISH",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\",
+      "BasePath": "_content/FISH",
+      "RelativePath": "js/publicscript.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\publicscript.js"
     }
   ]
 }

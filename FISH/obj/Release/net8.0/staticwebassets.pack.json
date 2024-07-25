@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\images\\warnning\\IMG_0170.JPG"
     },
     {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\js\\publicscript.js",
+      "PackagePath": "staticwebassets\\js\\publicscript.js"
+    },
+    {
       "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.FISH.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

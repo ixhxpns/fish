@@ -340,16 +340,16 @@
         DeliveryAddress = "皆可外送至指定社區管理室",
     };
 
-    private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage)
+    private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage, string aOrderId)
     {
         var op = new SwalOption()
             {
                 Category = aSwalCategory,
                 Title = aOrderMessage,
-                Content = "",
+                Content = "訂單編號" + aOrderId + "(請紀錄)",
                 ShowFooter = true,
-                IsAutoHide = true,
-                Delay = 4000,
+                IsAutoHide = false,
+                Delay = 3000000,
             };
         await SwalService.Show(op);
     }
@@ -469,13 +469,13 @@
         if (response.IsSuccessStatusCode)
         {
             // 提交成功后的处理
-            await ShowAutoCloseSwal(SwalCategory.Success , "訂單完成");
+            await ShowAutoCloseSwal(SwalCategory.Success, $"訂單完成", $"{ response.Headers.Location.Segments[3]}");
             NavigationManager.NavigateTo("/AtentionPage");
         }
             else
             {
                 // 提交失败后的处理
-                await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤");
+                await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤","");
             }
 
         isEnable = false;

@@ -1,0 +1,133 @@
+﻿@* PrintPage.razor *@
+@using FISH.Model
+@using System.Diagnostics.CodeAnalysis
+@page "/print-page"
+@inject IHttpClientFactory HttpClientFactory
+@layout PrintLayout
+@if (String.IsNullOrEmpty(NotPriority))
+{
+    <h3>
+        沒有權限 ! 請登入管理帳號  
+    </h3>
+}
+else
+{
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">訂單日期</label>
+            <DateTimePicker @bind-Value="@SearchStartDate" />
+        </div>
+        <div class="col-12 col-sm-auto">
+            <label class="col-12 col-form-label">交貨方法</label>
+            <select id="DeliveryMethod" class="form-control inputtxt" @bind="DeliveryMethod">
+                <option value="全部">全部</option>
+                <option value="定點取">定點取</option>
+                <option value="外送 【僅限青埔】">外送 【僅限青埔】</option>
+                <option value="自取">自取</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-sm-auto align-self-end">
+            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+        </div>
+    </div>
+    <div>
+        <div class="print-page">
+            @foreach (var order in OrdersList)
+            {
+                <OrderCard Order="order" />
+            }
+        </div>
+    </div>
+    
+}
+@* <button @onclick="PrintPage">Print</button> *@
+
+@code {
+    private List<Orders> OrdersList = new List<Orders>();
+    [Inject]
+    public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    private string LoginEmail { get; set; } = "";
+    private string NotPriority { get; set; } = "";
+    private string DeliveryMethod { get; set; } = "全部";
+    private DateTime SearchStartDate { get; set; } 
+    private DateTime SearchEndDate { get; set; } 
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            LoginEmail = authState.User.Identity.Name;
+            if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
+            {
+                NotPriority = LoginEmail;
+                SearchStartDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 0:0:0");
+                SearchEndDate = DateTime.Parse($"{DateTime.Now.Year}/{DateTime.Now.Month}/{DateTime.Now.Day} 23:59:59");
+                var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+                var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+
+                OrdersList = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+                if (DeliveryMethod == "全部")
+                {
+
+                }
+                else
+                {
+                    OrdersList = OrdersList?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
+                }
+
+            }
+            else
+            {
+                NotPriority = null;
+            }
+        }
+
+    }
+    public async Task OnSearchAsync()
+    {
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            LoginEmail = authState.User.Identity.Name;
+            if (LoginEmail.Equals("mi667700110099@gmail.com") || LoginEmail.Equals("ixhxpns@gmail.com"))
+            {
+                var nowing = SearchStartDate;
+                SearchStartDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 0:0:0");
+                SearchEndDate = DateTime.Parse($"{nowing.Year}/{nowing.Month}/{nowing.Day} 23:59:59");
+                var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+                var orders = await httpClient.GetFromJsonAsync<List<Orders>>("api/Order");
+                if (DeliveryMethod == "全部")
+                {
+
+                }
+                else
+                {
+                    OrdersList = orders = orders?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
+                }
+                OrdersList = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
+
+
+
+
+
+            }
+        }
+        else
+        {
+
+        }
+        StateHasChanged();
+    }
+    [NotNull]
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+    private void PrintPage()
+    {
+        JSRuntime.InvokeVoidAsync("print");
+    }
+}

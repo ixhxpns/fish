@@ -1,0 +1,153 @@
+@using FISH.Model
+
+@* OrderCard.razor *@
+<style>
+    @@page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    .print-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 5mm;
+        page-break-inside: avoid;
+        padding:20px;
+    }
+
+    .card {
+        width: 100%;
+        min-width: 200px;
+        height: calc((100vh - 15mm) / 3); /* Adjust to fit 4 cards in height */
+        page-break-inside: avoid;
+    }
+
+    .card-body {
+        line-height: 1.2; /* Adjust line height for more compact text */
+        margin-top: -10px; /* Adjust margin between elements */
+        margin-left:-15px;
+        margin-right:-15px;
+    }
+
+    .card-title {
+        font-size: 1rem; /* Adjust font size if needed */
+        margin-bottom: 5px; /* Adjust margin */
+    }
+
+    .card-subtitle {
+        font-size: 0.8rem; /* Adjust font size if needed */
+        margin-bottom: 5px; /* Adjust margin */
+    }
+
+    .card-text {
+        font-size: 0.7rem; /* Adjust font size if needed */
+        margin-bottom: 5px; /* Adjust margin */
+    }
+
+
+    .order-details {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .details-columns {
+        flex: 1;
+        padding: 0 0px;
+        margin-bottom: 5px; /* Adjust margin */
+    }
+    .order-details{
+        font-size: 0.8rem; /* Adjust font size if needed */
+    }
+</style>
+
+@* <Card class="card-body">
+    <BodyTemplate>
+        <div class="card-body">
+            <h5 class="card-title">訂單  <u class="text-black">@Order.Id</u></h5>
+            <h6 class="card-subtitle text-muted"><u class="text-black">@Order.Name</u></h6>
+            <h6 class="card-subtitle"><u class="text-black">@Order.ContactNumber</u></h6>
+            <p class="card-text text-body-tertiary">訂單日期  <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
+            <p class="card-text text-body-tertiary">交貨方法  <u class="text-black">@Order.DeliveryMethod</u></p>
+            <p class="card-text text-body-tertiary">交貨地址  <u class="text-black">@Order.DeliveryAddress</u></p>
+            <p class="card-text text-body-tertiary">收款方式  <u class="text-black">@Order.PricingMethod</u></p>
+            <p class="card-text text-body-tertiary">總金額  $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
+            <p class="card-text text-body-tertiary">訂單明細</p>
+            <div class="order-details">
+
+                @{
+
+                    var count = Order_Detail(Order.OrderDetail).Count();
+                    var half = (count + 1) / 2;
+                    <div class="details-columns">
+                        @foreach (var item in @Order_Detail(Order.OrderDetail).Take(half))
+                        {
+                            <div class="detail-text text-nowrap">@item</div>
+                        }
+                    </div>
+                    <div class="details-columns">
+                        @foreach (var item in @Order_Detail(Order.OrderDetail).Skip(half))
+                        {
+                            <div class="detail-text text-nowrap">@item</div>
+                        }
+                    </div>
+                    <p>_</p>
+                }
+            </div>
+        </div>
+    </BodyTemplate>
+</Card> *@
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">訂單  <u class="text-black">@Order.Id</u></h5>
+        <h6 class="card-subtitle text-muted"><u class="text-black">@Order.Name</u></h6>
+        <h6 class="card-subtitle"><u class="text-black">@Order.ContactNumber</u></h6>
+        <p class="card-text text-body-tertiary">訂單日期  <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
+        <p class="card-text text-body-tertiary">交貨方法   <u class="text-black">@Order.DeliveryMethod</u></p>
+        <p class="card-text text-body-tertiary">交貨地址   <u class="text-black">@Order.DeliveryAddress</u></p>
+        <p class="card-text text-body-tertiary">收款方式   <u class="text-black">@Order.PricingMethod</u></p>
+        <p class="card-text text-body-tertiary">總金額  $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
+        <p class="card-text text-body-tertiary">訂單明細</p>
+        <div class="order-details">
+            
+                @{
+
+                    var count = Order_Detail(Order.OrderDetail).Count();
+                    var half = (count + 1) / 2;
+                    <div class="details-columns">
+                        @foreach (var item in @Order_Detail(Order.OrderDetail).Take(half))
+                        {
+                        <div class="detail-text text-nowrap">@item</div>
+                        }
+            </div>
+            <div class="details-columns">
+                        @foreach (var item in @Order_Detail(Order.OrderDetail).Skip(half))
+                        {
+                        <div class="detail-text text-nowrap">@item</div>
+                        }
+            </div>
+            <p>_</p>
+                }
+        </div>
+    </div>
+</div> 
+
+@code {
+    [Parameter]
+    public Orders Order { get; set; }
+    public IEnumerable<string> Order_Detail(string detail)
+    {
+
+        var bResult = detail.ToString().Replace("\n", "").Split(";", StringSplitOptions.RemoveEmptyEntries);
+        var sResult = new List<string>();
+
+        foreach (var item in bResult)
+        {
+            sResult.Add($"{item.Split("=")[0]}${item.Split("=")[1]}");
+        }
+
+        return sResult;
+    }
+}
