@@ -5,6 +5,7 @@
 @using Aspose.Html.Saving
 @using FISH.Model
 @using System.Diagnostics.CodeAnalysis
+@inject ApplicationDbContext context
 
 @inject IHttpClientFactory HttpClientFactory
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -92,7 +93,7 @@
 }
 else
 {
-    <ExportPdfButton ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true"></ExportPdfButton>
+    @* <ExportPdfButton ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true"></ExportPdfButton> *@
 
     <Button Text="列印" OnClick="GoBack"></Button>
     @* <ExportPdfButton Icon="fas fa-print" Text="列印" ElementId="a4page" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true" FileName="@PdfFileName"></ExportPdfButton> *@
@@ -119,7 +120,8 @@ else
     </div>
 
     <Table TItem="Orders" @bind-Items="@OrdersList" Id="a4page" @ref="TableRows" IsExcel="true" IsFixedHeader="true" RenderMode="TableRenderMode.Table"
-           IsStriped="true" IsBordered="true" IsMultipleSelect="true" AllowResizing="true" ShowColumnWidthTooltip="true" ShowToolbar="false">
+           IsStriped="true"  ShowExtendButtons="false" OnDeleteAsync="@OnDeleteAsync"
+            IsBordered="true" IsMultipleSelect="true" AllowResizing="true" ShowColumnWidthTooltip="true" ShowToolbar="true">
         <TableColumns>
             <TableColumn @bind-Field="@context.Name" Text="訂單資訊" TextWrap="true" Width="180">
                 <EditTemplate Context="row">
@@ -173,7 +175,7 @@ else
     [Parameter]
     public string LoginEmail { get; set; }
     [Parameter]
-    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
+    public IEnumerable<Orders>? OrdersList { get; set; } 
     [Parameter]
     public DateTime SearchStartDate { get; set; }
 
@@ -222,6 +224,27 @@ else
             }
         }
 
+    }
+
+    private async Task<bool> OnDeleteAsync(IEnumerable<Orders> items)
+    {
+        // var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
+        string ordernum = "";
+        foreach (var item in items)
+        {
+            context.Orders.Remove(item);
+            ordernum += $"{item.Id} ";
+            // var response = httpClient.DeleteAsync($"api/Order/{item.Id}");
+            // if (response.Result.IsSuccessStatusCode)
+            // {
+            //     OrdersList = OrdersList?.Where(x => x.Id != item.Id).ToList();
+            // }
+        }
+        await context.SaveChangesAsync();
+        await OnSearchAsync();
+        await ToastService.Success("刪除成功", $"訂單編號 {ordernum}", true);
+        StateHasChanged();
+        return true;
     }
     public async Task GoBack()
     {

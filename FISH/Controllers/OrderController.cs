@@ -50,6 +50,35 @@ namespace FISH.Controllers
         {
             return await _context.Orders.ToListAsync();
         }
+        //Delete Order
+        // DELETE: api/Order
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Invalid order ID.");
+            }
+
+            try
+            {
+                var order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == id);
+                if (order == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Orders.Remove(order);
+                await _context.SaveChangesAsync();
+
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                // 記錄異常（可以使用日誌框架如 Serilog 或 NLog）
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
 
 
         // 可能還需要其他的 API 方法，例如 GetOrder 來檢索訂單資訊

@@ -12,6 +12,8 @@
 }
 else
 {
+    <ExportPdfButton ElementId="printpage" IsAsync="true" OnBeforeExport="OnBeforeExport" OnAfterDownload="OnAfterDownload" AutoDownload="true">列印</ExportPdfButton>
+
     <div class="row g-3 mb-3">
         <div class="col-12 col-sm-auto">
             <label class="col-12 col-form-label">訂單日期</label>
@@ -32,7 +34,7 @@ else
         </div>
     </div>
     <div>
-        <div class="print-page">
+        <div class="print-page" id="printpage">
             @foreach (var order in OrdersList)
             {
                 <OrderCard Order="order" />
@@ -52,7 +54,11 @@ else
     private string DeliveryMethod { get; set; } = "全部";
     private DateTime SearchStartDate { get; set; } 
     private DateTime SearchEndDate { get; set; } 
-
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
+    private Task OnBeforeExport() => ToastService.Information("導出Pdf", "導出PDF文件");
+    private Task OnAfterDownload(string fileName) => ToastService.Success("下载 Pdf", fileName, true);
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
