@@ -57,6 +57,42 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\icons\\Logo256.ico",
+      "PackagePath": "staticwebassets\\icons\\Logo256.ico"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\icons\\Logo64.ico",
+      "PackagePath": "staticwebassets\\icons\\Logo64.ico"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\._Logo.ai",
+      "PackagePath": "staticwebassets\\images\\._Logo.ai"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\._Logo.ico",
+      "PackagePath": "staticwebassets\\images\\._Logo.ico"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\._Logo64.ico",
+      "PackagePath": "staticwebassets\\images\\._Logo64.ico"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\Logo.ai",
+      "PackagePath": "staticwebassets\\images\\Logo.ai"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\Logo.png",
+      "PackagePath": "staticwebassets\\images\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\ca657509-b863-4665-99e0-b1d192f970a7 (1).webp",
+      "PackagePath": "staticwebassets\\images\\ca657509-b863-4665-99e0-b1d192f970a7 (1).webp"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\ca657509-b863-4665-99e0-b1d192f970a7.webp",
+      "PackagePath": "staticwebassets\\images\\ca657509-b863-4665-99e0-b1d192f970a7.webp"
+    },
+    {
       "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\images\\captcha0.jpg",
       "PackagePath": "staticwebassets\\images\\captcha0.jpg"
     },
@@ -71,6 +107,10 @@
     {
       "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\js\\publicscript.js",
       "PackagePath": "staticwebassets\\js\\publicscript.js"
+    },
+    {
+      "Id": "C:\\Users\\jason\\source\\repos\\Fish\\pigfish2\\FISH\\wwwroot\\js\\service-worker.js",
+      "PackagePath": "staticwebassets\\js\\service-worker.js"
     },
     {
       "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.FISH.Microsoft.AspNetCore.StaticWebAssets.props",

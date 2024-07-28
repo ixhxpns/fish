@@ -297,3 +297,9 @@ C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\refint\FISH.dl
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\FISH.pdb
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\FISH.genruntimeconfig.cache
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\ref\FISH.dll
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\wwwroot\icons\Logo256.ico
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\wwwroot\icons\Logo64.ico
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\wwwroot\images\Logo.png
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\wwwroot\js\publicscript.js
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\wwwroot\js\service-worker.js
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\bin\Release\net8.0\manifest.js

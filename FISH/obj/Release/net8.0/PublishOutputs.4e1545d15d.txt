@@ -1,3 +1,4 @@
+C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\PubTmp\Out\manifest.js
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\PubTmp\Out\FISH.exe
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 C:\Users\jason\source\repos\Fish\pigfish2\FISH\obj\Release\net8.0\PubTmp\Out\appsettings.json
