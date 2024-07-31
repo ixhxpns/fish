@@ -2,6 +2,7 @@
 @using FISH.Model
 @using FISH.Shared.Component
 @using System.Diagnostics.CodeAnalysis
+@using System.ComponentModel.DataAnnotations
 @inject HttpClient Http
 @inject IHttpClientFactory HttpClientFactory
 @inject ILocalStorageService localStorage
@@ -167,15 +168,15 @@
 
     <div class="col-12 mb-2">
         <div class="row g-3">
-            <div class="col-6 col-sm-6">
+            <div class="col-5 col-sm-5">
                 <BootstrapInputGroup>
-                    <BootstrapInputGroupLabel DisplayText="魚種" />
+                    <BootstrapInputGroupLabel DisplayText="品項" />
                     <BootstrapInput @bind-Value="@FishName" />
                 </BootstrapInputGroup>
             </div>
-            <div class="col-6 col-sm-6">
+            <div class="col-7 col-sm-7">
                 <BootstrapInputGroup>
-                    <BootstrapInputNumber @bind-Value="@FishAmount" />
+                    <BootstrapInput  @bind-Value="@FishAmount"  PlaceHolder="金額" />
                     <Button OnClick="@AddFish">加入 </Button>
                     <Button OnClick="@ClearFish" Color="Color.Danger">清除</Button>
                 </BootstrapInputGroup>
@@ -375,7 +376,8 @@
     public string? FishName { get; set; }
 
     [Parameter]
-    public int FishAmount { get; set; }
+    [Range(0, 100000000)]
+    public string FishAmount { get; set; } = "";
 
     [Inject]
     [NotNull]
@@ -472,11 +474,11 @@
             await ShowAutoCloseSwal(SwalCategory.Success, $"訂單完成", $"{ response.Headers.Location.Segments[3]}");
             NavigationManager.NavigateTo("/AtentionPage");
         }
-            else
-            {
-                // 提交失败后的处理
-                await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤","");
-            }
+        else
+        {
+            // 提交失败后的处理
+            await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤","");
+        }
 
         isEnable = false;
 
@@ -505,15 +507,30 @@
 
     private async Task AddFish()
     {
-        if (!String.IsNullOrEmpty(FishName) & FishAmount != 0)
+        if (!String.IsNullOrEmpty(FishName) & !String.IsNullOrEmpty(FishAmount))
         {
-            dailyOrder.OrderDetail += $"{FishName}={FishAmount};\n";
-            dailyOrder.OrderAmount += FishAmount;
-            FishName = "";
-            FishAmount = 0;
+            
+            var aresult =  int.TryParse(FishAmount, out int amount);
+            
+            if (aresult)
+            {
+                dailyOrder.OrderDetail += $"{FishName}={FishAmount};\n";
+                dailyOrder.OrderAmount += amount;
+                FishName = "";
+                FishAmount = "";
+
+            }
+            else
+            {
+                FishAmount = "";
+                await ToastService.Error("輸入錯誤", "魚種與金額皆須填寫!!");
+            }
+
         }
         else
         {
+            FishName = "";
+            FishAmount = "";
             await ToastService.Error("輸入錯誤","魚種與金額皆須填寫!!");
         }
 

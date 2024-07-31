@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FISH")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1408da8e74601928f91024d6074919ce4ad5bea5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+120e900b93b3627db1f6adbb8b8e0d739692b038")]
 [assembly: System.Reflection.AssemblyProductAttribute("FISH")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FISH")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
