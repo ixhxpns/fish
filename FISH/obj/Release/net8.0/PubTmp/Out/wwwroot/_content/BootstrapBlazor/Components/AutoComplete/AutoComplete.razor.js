@@ -1,5 +1,5 @@
-﻿import {debounce, getHeight} from "../../modules/utility.js"
-import {handleKeyUp, select, selectAllByFocus, selectAllByEnter} from "../Input/BootstrapInput.razor.js"
+﻿import { debounce, getHeight } from "../../modules/utility.js"
+import { handleKeyUp, select, selectAllByFocus, selectAllByEnter } from "../Input/BootstrapInput.razor.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 import Input from "../../modules/input.js"
@@ -9,11 +9,11 @@ export function init(id, invoke) {
     const el = document.getElementById(id)
     const menu = el.querySelector('.dropdown-menu')
     const input = document.getElementById(`${id}_input`)
-    var ac = {el, invoke, menu, input}
+    var ac = { el, invoke, menu, input }
     Data.set(id, ac)
 
     if (el.querySelector('[data-bs-toggle="bb.dropdown"]')) {
-        ac.popover = Popover.init(el, {toggleClass: '[data-bs-toggle="bb.dropdown"]'})
+        ac.popover = Popover.init(el, { toggleClass: '[data-bs-toggle="bb.dropdown"]' })
     }
 
     // debounce
@@ -25,7 +25,8 @@ export function init(id, invoke) {
         }, duration, e => {
             return ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Escape', 'Enter'].indexOf(e.key) > -1
         }))
-    } else {
+    }
+    else {
         EventHandler.on(input, 'keyup', e => {
             invoke.invokeMethodAsync('OnKeyUp', e.code)
         })
@@ -54,7 +55,8 @@ export function autoScroll(id, index) {
 
     if (height > maxHeight) {
         menu.scrollTop = itemHeight * (index > count ? index - count : index)
-    } else if (index <= count) {
+    }
+    else if (index <= count) {
         menu.scrollTop = 0
     }
 }
@@ -87,4 +89,4 @@ export function dispose(id) {
     }
 }
 
-export {handleKeyUp, select, selectAllByFocus, selectAllByEnter}
+export { handleKeyUp, select, selectAllByFocus, selectAllByEnter }

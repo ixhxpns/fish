@@ -14,7 +14,7 @@ export function init(id, target) {
     if (el === null) {
         return
     }
-    const go = {el, target}
+    const go = { el, target }
     Data.set(id, go)
 
     go.tip = new bootstrap.Tooltip(el)

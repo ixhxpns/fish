@@ -1,6 +1,7 @@
 using FISH.Model;
+
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore; // ï¿½Tï¿½Oï¿½Þ¤Jï¿½]ï¿½t Order ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½Wï¿½Å¶ï¿½
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore; // ½T«O¤Þ¤J¥]§t Order Ãþªº©R¦WªÅ¶¡
 using Microsoft.EntityFrameworkCore;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
@@ -10,13 +11,13 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
     }
 
-    // ï¿½wï¿½q Orders ï¿½Ý©ï¿½
+    // ©w¸q Orders ÄÝ©Ê
     public DbSet<Orders> Orders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
-        // ï¿½bï¿½oï¿½Ì°tï¿½mï¿½Aï¿½ï¿½ï¿½Ò«ï¿½ï¿½Mï¿½ï¿½ï¿½Y
+        // ¦b³o¸Ì°t¸m§Aªº¼Ò«¬©MÃö«Y
     }
 }

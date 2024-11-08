@@ -24,10 +24,12 @@ const resize = tab => {
             })
             if (itemHeight > tabHeight) {
                 wrap.classList.add('of')
-            } else {
+            }
+            else {
                 wrap.classList.remove('of')
             }
-        } else {
+        }
+        else {
             // Item 总宽度大于 Nav 宽度
             const tabWidth = scroll.offsetWidth
             let itemWidth = 0
@@ -36,7 +38,8 @@ const resize = tab => {
             })
             if (itemWidth > tabWidth) {
                 wrap.classList.add('of')
-            } else {
+            }
+            else {
                 wrap.classList.remove('of')
             }
         }
@@ -54,17 +57,20 @@ const active = tab => {
             const marginY = navHeight - top + 2
             if (marginY < 0) {
                 tab.tabNav.style.transform = `translateY(${marginY}px)`
-            } else {
+            }
+            else {
                 tab.tabNav.style.transform = null
             }
-        } else {
+        }
+        else {
             // mark sure display total active tabitem
             const right = getPosition(activeTab).left - getPosition(activeTab.parentNode).left + activeTab.offsetWidth
             const navWidth = tab.scroll.offsetWidth
             const marginX = navWidth - right + 2
             if (marginX < 0) {
                 tab.tabNav.style.transform = `translateX(${marginX}px)`
-            } else {
+            }
+            else {
                 tab.tabNav.style.transform = null
             }
         }
@@ -80,7 +86,8 @@ const active = tab => {
         bar.style.width = '2px'
         bar.style.height = `${p.height}px`
         bar.style.transform = `translateY(${top}px)`
-    } else {
+    }
+    else {
         const left = getPosition(activeTab).left - getPosition(activeTab.parentNode).left
         const width = activeTab.offsetWidth
         bar.style.width = `${width}px`
@@ -129,7 +136,8 @@ const setDraggable = tab => {
             e.preventDefault()
             if (dragItem !== item) {
                 e.dataTransfer.dropEffect = 'move'
-            } else {
+            }
+            else {
                 e.dataTransfer.dropEffect = 'none'
             }
             return false
@@ -159,7 +167,7 @@ export function init(id, invoke, method) {
         return
     }
 
-    const tab = {el, invoke, method}
+    const tab = { el, invoke, method }
     Data.set(id, tab)
 
     tab.header = el.firstChild

@@ -1,5 +1,6 @@
-﻿namespace FISH.Model;
-
-public class Products
+﻿namespace FISH.Model
 {
+    public class Products
+    {
+    }
 }

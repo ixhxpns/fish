@@ -1,6 +1,6 @@
 ﻿import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
-import {debounce} from "../../modules/utility.js"
+import { debounce } from "../../modules/utility.js"
 
 const cal = (el, imgWidth) => {
     const containerWidth = el.offsetWidth;
@@ -8,7 +8,7 @@ const cal = (el, imgWidth) => {
     const spaceNumber = columns + 1;
     const leftSpace = containerWidth - columns * imgWidth;
     const space = leftSpace / spaceNumber;
-    return {space, columns}
+    return { space, columns }
 }
 
 const setPositions = (container, imgWidth) => {
@@ -42,7 +42,7 @@ export function init(id, invoke, method) {
     }
 
     const getWaterfallItem = item => {
-        return {id: item.getAttribute('data-bb-waterfall-item-id'), url: item.querySelector('img').src};
+        return { id: item.getAttribute('data-bb-waterfall-item-id'), url: item.querySelector('img').src };
     }
     EventHandler.on(container, 'load', 'img', e => {
         const item = e.delegateTarget.parentNode;

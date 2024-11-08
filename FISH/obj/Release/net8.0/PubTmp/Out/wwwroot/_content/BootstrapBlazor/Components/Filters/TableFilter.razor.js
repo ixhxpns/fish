@@ -35,7 +35,8 @@ export function init(id) {
     EventHandler.on(el, 'keyup', e => {
         if (e.key === 'Escape') {
             buttons.item(0).click()
-        } else if (e.key === 'Enter') {
+        }
+        else if (e.key === 'Enter') {
             buttons.item(1).click()
         }
     });

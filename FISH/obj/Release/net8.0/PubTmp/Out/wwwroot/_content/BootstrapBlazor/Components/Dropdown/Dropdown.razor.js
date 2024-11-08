@@ -12,7 +12,7 @@ export function init(id) {
         }
     })
 
-    const dropdown = {popover}
+    const dropdown = { popover }
     Data.set(id, dropdown)
 }
 

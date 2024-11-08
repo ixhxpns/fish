@@ -47,13 +47,13 @@ export function init(id, invoke, shownCallback, closeCallback) {
             if (!modal.modal) {
                 modal.modal = bootstrap.Modal.getOrCreateInstance(el)
                 // hack: fix focusin event
-                modal.modal._focustrap._handleFocusin = e => {
-                }
+                modal.modal._focustrap._handleFocusin = e => { }
             }
             modal.modal._config.keyboard = el.getAttribute('data-bs-keyboard') === 'true'
             modal.modal._config.backdrop = backdrop
             modal.modal.show()
-        } else {
+        }
+        else {
             modal.invoke.invokeMethodAsync(modal.shownCallback)
 
             modal.modal._config.keyboard = false
@@ -66,7 +66,8 @@ export function init(id, invoke, shownCallback, closeCallback) {
     modal.hide = () => {
         if (el.children.length === 1) {
             modal.modal.hide();
-        } else {
+        }
+        else {
             modal.invoke.invokeMethodAsync(modal.closeCallback)
         }
     }
@@ -74,7 +75,8 @@ export function init(id, invoke, shownCallback, closeCallback) {
     modal.toggle = () => {
         if (modal.modal) {
             modal.modal.toggle()
-        } else {
+        }
+        else {
             modal.show()
         }
     }
@@ -117,9 +119,11 @@ export function execute(id, method) {
     const modal = Data.get(id)
     if (method === 'show') {
         modal.show()
-    } else if (method === 'hide') {
+    }
+    else if (method === 'hide') {
         modal.hide()
-    } else if (method === 'toggle') {
+    }
+    else if (method === 'toggle') {
         modal.toggle()
     }
 }

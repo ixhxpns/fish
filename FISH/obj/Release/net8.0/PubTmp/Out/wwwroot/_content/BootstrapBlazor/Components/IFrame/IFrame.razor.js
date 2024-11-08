@@ -14,7 +14,8 @@ export function execute(id, data) {
     if (frame) {
         if (frame.loaded) {
             frame.contentWindow.postMessage(data)
-        } else {
+        }
+        else {
             frame.onload = () => {
                 frame.loaded = true
                 frame.contentWindow.postMessage(data)

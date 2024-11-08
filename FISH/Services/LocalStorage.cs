@@ -1,33 +1,34 @@
 ﻿using FISH.Services.Interface;
 
-namespace FISH.Services;
-
-public class LocalStorage : ILocalStorage
+namespace FISH.Services
 {
-    private readonly Blazored.LocalStorage.ILocalStorageService localStorage;
-
-    public LocalStorage(Blazored.LocalStorage.ILocalStorageService localStorage)
+    public class LocalStorage : ILocalStorage
     {
-        this.localStorage = localStorage;
-    }
+        private readonly Blazored.LocalStorage.ILocalStorageService localStorage;
 
-    public async Task SetItem(string key, string value)
-    {
-        await localStorage.SetItemAsync(key, value);
-    }
+        public LocalStorage(Blazored.LocalStorage.ILocalStorageService localStorage)
+        {
+            this.localStorage = localStorage;
+        }
 
-    public async Task<string> GetItem(string key)
-    {
-        return await localStorage.GetItemAsync<string>(key);
-    }
+        public async Task SetItem(string key, string value)
+        {
+            await this.localStorage.SetItemAsync(key, value);
+        }
 
-    public async Task RemoveItem(string key)
-    {
-        await localStorage.RemoveItemAsync(key);
-    }
+        public async Task<string> GetItem(string key)
+        {
+            return await localStorage.GetItemAsync<string>(key);
+        }
 
-    public async Task Clear()
-    {
-        await localStorage.ClearAsync();
+        public async Task RemoveItem(string key)
+        {
+            await this.localStorage.RemoveItemAsync(key);
+        }
+
+        public async Task Clear()
+        {
+            await this.localStorage.ClearAsync();
+        }
     }
 }

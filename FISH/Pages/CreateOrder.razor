@@ -8,7 +8,7 @@
 @inject ILocalStorageService localStorage
 @inject SwalService SwalService
 @inject IHttpContextAccessor httpContextAccessor 
-@inject WinBoxService WinBoxService
+
 
 <style>
     input {
@@ -19,11 +19,11 @@
 <PageTitle>凱生魚片訂購網-訂購頁</PageTitle>
 
 <EditForm Model="dailyOrder" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
     @* <div class="row"> *@
-    @*         <div class="col-6  col-md-6">
+@*         <div class="col-6  col-md-6">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">訂單編號</label>
                 <div class="col-12">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div> *@
-    @* <div class="col-6 col-md-6">
+        @* <div class="col-6 col-md-6">
             <div class="row mb-3">
                 <label class="col-12 col-form-label">建單時間</label>
                 <div class="col-12 disabled">
@@ -47,7 +47,7 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">姓名</label>
                 <div class="col-12">
-                    <InputText id="Name" class="form-control inputtxt" @bind-Value="dailyOrder.Name"/>
+                    <InputText id="Name" class="form-control inputtxt" @bind-Value="dailyOrder.Name" />
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div class="row mb-3">
                 <label class="col-12 col-form-label">連絡電話</label>
                 <div class="col-12">
-                    <InputText id="ContactNumber" class="form-control inputtxt" @bind-Value="dailyOrder.ContactNumber"/>
+                    <InputText id="ContactNumber" class="form-control inputtxt" @bind-Value="dailyOrder.ContactNumber" />
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 <label class="col-12 col-form-label">自取時間</label>
                 <div class="col-12">
                     <DateTimePicker style="font-size:smaller" class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.GetMySelfDateTime" DateTimeFormat="yyyy-MM-dd" OnValueChanged="OnGetMySelfDateTimeChanged">
-                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false"/>
+                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 <label class="col-12 col-form-label">交貨時間</label>
                 <div class="col-12 disabled">
                     <DateTimePicker class="inputtxt" ViewMode="DatePickerViewMode.DateTime" Value="@dailyOrder.DeliveryTime" DateTimeFormat="yyyy-MM-dd" OnValueChanged="DeliveryTimeChanged">
-                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false"/>
+                        <TimePickerSetting ShowClockScale="true" ShowSecond="false" ShowMinute="false" IsAutoSwitch="false" />
                     </DateTimePicker>
                 </div>
             </div>
@@ -135,41 +135,34 @@
         DilyverRegion = "";
         dailyOrder.DeliveryAddress = "";
     }
-    <WinBoxService size="">
-        
-    </WinBoxService>
-
     <div class="col-12">
         <label class="col-12 col-form-label">訂單地址</label>
         <div class="col-12">
-
+ 
             @if (DilyverRegion == "青埔地區")
             {
                 dailyOrder.DeliveryAddress = "皆可外送至指定社區管理室";
             }
-            else if (DilyverRegion == "大園地區")
+            else if(DilyverRegion == "大園地區")
             {
                 dailyOrder.DeliveryAddress = "大觀路20號彩卷行（仁壽宮旁）";
             }
-            else if (DilyverRegion == "過嶺地區")
+            else if(DilyverRegion == "過嶺地區")
             {
                 dailyOrder.DeliveryAddress = "民族路五段326號（全家高嶺店）";
             }
-            else if (DilyverRegion == "大竹地區")
+            else if(DilyverRegion == "大竹地區")
             {
                 dailyOrder.DeliveryAddress = "上竹四街53號";
-            }
-            <InputText @bind-Value="dailyOrder.DeliveryAddress" class="form-control  inputtxt"/>
+            }   
+            <InputText @bind-Value="dailyOrder.DeliveryAddress" class="form-control  inputtxt" />
         </div>
     </div>
-    <div class="row">
-        <label class="col-12 col-form-label">冷凍海鮮</label>
-        <Carousel Images="@Images" NextIcon= ">" PreviousIcon="<" ShowControls="true" ShowIndicators="true" IsFade="true" />
-    </div>
+
     <div class="col-12 mb-3">
         <label class="col-12 col-form-label">訂單明細</label>
         <div class="col-12">
-            <InputTextArea id="OrderDetail" style="height:300px" class="form-control inputtxt" @bind-Value="dailyOrder.OrderDetail" disabled/>
+            <InputTextArea id="OrderDetail" style="height:300px" class="form-control inputtxt" @bind-Value="dailyOrder.OrderDetail" disabled />
         </div>
     </div>
 
@@ -177,13 +170,13 @@
         <div class="row g-3">
             <div class="col-5 col-sm-5">
                 <BootstrapInputGroup>
-                    <BootstrapInputGroupLabel DisplayText="品項"/>
-                    <BootstrapInput @bind-Value="@FishName"/>
+                    <BootstrapInputGroupLabel DisplayText="品項" />
+                    <BootstrapInput @bind-Value="@FishName" />
                 </BootstrapInputGroup>
             </div>
             <div class="col-7 col-sm-7">
                 <BootstrapInputGroup>
-                    <BootstrapInput @bind-Value="@FishAmount" PlaceHolder="金額"/>
+                    <BootstrapInput  @bind-Value="@FishAmount"  PlaceHolder="金額" />
                     <Button OnClick="@AddFish">加入 </Button>
                     <Button OnClick="@ClearFish" Color="Color.Danger">清除</Button>
                 </BootstrapInputGroup>
@@ -193,7 +186,7 @@
     <div class="row mb-3">
         <label class="col-12 col-form-label">訂單總金額</label>
         <div class="col-12">
-            <InputNumber id="OrderAmount" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderAmount" disabled/>
+            <InputNumber id="OrderAmount" class="form-control  inputtxt" @bind-Value="dailyOrder.OrderAmount" disabled />
         </div>
     </div>
 
@@ -210,19 +203,19 @@
                 <div class="row mb-3">
                     <label class="col-12 col-form-label">銀行代號</label>
                     <div class="col-12">
-                        <BootstrapLabel id="BankAccount" class="form-control" Value="中國信託  822"/>
+                        <BootstrapLabel id="BankAccount" class="form-control" Value="中國信託  822" />
                     </div>
                     <label class="col-12 col-form-label">匯款帳號</label>
                     <div class="col-12">
-                        <BootstrapLabel id="BankAccount" class="form-control" Value="101540136391"/>
+                        <BootstrapLabel id="BankAccount" class="form-control" Value="101540136391" />
                     </div>
                 </div>
             }
-            @*  <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" disabled /> *@
+           @*  <InputText id="PricingMethod" class="form-control  inputtxt" @bind-Value="dailyOrder.PricingMethod" disabled /> *@
         </div>
     </div>
 
-    @*  <div class="row mb-3 Visibility">
+   @*  <div class="row mb-3 Visibility">
         <label class="col-12 col-form-label">是否已刪除</label>
         <div class="col-12">
             <InputCheckbox id="IsDeleted" class="form-check-input" @bind-Value="dailyOrder.IsDeleted" />
@@ -258,7 +251,7 @@
     </div> *@
 
     @* 修改提交按鈕的行為 *@
-    @*     <div class="row mb-3 Visibility">
+@*     <div class="row mb-3 Visibility">
         <label class="col-12 col-form-label">驗證碼</label>
         <div class="col-12">
             <img class="mb-2" src="/Captcha/GenerateCaptcha" alt="Captcha" />
@@ -337,40 +330,31 @@
  *@
 
 @code {
-    // [Inject]
-    // [NotNull]
-    // private WinBoxService? WinBoxService { get; set; }
-    private static List<string> Images =>
-    [
-        "./images/coldfish/1.jpg",
-        "./images/coldfish/2.jpg"
-    ];
-    
     private bool isEnable { get; set; } = false;
-
     private Orders dailyOrder = new()
     {
         OrderType = "每日拼盤",
         OrderCreateDateTime = DateTime.Now.AddHours(8),
-        GetMySelfDateTime = DateTime.Now.AddHours(8),
-        DeliveryTime = DateTime.Now.AddHours(8),
+            GetMySelfDateTime = DateTime.Now.AddHours(8),
+            DeliveryTime = DateTime.Now.AddHours(8),
         DeliveryMethod = "定點取",
-        DeliveryAddress = "皆可外送至指定社區管理室"
+        DeliveryAddress = "皆可外送至指定社區管理室",
     };
 
-    private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory, string aOrderMessage, string aOrderId)
+    private async Task ShowAutoCloseSwal(SwalCategory aSwalCategory , string aOrderMessage, string aOrderId)
     {
         var op = new SwalOption()
-        {
-            Category = aSwalCategory,
-            Title = aOrderMessage,
-            Content = "訂單編號" + aOrderId + "(請紀錄)",
-            ShowFooter = true,
-            IsAutoHide = false,
-            Delay = 3000000
-        };
+            {
+                Category = aSwalCategory,
+                Title = aOrderMessage,
+                Content = "訂單編號" + aOrderId + "(請紀錄)",
+                ShowFooter = true,
+                IsAutoHide = false,
+                Delay = 3000000,
+            };
         await SwalService.Show(op);
     }
+
 
 
     private string? GetCaptchaCode { get; set; } = "";
@@ -381,16 +365,23 @@
 
     private bool showCaptchaModal = false;
 
-    [Inject] [NotNull] private ToastService? ToastService { get; set; }
+    [Inject]
+    [NotNull]
+    private ToastService? ToastService { get; set; }
 
-    [Parameter] public string? DilyverRegion { get; set; }
+    [Parameter]
+    public string? DilyverRegion { get; set; }
 
-    [Parameter] public string? FishName { get; set; }
+    [Parameter]
+    public string? FishName { get; set; }
 
-    [Parameter] [Range(0, 100000000)] public string FishAmount { get; set; } = "";
+    [Parameter]
+    [Range(0, 100000000)]
+    public string FishAmount { get; set; } = "";
 
-    [Inject] [NotNull] private NavigationManager? NavigationManager { get; set; }
-
+    [Inject]
+    [NotNull]
+    private NavigationManager? NavigationManager { get; set; }
     protected override async Task OnInitializedAsync()
     {
         var httpClient = HttpClientFactory.CreateClient("FishServerAPI");
@@ -402,11 +393,15 @@
     {
         if (firstRender)
         {
+
+
+
         }
     }
 
     private async Task LoadCaptchaImageAsync()
     {
+
         StateHasChanged(); // 通知Blazor更新UI
     }
     // private async Task ShowCaptchaModal()
@@ -424,21 +419,21 @@
     {
         if (isValid)
         {
-            showCaptchaModal = false;
+            this.showCaptchaModal = false;
             await HandleValidSubmit(); // 當驗證碼通過後，執行原本的提交邏輯
         }
         else
         {
             // 驗證碼驗證失敗，保持模態對話框開啟，讓用戶重試
-            showCaptchaModal = true;
+            this.showCaptchaModal = true;
         }
     }
 
     private async Task<bool> VerifyCaptcha(string inputCaptcha)
     {
         // 調用後端API驗證輸入的驗證碼是否正確
-        var captchaCode = localStorage.GetItemAsStringAsync("CaptchaCode").Result; //httpContextAccessor?.HttpContext?.Session.GetString("CaptchaCode");
-        // var captchaCode = await localStorage.GetItemAsStringAsync("CaptchaCode");
+        var captchaCode = localStorage.GetItemAsStringAsync("CaptchaCode").Result;//httpContextAccessor?.HttpContext?.Session.GetString("CaptchaCode");
+                                                                                  // var captchaCode = await localStorage.GetItemAsStringAsync("CaptchaCode");
         if (captchaCode == inputCaptcha)
         {
             // 驗證碼正確
@@ -455,7 +450,7 @@
 
     private async Task ShowCaptchaModal()
     {
-        showCaptchaModal = true;
+        this.showCaptchaModal = true;
         await LoadCaptchaImage();
     }
 
@@ -476,16 +471,17 @@
         if (response.IsSuccessStatusCode)
         {
             // 提交成功后的处理
-            await ShowAutoCloseSwal(SwalCategory.Success, $"訂單完成", $"{response.Headers.Location.Segments[3]}");
+            await ShowAutoCloseSwal(SwalCategory.Success, $"訂單完成", $"{ response.Headers.Location.Segments[3]}");
             NavigationManager.NavigateTo("/AtentionPage");
         }
         else
         {
             // 提交失败后的处理
-            await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤", "");
+            await ShowAutoCloseSwal(SwalCategory.Error, "表單填寫有誤","");
         }
 
         isEnable = false;
+
     }
 
     private async Task OnOrderCreateDateTimeChanged(DateTime adateTime)
@@ -493,7 +489,7 @@
         // 這裡實現當日期時間選擇器的值改變時的邏輯
         dailyOrder.OrderCreateDateTime = adateTime;
         await Task.CompletedTask; // 假設這裡有異步操作
-        // 你可能需要根據 e.Value 來更新 order.OrderCreateDateTime 或進行其他操作
+                                  // 你可能需要根據 e.Value 來更新 order.OrderCreateDateTime 或進行其他操作
     }
 
     private async Task OnGetMySelfDateTimeChanged(DateTime adateTime)
@@ -511,35 +507,40 @@
 
     private async Task AddFish()
     {
-        if (!string.IsNullOrEmpty(FishName) & !string.IsNullOrEmpty(FishAmount))
+        if (!String.IsNullOrEmpty(FishName) & !String.IsNullOrEmpty(FishAmount))
         {
-            var aresult = int.TryParse(FishAmount, out var amount);
-
+            
+            var aresult =  int.TryParse(FishAmount, out int amount);
+            
             if (aresult)
             {
                 dailyOrder.OrderDetail += $"{FishName}={FishAmount};\n";
                 dailyOrder.OrderAmount += amount;
                 FishName = "";
                 FishAmount = "";
+
             }
             else
             {
                 FishAmount = "";
                 await ToastService.Error("輸入錯誤", "魚種與金額皆須填寫!!");
             }
+
         }
         else
         {
             FishName = "";
             FishAmount = "";
-            await ToastService.Error("輸入錯誤", "魚種與金額皆須填寫!!");
+            await ToastService.Error("輸入錯誤","魚種與金額皆須填寫!!");
         }
+
     }
 
     private async Task ClearFish()
     {
         dailyOrder.OrderAmount = 0;
         dailyOrder.OrderDetail = "";
+
     }
 
 }

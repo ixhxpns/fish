@@ -1,4 +1,4 @@
-﻿import {copy} from "../../modules/utility.js"
+﻿import { copy } from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 
@@ -17,7 +17,7 @@ export function init(id) {
 
             const title = el.getAttribute('data-bb-title')
             if (title) {
-                const tooltip = bootstrap.Tooltip.getOrCreateInstance(el, {title})
+                const tooltip = bootstrap.Tooltip.getOrCreateInstance(el, { title })
                 tooltip.show()
 
                 anchorLink.tooltip = tooltip

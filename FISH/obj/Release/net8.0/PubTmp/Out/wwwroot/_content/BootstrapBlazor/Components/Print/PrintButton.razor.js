@@ -1,17 +1,18 @@
-﻿import {getUID} from "../../modules/utility.js"
-import {showTooltip, removeTooltip} from "../Button/Button.razor.js"
+﻿import { getUID } from "../../modules/utility.js"
+import { showTooltip, removeTooltip } from "../Button/Button.razor.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 
 export function init(id) {
     const el = document.getElementById(id)
-    const p = {el}
+    const p = { el }
     Data.set(id, p)
 
     const href = el.getAttribute('href')
     if (href) {
         el.setAttribute('target', '_blank')
-    } else {
+    }
+    else {
         el.removeAttribute('target')
         EventHandler.on(el, 'click', () => {
             print(el)
@@ -48,7 +49,8 @@ const print = el => {
                         if (v1 === true) {
                             ele.setAttribute('checked', 'checked')
                         }
-                    } else {
+                    }
+                    else {
                         ele.value = vEl.value
                     }
                 }
@@ -61,7 +63,8 @@ const print = el => {
                 dialog.remove()
             }, 50)
         }
-    } else {
+    }
+    else {
         const handler = setTimeout(() => {
             clearTimeout(handler)
             window.print()

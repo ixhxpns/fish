@@ -1,5 +1,5 @@
-﻿export {getResponsive} from '../../modules/responsive.js'
-import {copy, drag, getDescribedElement, getOuterHeight, getWidth, isVisible} from '../../modules/utility.js'
+﻿export { getResponsive } from '../../modules/responsive.js'
+import { copy, drag, getDescribedElement, getOuterHeight, getWidth, isVisible } from '../../modules/utility.js'
 import '../../modules/browser.js'
 import Data from '../../modules/data.js'
 import EventHandler from '../../modules/event-handler.js'
@@ -64,7 +64,8 @@ export function reset(id) {
             });
 
             setTableDefaultWidth(table);
-        } else {
+        }
+        else {
             table.isExcel = shim.firstChild.classList.contains('table-excel')
             table.isDraggable = shim.firstChild.classList.contains('table-draggable')
             table.tables.push(shim.firstChild)
@@ -100,7 +101,8 @@ export function reset(id) {
         entries.forEach(entry => {
             if (entry.target === shim) {
                 setTableDefaultWidth(table);
-            } else if (entry.target === table.search) {
+            }
+            else if (entry.target === table.search) {
                 setBodyHeight(table)
             }
         })
@@ -149,13 +151,14 @@ export function load(id, method) {
         const loader = [...table.el.children].find(el => el.classList.contains('table-loader'));
         if (method === 'show') {
             loader.classList.add('show')
-        } else {
+        }
+        else {
             loader.classList.remove('show')
         }
     }
 }
 
-export function scroll(id, align, options = {behavior: 'smooth'}) {
+export function scroll(id, align, options = { behavior: 'smooth' }) {
     const element = document.getElementById(id);
     if (element) {
         const selectedRow = [...element.querySelectorAll('.form-check.is-checked')].pop();
@@ -169,7 +172,7 @@ export function scroll(id, align, options = {behavior: 'smooth'}) {
     }
 }
 
-export function scrollTo(id, x = 0, y = 0, options = {behavior: 'smooth'}) {
+export function scrollTo(id, x = 0, y = 0, options = { behavior: 'smooth' }) {
     const element = document.getElementById(id);
     if (element) {
         const scroll = element.querySelector('.scroll');
@@ -239,7 +242,8 @@ const setBodyHeight = table => {
     const card = children.find(i => i.classList.contains('table-card'))
     if (card) {
         card.style.height = `calc(100% - ${bodyHeight}px)`
-    } else {
+    }
+    else {
         const body = table.body || table.tables[0]
         if (bodyHeight > 0) {
             body.parentNode.style.height = `calc(100% - ${bodyHeight}px)`
@@ -271,7 +275,8 @@ const fixHeader = table => {
                 prev.classList.add('modified')
                 prev.style.right = margin
                 prev = prev.previousElementSibling
-            } else {
+            }
+            else {
                 break
             }
         }
@@ -481,7 +486,8 @@ const setResizeListener = table => {
                 const width = currentCol.style.width
                 if (width) {
                     colWidth = parseInt(width)
-                } else {
+                }
+                else {
                     colWidth = getWidth(col.closest('th'))
                 }
                 tableWidth = getWidth(col.closest('table'))
@@ -564,7 +570,8 @@ const autoFitColumnWidth = async (table, col) => {
     let rows = null;
     if (table.thead) {
         rows = table.body.querySelectorAll('table > tbody > tr');
-    } else {
+    }
+    else {
         rows = table.tables[0].querySelectorAll('table > tbody > tr');
     }
 
@@ -633,7 +640,8 @@ const setCopyColumn = table => {
             if (input) {
                 if (input.classList.contains('is-checked')) {
                     ret = 'True'
-                } else {
+                }
+                else {
                     ret = 'False'
                 }
                 return ret
@@ -641,7 +649,8 @@ const setCopyColumn = table => {
         }
         if (input) {
             ret = input.value
-        } else {
+        }
+        else {
             ret = td.textContent
         }
         return ret
@@ -653,9 +662,11 @@ const setCopyColumn = table => {
         let rows
         if (table.thead) {
             rows = table.body.querySelectorAll('table > tbody > tr')
-        } else if (el.querySelector('.table-fixed-column')) {
+        }
+        else if (el.querySelector('.table-fixed-column')) {
             rows = el.querySelectorAll('.table-scroll > .overflow-auto > table > tbody > tr')
-        } else {
+        }
+        else {
             rows = el.querySelectorAll('.table-scroll > table > tbody > tr')
         }
 
@@ -743,7 +754,8 @@ const setDraggable = table => {
             e.preventDefault()
             if (dragItem !== col) {
                 e.dataTransfer.dropEffect = 'move'
-            } else {
+            }
+            else {
                 e.dataTransfer.dropEffect = 'none'
             }
             return false
@@ -786,7 +798,7 @@ const saveColumnWidth = table => {
     const key = `bb-table-column-width-${tableName}`
     localStorage.setItem(key, JSON.stringify({
         "cols": cols.map(col => {
-            return {"width": col.closest('th').offsetWidth, "name": col.getAttribute('data-bb-field')}
+            return { "width": col.closest('th').offsetWidth, "name": col.getAttribute('data-bb-field') }
         }),
         "table": tableWidth
     }));
@@ -794,7 +806,7 @@ const saveColumnWidth = table => {
 
 const setTableDefaultWidth = table => {
     if (table.tables[0].checkVisibility()) {
-        const {scrollWidth, columnMinWidth} = table.options;
+        const { scrollWidth, columnMinWidth } = table.options;
         const tableWidth = [...table.tables[0].querySelectorAll('col')]
             .map(i => {
                 const colWidth = parseFloat(i.style.width);
@@ -807,7 +819,8 @@ const setTableDefaultWidth = table => {
             if (table.thead) {
                 table.tables[1].style.setProperty('width', `${tableWidth - scrollWidth}px`);
             }
-        } else {
+        }
+        else {
             table.tables[0].style.removeProperty('width');
             if (table.thead) {
                 table.tables[1].style.setProperty('width', `${table.tables[0].offsetWidth - scrollWidth}px`);

@@ -7,11 +7,11 @@ export function init(id, options) {
         return
     }
 
-    const {invoke, method, delay = 10} = options;
+    const { invoke, method, delay = 10 } = options;
     const carousel = {
         element: el,
         controls: el.querySelectorAll('[data-bs-slide]'),
-        carousel: new bootstrap.Carousel(el, {delay})
+        carousel: new bootstrap.Carousel(el, { delay })
     }
     Data.set(id, carousel)
 

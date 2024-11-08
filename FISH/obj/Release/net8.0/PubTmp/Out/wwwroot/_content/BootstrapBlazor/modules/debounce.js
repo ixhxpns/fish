@@ -23,10 +23,10 @@ export default {
                         // 手动激发冒泡事件
                         event.target.dispatchEvent(event)
                     }, waitMs)
-                } else {
+                }
+                else {
                     // 创建一个空的计时器，在倒计时期间内，接收的事件将全部进入到if中
-                    timer = setTimeout(() => {
-                    }, waitMs)
+                    timer = setTimeout(() => { }, waitMs)
                 }
             })
         }

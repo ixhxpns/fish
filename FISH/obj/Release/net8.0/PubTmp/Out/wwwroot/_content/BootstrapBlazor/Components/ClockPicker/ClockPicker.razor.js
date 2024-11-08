@@ -3,7 +3,7 @@ import Drag from "../../modules/drag.js"
 import EventHandler from "../../modules/event-handler.js"
 
 const setValue = (picker, point, value) => {
-    const {el, val} = picker;
+    const { el, val } = picker;
     const mode = el.getAttribute('data-bb-mode');
 
     if (mode === "Hour") {
@@ -12,9 +12,11 @@ const setValue = (picker, point, value) => {
         if (isPM) {
             val.Hour += 12;
         }
-    } else if (mode === "Minute") {
+    }
+    else if (mode === "Minute") {
         val.Minute = Math.floor(value * 5)
-    } else {
+    }
+    else {
         val.Second = Math.floor(value * 5)
     }
     setTime(picker);
@@ -22,7 +24,7 @@ const setValue = (picker, point, value) => {
 }
 
 const setTime = picker => {
-    const {el, val} = picker;
+    const { el, val } = picker;
     const mode = el.getAttribute('data-bb-mode');
     const hourEl = el.querySelector('.bb-time-text.hour');
     const minuteEl = el.querySelector('.bb-time-text.minute');
@@ -46,9 +48,11 @@ const setTime = picker => {
 const setPoint = (picker, point) => {
     if (point.parentNode.classList.contains('bb-clock-panel-hour')) {
         setDeg(point, picker.val.Hour, 30)
-    } else if (point.parentNode.classList.contains('bb-clock-panel-minute')) {
+    }
+    else if (point.parentNode.classList.contains('bb-clock-panel-minute')) {
         setDeg(point, picker.val.Minute, 6)
-    } else {
+    }
+    else {
         setDeg(point, picker.val.Second, 6)
     }
 }
@@ -59,7 +63,7 @@ const setDeg = (point, value, rate) => {
 }
 
 const initDrag = (picker, pointers) => {
-    const {el, invoke} = picker;
+    const { el, invoke } = picker;
     pointers.forEach(p => {
         Drag.drag(p,
             e => {
@@ -90,14 +94,14 @@ const initDrag = (picker, pointers) => {
 }
 
 export function init(id, options) {
-    const {invoke, hour, minute, second} = options;
+    const { invoke, hour, minute, second } = options;
     const el = document.getElementById(id);
     const picker = {
         el, invoke,
         val:
-            {
-                Hour: hour, Minute: minute, Second: second
-            }
+        {
+            Hour: hour, Minute: minute, Second: second
+        }
     };
     Data.set(id, picker);
 
@@ -124,10 +128,10 @@ export function init(id, options) {
 }
 
 export function update(id, options) {
-    const {hour, minute, second, version} = options;
+    const { hour, minute, second, version } = options;
     const picker = Data.get(id);
     if (picker) {
-        const {el, val} = picker;
+        const { el, val } = picker;
         if (version === 'NET6.0') {
             const pointers = [...el.querySelectorAll('.bb-clock-point')];
             pointers.forEach(p => {

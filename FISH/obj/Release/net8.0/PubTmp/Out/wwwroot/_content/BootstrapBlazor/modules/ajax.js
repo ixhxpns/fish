@@ -27,7 +27,8 @@
 
         const response = await fetch(option.url, init)
         json = await response.json()
-    } catch (e) {
+    }
+    catch (e) {
         console.info(e);
     }
     return json
