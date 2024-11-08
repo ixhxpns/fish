@@ -1,6 +1,6 @@
 ﻿import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
-import { createPopper, computePosition } from '../../modules/floating-ui.js'
+import {createPopper, computePosition} from '../../modules/floating-ui.js'
 
 export function init(id) {
     const el = document.getElementById(id)
@@ -30,7 +30,7 @@ export function init(id) {
         }
         bb.contextMenus.push(el)
 
-        const cm = { el, zone: getZone(el) }
+        const cm = {el, zone: getZone(el)}
         Data.set(id, cm)
     }
 }
@@ -64,7 +64,7 @@ export function dispose(id) {
             cm.popper()
         }
 
-        window.bb = window.bb || { contextMenus: [] }
+        window.bb = window.bb || {contextMenus: []}
         const index = bb.contextMenus.indexOf(el)
         if (index > -1) {
             bb.contextMenus.splice(index, 1)

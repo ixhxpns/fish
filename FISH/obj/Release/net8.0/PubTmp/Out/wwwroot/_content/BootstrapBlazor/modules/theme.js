@@ -1,3 +1,3 @@
-﻿import { getPreferredTheme, setTheme } from "./utility.js"
+﻿import {getPreferredTheme, setTheme} from "./utility.js"
 
 setTheme(getPreferredTheme(), false)

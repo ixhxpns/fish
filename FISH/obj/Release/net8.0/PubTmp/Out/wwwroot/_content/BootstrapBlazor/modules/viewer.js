@@ -19,7 +19,7 @@ export default {
                 store: {
                     scale: 1
                 },
-                options: { max: null, min: 0.195 }
+                options: {max: null, min: 0.195}
             },
             ...config || {}
         }
@@ -28,7 +28,7 @@ export default {
             viewer.index = index
             viewer.originX = 0
             viewer.originY = 0
-            viewer.pt = { top: 0, left: 0 }
+            viewer.pt = {top: 0, left: 0}
             viewer.updateImage(viewer.index)
 
             // // 消除 body 滚动条
@@ -232,12 +232,12 @@ export default {
                 const getDistance = (start, stop) => Math.hypot(stop.x - start.x, stop.y - start.y)
 
                 const zoom = getDistance({
-                    x: events.pageX,
-                    y: events.pageY
-                }, {
-                    x: events2.pageX,
-                    y: events2.pageY
-                }) /
+                        x: events.pageX,
+                        y: events.pageY
+                    }, {
+                        x: events2.pageX,
+                        y: events2.pageY
+                    }) /
                     getDistance({
                         x: viewer.store.pageX,
                         y: viewer.store.pageY

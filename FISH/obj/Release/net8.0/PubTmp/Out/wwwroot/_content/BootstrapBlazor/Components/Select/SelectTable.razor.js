@@ -1,4 +1,4 @@
-﻿import { getWidth } from "../../modules/utility.js"
+﻿import {getWidth} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import Popover from "../../modules/base-popover.js"
 
@@ -59,6 +59,7 @@ export function close(id) {
         data.popover.popover.hide();
     }
 }
+
 export function dispose(id) {
     const data = Data.get(id)
     Data.remove(id)

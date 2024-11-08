@@ -4,8 +4,7 @@
         const pop = bootstrap.Popover.getInstance(el)
         if (pop) {
             pop._config.content = content
-        }
-        else {
+        } else {
             new bootstrap.Popover(el, {
                 content,
                 title: () => {

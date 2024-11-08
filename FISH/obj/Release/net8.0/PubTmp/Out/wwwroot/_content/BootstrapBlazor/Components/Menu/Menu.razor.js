@@ -1,4 +1,4 @@
-﻿import { getTargetElement, getTransitionDelayDurationFromElement } from "../../modules/utility.js"
+﻿import {getTargetElement, getTransitionDelayDurationFromElement} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 
 export function init(id) {
@@ -40,8 +40,7 @@ export function init(id) {
                     clearTimeout(handler)
                     collapse.dispose()
                 }, duration)
-            }
-            else {
+            } else {
                 collapse.dispose()
             }
         }
@@ -62,12 +61,10 @@ export function update(id) {
                 if (!collapse._isShown()) {
                     collapse.show()
                 }
-            }
-            else {
+            } else {
                 menu.disposeCollapse(collapse, el)
             }
-        }
-        else if (expandAll) {
+        } else if (expandAll) {
             new bootstrap.Collapse(target, {
                 toggle: true
             });
@@ -103,7 +100,7 @@ const scrollElementToView = element => {
         var links = [...element.querySelectorAll('.nav-link.active')]
         if (links.length > 0) {
             var link = links.pop()
-            link.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+            link.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'start'});
         }
     }
 }

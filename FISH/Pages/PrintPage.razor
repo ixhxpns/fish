@@ -7,10 +7,10 @@
 @inject NavigationManager NavigationManager
 <h1>訂單列表</h1>
 
-@if (String.IsNullOrEmpty(NotPriority))
+@if (string.IsNullOrEmpty(NotPriority))
 {
     <h3>
-        沒有權限 ! 請登入管理帳號  
+        沒有權限 ! 請登入管理帳號
     </h3>
 }
 else
@@ -25,7 +25,7 @@ else
     <div class="row g-3">
         <div class="col-12 col-sm-auto">
             <label class="col-12 col-form-label">訂單日期</label>
-            <DateTimePicker @bind-Value="@SearchStartDate" />
+            <DateTimePicker @bind-Value="@SearchStartDate"/>
         </div>
         <div class="col-12 col-sm-auto">
             <label class="col-12 col-form-label">交貨方法</label>
@@ -38,7 +38,7 @@ else
         </div>
 
         <div class="col-12 col-sm-auto align-self-end">
-            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk" />
+            <Button OnClick="@OnSearchAsync" Text="查詢" Icon="fa-solid fa-floppy-disk"/>
         </div>
     </div>
 
@@ -47,7 +47,7 @@ else
                ShowExportButton="false" ShowExportCsvButton="true" ShowExportPdfButton="true" AllowResizing="true" TableSize="TableSize.Compact">
             <TableColumns>
                 <TableColumn @bind-Field="@context.Id" Text="訂單資訊" TextWrap="true" Width="190">
-                 <Template Context="v">
+                    <Template Context="v">
                         <div class="d-flex disabled" style="text-wrap: wrap;">
                             <div class="ps-2">
                                 <div>@v.Value</div>
@@ -57,8 +57,8 @@ else
                                 <pre>交貨方式:@Order_DeliveryMethod(v.Value)</pre>
                                 <div>交貨點:@Order_DeliveryAddress(v.Value)</div>
                             </div>
-                      </div>
-                 </Template>
+                        </div>
+                    </Template>
                     @* <EditTemplate Context="row">
                         <div class="d-flex disabled">
                             <div class="ps-2">
@@ -72,9 +72,9 @@ else
                         </div>
                     </EditTemplate> *@
                 </TableColumn>
-                <TableColumn @bind-Field="@context.Id" Text="訂單時間(創單時間/交貨時間/自取時間)"  Width="171" >
-                   <Template Context="v">
-                       <div class="d-flex disabled">
+                <TableColumn @bind-Field="@context.Id" Text="訂單時間(創單時間/交貨時間/自取時間)" Width="171">
+                    <Template Context="v">
+                        <div class="d-flex disabled">
                             <div class="ps-2">
                                 <pre>創單時間:@Order_OrderCreateDateTime(v.Value)</pre>
                                 <pre>交貨時間:@Order_DeliveryTime(v.Value)</pre>
@@ -82,7 +82,7 @@ else
                                 <pre>付款方式:@Order_PricingMethod(v.Value)</pre>
                             </div>
                         </div>
-                   </Template>
+                    </Template>
                     @*  <EditTemplate Context="row">
                         <div class="d-flex disabled">
                             <div class="ps-2">
@@ -94,7 +94,7 @@ else
                         </div>
                     </EditTemplate> *@
                 </TableColumn>
-                <TableColumn @bind-Field="@context.Id" Text="訂單明細"  Width="120">
+                <TableColumn @bind-Field="@context.Id" Text="訂單明細" Width="120">
                     <Template Context="row">
                         <div class="d-flex disabled">
                             <div class="ps-2">
@@ -102,12 +102,12 @@ else
                                 {
                                     <div>@item</div>
                                 }
-                                <hr />
+                                <hr/>
                                 <div>
                                     <pre><h4>合計 @Order_OrderAmount(row!.Value)</h4></pre>
                                 </div>
-                                <hr />
-                           
+                                <hr/>
+
                             </div>
                         </div>
                     </Template>
@@ -117,36 +117,35 @@ else
 
     </div>
 }
+
 @code {
-    [Parameter]
-    public string LoginEmail { get; set; }
-    [Parameter]
-    public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
-    [Parameter]
-    public DateTime SearchStartDate { get; set; }
+    [Parameter] public string LoginEmail { get; set; }
+    [Parameter] public IEnumerable<Orders>? OrdersList { get; set; } = new List<Orders>();
+    [Parameter] public DateTime SearchStartDate { get; set; }
 
     public DateTime SearchEndDate { get; set; }
     private string? DeliveryMethod { get; set; } = "全部";
 
     private int runi { get; set; } = 0;
-    [Inject]
-    [NotNull]
-    private ToastService? ToastService { get; set; }
-    private Task OnBeforeExport() => ToastService.Information("導出Pdf", "導出PDF文件");
-    private Task OnAfterDownload(string fileName) => ToastService.Success("下载 Pdf", fileName, true);
-    private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
-    [Parameter]
-    public string? NotPriority { get; set; } = "";
-    [Inject]
-    [NotNull]
-    private IJSRuntime? JSRuntime { get; set; }
-    [Inject]
-    [NotNull]
-    private IHtml2Pdf? Html2PdfService { get; set; }
+    [Inject] [NotNull] private ToastService? ToastService { get; set; }
 
-    [Inject]
-    [NotNull]
-    private DownloadService? DownloadService { get; set; }
+    private Task OnBeforeExport()
+    {
+        return ToastService.Information("導出Pdf", "導出PDF文件");
+    }
+
+    private Task OnAfterDownload(string fileName)
+    {
+        return ToastService.Success("下载 Pdf", fileName, true);
+    }
+
+    private static string PdfFileName => $"Pdf-{DateTime.Now}.pdf";
+    [Parameter] public string? NotPriority { get; set; } = "";
+    [Inject] [NotNull] private IJSRuntime? JSRuntime { get; set; }
+    [Inject] [NotNull] private IHtml2Pdf? Html2PdfService { get; set; }
+
+    [Inject] [NotNull] private DownloadService? DownloadService { get; set; }
+
     public async Task GoBack()
     {
         NavigationManager.NavigateTo("/morders");
@@ -170,23 +169,21 @@ else
                 OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
                 if (DeliveryMethod == "全部")
                 {
-
                 }
                 else
                 {
                     OrdersList = orders = orders?.Where(x => x.DeliveryMethod == DeliveryMethod).ToList();
                 }
-
             }
-            else{
+            else
+            {
                 NotPriority = null;
             }
         }
-
     }
+
     public async Task OnSearchAsync()
     {
-
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
 
         if (authState.User.Identity.IsAuthenticated)
@@ -203,7 +200,6 @@ else
                 OrdersList = orders = orders?.Where(x => x.OrderCreateDateTime >= SearchStartDate && x.OrderCreateDateTime <= SearchEndDate).ToList();
                 if (DeliveryMethod == "全部")
                 {
-
                 }
                 else
                 {
@@ -213,10 +209,11 @@ else
         }
         else
         {
-
         }
+
         StateHasChanged();
     }
+
     private async Task OnExportAsync()
     {
         // 通过脚本 getHtml 获得 table 表格 Html
@@ -249,68 +246,78 @@ else
             // 提示文件下载成功
             await ToastService.Success("Pdf 導出", "通过表格 Id 導出 Pdf 文件成功");
         }
-
     }
+
     public string? Order_Name(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.Name;
         return bResult;
     }
+
     public string? Order_ContactNumber(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.ContactNumber;
         return bResult;
     }
+
     public string? Order_DeliveryMethod(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.DeliveryMethod;
         return bResult;
     }
+
     public string? Order_DeliveryTime(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.DeliveryTime.ToString();
         return bResult;
     }
+
     public string? Order_DeliveryAddress(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.DeliveryAddress;
         return bResult;
     }
+
     public string? Order_OrderType(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.OrderType;
         return bResult;
     }
+
     public string? Order_OrderCreateDateTime(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.OrderCreateDateTime.ToString();
         return bResult;
     }
+
     public string? Order_GetMySelfDateTime(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.GetMySelfDateTime.ToString();
         return bResult;
     }
+
     public string? Order_OrderAmount(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.OrderAmount.ToString();
         return bResult;
     }
+
     public string? Order_PricingMethod(int Id)
     {
         var aResult = OrdersList?.Where(y => y.Id == Id).FirstOrDefault();
         var bResult = aResult?.PricingMethod.ToString();
         return bResult;
     }
+
     public IEnumerable<string> Order_Detail(int Id)
     {
         var aResult = OrdersList.Where(y => y.Id == Id).FirstOrDefault();
@@ -321,6 +328,7 @@ else
             sResult.Add(aResult.OrderDetail);
             return sResult;
         }
+
         foreach (var item in bResult)
         {
             sResult.Add($"{item.Split("=")[0]} -> ${item.Split("=")[1]}");
@@ -328,4 +336,5 @@ else
 
         return sResult;
     }
+
 }

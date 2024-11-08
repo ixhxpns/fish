@@ -1,4 +1,4 @@
-﻿import { getDescribedElement, getDescribedOwner, hackPopover, isDisabled } from "./utility.js"
+﻿import {getDescribedElement, getDescribedOwner, hackPopover, isDisabled} from "./utility.js"
 import EventHandler from "./event-handler.js"
 
 const Popover = {
@@ -61,8 +61,7 @@ const Popover = {
         popover.toggle = () => {
             if (popover.isShown()) {
                 popover.popover.hide();
-            }
-            else {
+            } else {
                 popover.popover.show();
             }
         }
@@ -164,8 +163,7 @@ const Popover = {
                 observer.observe(popover.toggleMenu)
                 popover.observer = observer
             }
-        }
-        else {
+        } else {
             const show = e => {
                 if (popover.isDisabled()) {
                     e.preventDefault()
@@ -195,8 +193,7 @@ const Popover = {
             EventHandler.off(popover.el, 'hide.bs.popover')
             EventHandler.off(popover.el, 'click', '.dropdown-toggle')
             EventHandler.off(popover.toggleMenu, 'click', '.dropdown-item')
-        }
-        else {
+        } else {
             EventHandler.off(popover.el, 'show.bs.dropdown')
         }
     }

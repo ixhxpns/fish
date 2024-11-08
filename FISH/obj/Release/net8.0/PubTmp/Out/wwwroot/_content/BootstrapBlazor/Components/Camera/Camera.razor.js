@@ -1,7 +1,7 @@
 ﻿import Data from "../../modules/data.js"
 
 const openDevice = camera => {
-    if(camera.video) {
+    if (camera.video) {
         return
     }
 
@@ -38,8 +38,8 @@ const play = (camera, option = {}) => {
     const constrains = {
         ...{
             video: {
-                width: { ideal: camera.video.videoWidth },
-                height: { ideal: camera.video.videoHeight },
+                width: {ideal: camera.video.videoWidth},
+                height: {ideal: camera.video.videoHeight},
                 facingMode: "environment"
             },
             audio: false
@@ -47,7 +47,7 @@ const play = (camera, option = {}) => {
         ...option
     }
     if (camera.video.deviceId) {
-        constrains.video.deviceId = { exact: camera.video.deviceId }
+        constrains.video.deviceId = {exact: camera.video.deviceId}
     }
     navigator.mediaDevices.getUserMedia(constrains).then(stream => {
         camera.video.element = camera.el.querySelector('video')
@@ -66,10 +66,10 @@ export function init(id, invoke) {
     if (el === null) {
         return
     }
-    const camera = { el, invoke }
+    const camera = {el, invoke}
     Data.set(id, camera)
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(s => {
+    navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(s => {
         navigator.mediaDevices.enumerateDevices().then(videoInputDevices => {
             const videoInputs = videoInputDevices.filter(device => {
                 return device.kind === 'videoinput'
@@ -90,12 +90,11 @@ export function update(id) {
     // handler switch device
     if (camera.video) {
         const deviceId = camera.el.getAttribute("data-device-id")
-        if (camera.video.deviceId !== deviceId){
+        if (camera.video.deviceId !== deviceId) {
             stopDevice(camera)
             openDevice(camera)
         }
-    }
-    else {
+    } else {
         const autoStart = camera.el.getAttribute("data-auto-start") || false
         if (autoStart) {
             openDevice(camera)
@@ -153,8 +152,8 @@ export function resize(id, width, height) {
 
     const constrains = {
         video: {
-            width: { exact: width },
-            height: { exact: height }
+            width: {exact: width},
+            height: {exact: height}
         }
     }
 
@@ -176,7 +175,7 @@ export function dispose(id) {
 const drawImage = camera => {
     const quality = camera.el.getAttribute("data-capture-quality") || 0.9;
     const captureJpeg = camera.el.getAttribute("data-capture-jpeg") || false;
-    const { videoWidth, videoHeight } = camera.video
+    const {videoWidth, videoHeight} = camera.video
     const canvas = camera.el.querySelector('canvas')
     canvas.width = videoWidth
     canvas.height = videoHeight
@@ -185,8 +184,7 @@ const drawImage = camera => {
     let url = "";
     if (captureJpeg) {
         url = canvas.toDataURL("image/jpeg", quality);
-    }
-    else {
+    } else {
         url = canvas.toDataURL()
     }
     return url

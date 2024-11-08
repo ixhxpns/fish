@@ -13,8 +13,7 @@ export function init(id, invoke, callback) {
                     const ribbonBody = e.target.closest('.ribbon-body');
                     if (ribbonBody) {
                         invoke.invokeMethodAsync(callback)
-                    }
-                    else {
+                    } else {
                         const ribbonTab = e.target.closest('.ribbon-tab')
                         if (ribbonTab !== el) {
                             invoke.invokeMethodAsync(callback)

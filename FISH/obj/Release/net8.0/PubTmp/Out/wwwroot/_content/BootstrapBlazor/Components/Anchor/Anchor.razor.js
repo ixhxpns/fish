@@ -1,4 +1,4 @@
-﻿import { getDescribedElement, getOverflowParent } from "../../modules/utility.js"
+﻿import {getDescribedElement, getOverflowParent} from "../../modules/utility.js"
 import EventHandler from "../../modules/event-handler.js"
 
 export function init(id) {

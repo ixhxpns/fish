@@ -13,8 +13,7 @@ export function handleKeyUp(id, invoke, enter, enterCallbackMethod, esc, escCall
         EventHandler.on(el, 'keyup', e => {
             if (enter && e.key === 'Enter') {
                 invoke.invokeMethodAsync(enterCallbackMethod, el.value)
-            }
-            else if (esc && e.key === 'Escape') {
+            } else if (esc && e.key === 'Escape') {
                 invoke.invokeMethodAsync(escCallbackMethod)
             }
         })

@@ -2,8 +2,7 @@
     const el = document.getElementById(id)
     if (show) {
         el.classList.add('show')
-    }
-    else {
+    } else {
         el.classList.remove('show')
     }
 }

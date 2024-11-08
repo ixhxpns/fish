@@ -1,4 +1,4 @@
-﻿import { getHeight } from "../../modules/utility.js"
+﻿import {getHeight} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 
 export function init(id) {
