@@ -8,7 +8,7 @@ export function init(id) {
     }
     const button = el.querySelector('.btn-slide')
     const list = el.querySelector('.slide-list')
-    const slide = {el, button, list}
+    const slide = { el, button, list }
     Data.set(id, slide);
     reset(slide)
 
@@ -49,7 +49,7 @@ export function dispose(id) {
 }
 
 const reset = slide => {
-    const {el, button, list} = slide
+    const { el, button, list } = slide
 
     list.classList.add('invisible')
     list.removeAttribute('style')
@@ -61,7 +61,8 @@ const reset = slide => {
     }
     if (list.classList.contains('is-horizontal')) {
         list.style.setProperty('--bb-slide-list-width-collapsed', '0')
-    } else {
+    }
+    else {
         list.style.setProperty('--bb-slide-list-height-collapsed', '0')
     }
 
@@ -82,19 +83,24 @@ const setVerticalPlacement = (list, placement, offset, buttonHeight, buttonWidth
     if (placement === 'auto' || placement === 'top' || placement === 'top-start') {
         list.style.setProperty('bottom', `${buttonHeight + offset}px`)
         list.style.setProperty('left', '0')
-    } else if (placement === 'top-center') {
+    }
+    else if (placement === 'top-center') {
         list.style.setProperty('bottom', `${buttonHeight + offset}px`)
         list.style.setProperty('left', `${(buttonWidth - listWidth) / 2}px`)
-    } else if (placement === 'top-end') {
+    }
+    else if (placement === 'top-end') {
         list.style.setProperty('bottom', `${buttonHeight + offset}px`)
         list.style.setProperty('right', '0')
-    } else if (placement === 'bottom' || placement === 'bottom-start') {
+    }
+    else if (placement === 'bottom' || placement === 'bottom-start') {
         list.style.setProperty('top', `${buttonHeight + offset}px`)
         list.style.setProperty('left', '0')
-    } else if (placement === 'bottom' || placement === 'bottom-center') {
+    }
+    else if (placement === 'bottom' || placement === 'bottom-center') {
         list.style.setProperty('top', `${buttonHeight + offset}px`)
         list.style.setProperty('left', `${(buttonWidth - listWidth) / 2}px`)
-    } else if (placement === 'bottom' || placement === 'bottom-end') {
+    }
+    else if (placement === 'bottom' || placement === 'bottom-end') {
         list.style.setProperty('top', `${buttonHeight + offset}px`)
         list.style.setProperty('right', '0')
     }
@@ -104,19 +110,24 @@ const setHorizontalPlacement = (list, placement, offset, buttonHeight, buttonWid
     if (placement === 'left') {
         list.style.setProperty('top', `${(buttonHeight - listHeight) / 2}px`)
         list.style.setProperty('right', `${buttonWidth + offset}px`)
-    } else if (placement === 'left-start') {
+    }
+    else if (placement === 'left-start') {
         list.style.setProperty('top', '0')
         list.style.setProperty('right', `${buttonWidth + offset}px`)
-    } else if (placement === 'left-end') {
+    }
+    else if (placement === 'left-end') {
         list.style.setProperty('bottom', '0')
         list.style.setProperty('right', `${buttonWidth + offset}px`)
-    } else if (placement === 'right') {
+    }
+    else if (placement === 'right') {
         list.style.setProperty('top', `${(buttonHeight - listHeight) / 2}px`)
         list.style.setProperty('left', `${buttonWidth + offset}px`)
-    } else if (placement === 'right-start') {
+    }
+    else if (placement === 'right-start') {
         list.style.setProperty('top', '0')
         list.style.setProperty('left', `${buttonWidth + offset}px`)
-    } else if (placement === 'right-end') {
+    }
+    else if (placement === 'right-end') {
         list.style.setProperty('bottom', '0')
         list.style.setProperty('left', `${buttonWidth + offset}px`)
     }

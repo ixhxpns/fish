@@ -79,7 +79,7 @@ $bb-plus-button-border-width: 3px;
 
 // Button SlideButton
 $bb-slide-list-bg: #fff;
-$bb-slide-list-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+$bb-slide-list-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 $bb-slide-list-border: var(--bs-border-width) solid var(--bs-border-color-translucent);
 $bb-slide-list-width: 260px;
 $bb-slide-list-height: 306px;
@@ -102,21 +102,21 @@ $bb-calendar-title-font-size: 1rem;
 $bb-calendar-toolbar-border: 1px solid var(--bs-border-color);
 $bb-calendar-toolbar-font-size: .75rem;
 $bb-calendar-toolbar-padding: 7px 15px;
-$bb-calendar-toolbar-hover-bg: rgba(var(--bs-body-color-rgb), .08);
+$bb-calendar-toolbar-hover-bg: rgba(var(--bs-body-color-rgb),.08);
 $bb-calendar-toolbar-hover-color: #409eff;
 $bb-calendar-toolbar-hover-border-color: var(--bs-border-color);
-$bb-calendar-toolbar-focus-bg: rgba(var(--bs-body-color-rgb), .1);
+$bb-calendar-toolbar-focus-bg: rgba(var(--bs-body-color-rgb),.1);
 $bb-calendar-toolbar-focus-color: #409eff;
 $bb-calendar-toolbar-focus-border-color: var(--bs-border-color);
 $bb-calendar-toolbar-active-color: #409eff;
 $bb-calendar-toolbar-active-border-color: var(--bs-border-color);
 $bb-calendar-cell-padding: 8px;
 $bb-calendar-cell-height: 85px;
-$bb-calendar-cell-hover-bg: rgba(var(--bs-body-color-rgb), .08);
+$bb-calendar-cell-hover-bg: rgba(var(--bs-body-color-rgb),.08);
 $bb-calendar-header-padding: 12px 0;
 $bb-calendar-today-color: #409eff;
 $bb-calendar-selected-color: #409eff;
-$bb-calendar-selected-bg: rgba(var(--bs-body-color-rgb), .12);
+$bb-calendar-selected-bg: rgba(var(--bs-body-color-rgb),.12);
 $bb-calendar-week-header-border-bottom: 2px solid var(--bs-border-color);
 $bb-calendar-week-header-min-width: 52px;
 $bb-calendar-week-header-padding: 4px;
@@ -127,7 +127,7 @@ $bb-calendar-week-cell-padding: 1rem 0;
 // Captcha
 $bb-captcha-refresh-padding-left: .5rem;
 $bb-captcha-radius: 2px;
-$bb-captcha-footer-bg: rgba(var(--bs-body-color-rgb), .03);
+$bb-captcha-footer-bg: rgba(var(--bs-body-color-rgb),.03);
 $bb-captcha-footer-color: var(--bs-body-color);
 $bb-captcha-footer-margin-top: 0.5rem;
 $bb-captcha-footer-height: 40px;
@@ -156,7 +156,7 @@ $bb-carousel-slide-width: 36px;
 $bb-carousel-slide-height: 36px;
 $bb-carousel-slide-border-radisu: 50%;
 $bb-carousel-slide-border: solid 1px #e9ecef;
-$bb-carousel-slide-bg: rgba(31, 45, 61, .5);
+$bb-carousel-slide-bg: rgba(31,45,61,.5);
 $bb-carousel-slide-color: #fff;
 
 // Circle
@@ -194,27 +194,27 @@ $bb-cm-icon-min-width: 14px;
 $bb-cm-icon-min-height: 14px;
 
 @mixin color_409eff {
-  color: #409eff
+    color: #409eff
 }
 
 @mixin pick-side {
-  .picker-panel-sidebar {
-    width: 110px;
-    border-right: 1px solid #e4e4e4;
-    padding: 6px 0;
-    overflow: auto;
+    .picker-panel-sidebar {
+        width: 110px;
+        border-right: 1px solid #e4e4e4;
+        padding: 6px 0;
+        overflow: auto;
 
-    .sidebar-item {
-      line-height: 28px;
-      padding: 0 12px;
-      cursor: pointer;
-      transition: color .3s linear;
+        .sidebar-item {
+            line-height: 28px;
+            padding: 0 12px;
+            cursor: pointer;
+            transition: color .3s linear;
 
-      &:hover {
-        @include color_409eff
-      }
+            &:hover {
+                @include color_409eff
+            }
+        }
     }
-  }
 }
 
 // DateTimePicker
@@ -233,9 +233,9 @@ $bb-divider-text-padding: 0 20px;
 
 // Drawer
 $bb-drawer-zindex: 1050;
-$bb-drawer-body-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12);
+$bb-drawer-body-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);
 $bb-drawer-body-padding: 1rem;
-$bb-drawer-bar-bg: rgba(var(--bs-body-color-rgb), .12);
+$bb-drawer-bar-bg: rgba(var(--bs-body-color-rgb),.12);
 $bb-drawer-bar-hover-color: #409eff;
 $bb-drawer-bar-drag-color: #0969da;
 $bb-drawer-backdrop-bg: rgba(0, 0, 0, 0.5);
@@ -248,9 +248,9 @@ $bb-widget-badge-font-size: 9px;
 $bb-widget-badge-top: 5px;
 $bb-widget-header-padding: 0.5rem 0.625rem;
 $bb-widget-body-max-height: 300px;
-$bb-widget-item-odd-bg: rgba(var(--bs-body-color-rgb), .12);
+$bb-widget-item-odd-bg: rgba(var(--bs-body-color-rgb),.12);
 $bb-widget-footer-padding: 0.5rem 0.625rem;
-$bb-widget-footer-bg: rgba(var(--bs-body-color-rgb), .22);
+$bb-widget-footer-bg: rgba(var(--bs-body-color-rgb),.22);
 
 // Empty
 $bb-empty-image-margin: 1rem 0 .5rem 0;
@@ -269,7 +269,7 @@ $bb-flip-clock-item-height: 90px;
 $bb-flip-clock-item-box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
 $bb-flip-clock-number-color: #ccc;
 $bb-flip-clock-number-bg: #333;
-$bb-flip-clock-number-line-bg: rgba(0, 0, 0, .4);
+$bb-flip-clock-number-line-bg: rgba(0,0,0,.4);
 $bb-flip-clock-number-line-height: 1px;
 
 // FileIcon
@@ -290,7 +290,7 @@ $bb-footer-bg: rgba(var(--bs-body-color-rgb), .12);
 $bb-footer-padding: .5rem 1rem;
 
 // GoTop
-$bb-gotop-bg: rgba(255, 255, 255, .5);
+$bb-gotop-bg: rgba(255,255,255,.5);
 $bb-gotop-widht: 20px;
 $bb-gotop-height: 20px;
 $bb-gotop-border-radius: 50%;
@@ -367,7 +367,7 @@ $bb-lv-header-bg: #dee2e6;
 $bb-lv-border-color: var(--bs-border-color);
 $bb-lv-item-trans: border .3s linear;
 $bb-lv-item-border-hover-color: #409eff;
-$bb-lv-item-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+$bb-lv-item-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 $bb-lv-body-padding: 1rem 0 0 1rem;
 $bb-lv-body-item-margin: 0 1rem 1rem 0;
 $bb-lv-footer-padding: 1rem;
@@ -464,19 +464,19 @@ $bb-row-label-width: 120px;
 $bb-row-control-padding: 7px;
 
 // Scroll
-$bb-scroll-thumb-bg: rgba(var(--bs-emphasis-color-rgb), 0.2);
-$bb-scroll-thumb-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.3);
-$bb-scroll-thumb-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.5);
-$bb-scroll-track-bg: rgba(var(--bs-emphasis-color-rgb), 0.08);
+$bb-scroll-thumb-bg: rgba(var(--bs-emphasis-color-rgb),0.2);
+$bb-scroll-thumb-hover-bg: rgba(var(--bs-emphasis-color-rgb),0.3);
+$bb-scroll-thumb-active-bg: rgba(var(--bs-emphasis-color-rgb),0.5);
+$bb-scroll-track-bg: rgba(var(--bs-emphasis-color-rgb),0.08);
 
 // Segmented
 $bb-segmented-padding: 2px;
-$bb-segmented-bg: rgba(var(--bs-body-color-rgb), .06);
+$bb-segmented-bg: rgba(var(--bs-body-color-rgb),.06);
 $bb-segmented-item-padding: 0 11px;
 $bb-segmented-item-height: 28px;
 $bb-segmented-item-font-size: 0.875rem;
-$bb-segmented-item-hover-bg: rgba(var(--bs-body-color-rgb), .12);
-$bb-segmented-item-active-bg: rgba(var(--bs-body-color-rgb), .08);
+$bb-segmented-item-hover-bg: rgba(var(--bs-body-color-rgb),.12);
+$bb-segmented-item-active-bg: rgba(var(--bs-body-color-rgb),.08);
 $bb-segmented-item-border-radius: 6px;
 $bb-segmented-item-lg-height: 36px;
 $bb-segmented-item-lg-padding: 0 11px;
@@ -649,8 +649,8 @@ $bb-tree-icon-width: 22px;
 $bb-tree-check-margin: 0 4px;
 $bb-tree-node-padding: .25rem .5rem;
 $bb-tree-item-active-color: var(--bs-body-color);
-$bb-tree-item-active-bg: rgba(var(--bs-body-color-rgb), .08);
-$bb-tree-item-hover-bg: rgba(var(--bs-body-color-rgb), .12);
+$bb-tree-item-active-bg: rgba(var(--bs-body-color-rgb),.08);
+$bb-tree-item-hover-bg: rgba(var(--bs-body-color-rgb),.12);
 $bb-tree-icon-margin-right: .5rem;
 $bb-tree-search-height: 43px;
 $bb-tree-disabled-opacity: .5;
@@ -663,7 +663,7 @@ $bb-upload-body-list-item-body-padding: 0 5px;
 $bb-upload-body-list-item-hover-color: #409eff;
 $bb-upload-card-width: 240px;
 $bb-upload-card-height: 280px;
-$bb-upload-card-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+$bb-upload-card-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 $bb-upload-card-padding: 1rem;
 $bb-upload-card-margin: 0 1rem 1rem 0;
 $bb-upload-card-item-width: 168px;

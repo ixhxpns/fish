@@ -25,7 +25,7 @@ export function init(id, invoke, callback) {
     //阻止默认的处理方式(阻止下拉滑动的效果)
     hw.preventHandler = e => e.preventDefault()
     //passive 参数不能省略，用来兼容ios和android
-    hw.preventEventOption = {passive: false}
+    hw.preventEventOption = { passive: false }
     //当页面高度超过设备可见高度时，阻止掉touchmove事件。
     document.body.addEventListener('touchmove', hw.preventHandler, hw.preventEventOption);
 }
@@ -51,7 +51,7 @@ const createCanvas = (hw, op) => {
     const canvas = hw.canvas
     const clearEl = hw.clearEl
     const saveEl = hw.saveEl
-    const cxt = canvas.getContext("2d", {willReadFrequently: true})
+    const cxt = canvas.getContext("2d", { willReadFrequently: true })
 
     cxt.fillStyle = op.background
     cxt.fillRect(0, 0, canvas.width, canvas.height)

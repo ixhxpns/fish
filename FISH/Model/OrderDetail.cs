@@ -1,5 +1,8 @@
-﻿namespace FISH.Model;
-
-public class OrderDetail
+﻿namespace FISH.Model
 {
+    public class OrderDetail
+    {
+
+
+    }
 }

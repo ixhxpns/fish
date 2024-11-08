@@ -103,7 +103,8 @@ export function getPosition() {
         navigator.geolocation.getCurrentPosition(position => {
             pos = updateLocaltion(position)
         }, handleLocationError)
-    } else {
+    }
+    else {
         console.warn("HTML5 Geolocation is not supported in your browser")
     }
     return new Promise((resolve, reject) => {
@@ -114,7 +115,8 @@ export function getPosition() {
                     resolve(pos)
                 }
             }, 20)
-        } else {
+        }
+        else {
             resolve(null)
         }
     })
@@ -137,7 +139,8 @@ export function watchPosition(invoke, callback) {
         }, handleLocationError, {
             maximumAge: 20000
         })
-    } else {
+    }
+    else {
         console.warn("HTML5 Geolocation is not supported in your browser")
     }
     return id

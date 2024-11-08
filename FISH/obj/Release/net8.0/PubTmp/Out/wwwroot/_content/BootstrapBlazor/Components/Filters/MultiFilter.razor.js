@@ -7,7 +7,7 @@ export function init(id, options) {
         return;
     }
 
-    const {invoker, callback, alwaysTrigger} = options;
+    const { invoker, callback, alwaysTrigger } = options;
     const filterEl = el.closest('.filter-icon');
     if (filterEl) {
         const popoverEl = filterEl.querySelector('i[data-bs-toggle="bb.dropdown"]');

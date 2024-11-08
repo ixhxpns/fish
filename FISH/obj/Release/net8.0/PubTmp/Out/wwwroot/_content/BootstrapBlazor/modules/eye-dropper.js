@@ -8,7 +8,8 @@
     try {
         const result = await eyeDropper.open();
         return result.sRGBHex;
-    } catch {
+    }
+    catch {
         return null
     }
 }

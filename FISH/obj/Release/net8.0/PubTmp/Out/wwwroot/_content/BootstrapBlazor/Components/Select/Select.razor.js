@@ -1,4 +1,4 @@
-﻿import {getHeight, getInnerHeight, getTransitionDelayDurationFromElement} from "../../modules/utility.js"
+﻿import { getHeight, getInnerHeight, getTransitionDelayDurationFromElement } from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 import Popover from "../../modules/base-popover.js"
@@ -45,7 +45,8 @@ export function init(id, invoke, method) {
                         scrollToActive(popover.toggleMenu, activeItem)
                         e.preventDefault()
                         e.stopPropagation()
-                    } else if (e.key === "ArrowDown") {
+                    }
+                    else if (e.key === "ArrowDown") {
                         do {
                             activeItem = activeItem.nextElementSibling
                         }
@@ -125,7 +126,8 @@ function scrollToActive(el, activeItem) {
         const margin = itemHeight * index - (innerHeight - itemHeight) / 2;
         if (margin >= 0) {
             el.scrollTo(0, margin);
-        } else {
+        }
+        else {
             el.scrollTo(0, 0);
         }
     }

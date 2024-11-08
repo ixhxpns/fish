@@ -2,7 +2,7 @@
     const el = document.getElementById(id)
 
     if (el) {
-        const tip = bootstrap.Tooltip.getOrCreateInstance(el, {customClass: 'is-invalid', title})
+        const tip = bootstrap.Tooltip.getOrCreateInstance(el, { customClass: 'is-invalid', title })
         if (!tip._isShown()) {
             if (title !== tip._config.title) {
                 tip._config.title = title

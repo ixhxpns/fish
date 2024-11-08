@@ -5,9 +5,11 @@
     if ((!window.Notification && !navigator.mozNotification) || !window.FileReader || !window.history.pushState) {
         console.warn("Your browser does not support all features of this API")
         granted = false
-    } else if (Notification.permission === "granted") {
+    }
+    else if (Notification.permission === "granted") {
         granted = true
-    } else if (requestPermission && (Notification.permission !== 'denied' || Notification.permission === "default")) {
+    }
+    else if (requestPermission && (Notification.permission !== 'denied' || Notification.permission === "default")) {
         async = true
         Notification.requestPermission(permission => {
             granted = permission === "granted"
@@ -22,7 +24,8 @@
                     resolve(granted)
                 }
             }, 20)
-        } else {
+        }
+        else {
             resolve(granted || false)
         }
     })
@@ -30,7 +33,7 @@
 
 export async function notify(invoke, callback, model) {
     let ret = false
-    if (await check(true)) {
+    if(await check(true)) {
         if (model.title !== null) {
             const options = {}
             if (model.message !== null) options.body = model.message.substring(0, 250)

@@ -11,21 +11,21 @@
         <section>
             <form id="account" method="post">
                 <h2>使用本地帳戶登入。</h2>
-                <hr/>
+                <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                     <label asp-for="Input.Email" class="form-label">電子郵件</label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="密碼"/>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="密碼" />
                     <label asp-for="Input.Password" class="form-label">密碼</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe"/>
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
@@ -49,17 +49,14 @@
     <div class="col-md-6 col-md-offset-2">
         <section>
             <h3>使用其他服務登入。</h3>
-            <hr/>
+            <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            目前沒有配置外部驗證服務。請參考這篇
-                            <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                                文章
-                                以設定此 ASP.NET 應用程式以支援透過外部服務登入
-                            </a>。
+                            目前沒有配置外部驗證服務。請參考這篇 <a href="https://go.microsoft.com/fwlink/?LinkID=532715">文章
+                            以設定此 ASP.NET 應用程式以支援透過外部服務登入</a>。
                         </p>
                     </div>
                 }
@@ -82,5 +79,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial"/>
+    <partial name="_ValidationScriptsPartial" />
 }

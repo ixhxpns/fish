@@ -1,4 +1,4 @@
-﻿import {drag} from "../../modules/utility.js"
+﻿import { drag } from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 
@@ -23,7 +23,7 @@ export function init(id) {
         dialog.originY = 0;
         dialog.dialogWidth = 0;
         dialog.dialogHeight = 0;
-        dialog.pt = {top: 0, left: 0};
+        dialog.pt = { top: 0, left: 0 };
 
         dialog.header = el.querySelector('.modal-header')
         drag(dialog.header,

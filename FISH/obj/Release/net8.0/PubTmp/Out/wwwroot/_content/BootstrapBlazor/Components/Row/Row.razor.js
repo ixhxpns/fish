@@ -18,7 +18,8 @@
             })
             newRow.appendChild(ele)
             div.appendChild(newRow)
-        } else {
+        }
+        else {
             isLabel = ele.tagName === 'LABEL'
 
             // 如果有 Label 表示在表单内
@@ -30,7 +31,8 @@
                     })
                 }
                 groupCell.appendChild(ele)
-            } else {
+            }
+            else {
                 isLabel = false
                 if (groupCell == null) {
                     groupCell = document.createElement('div')
@@ -41,7 +43,8 @@
                 groupCell.appendChild(ele)
                 if (target === null) {
                     div.appendChild(groupCell)
-                } else {
+                }
+                else {
                     target.appendChild(groupCell)
                 }
                 groupCell = null

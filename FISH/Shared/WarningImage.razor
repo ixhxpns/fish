@@ -2,15 +2,17 @@
 @using System.Diagnostics.CodeAnalysis
 @inject NavigationManager NavigationManager
 
-<ImageViewer Url="@aUrl" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover"/>
-<ImageViewer Url="@aUrl2" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover"/>
-<ImageViewer Url="@aUrl3" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover"/>
+<ImageViewer Url="@aUrl" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover" />
+<ImageViewer Url="@aUrl2" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover" />
+<ImageViewer Url="@aUrl3" FitMode="BootstrapBlazor.Components.ObjectFitMode.Cover" />
 
 @code {
-    [Parameter] public string aUrl { get; set; }
-    [Parameter] public string aUrl2 { get; set; }
-    [Parameter] public string aUrl3 { get; set; }
-
+    [Parameter]
+    public string aUrl { get; set; }
+    [Parameter]
+    public string aUrl2 { get; set; }
+    [Parameter]
+    public string aUrl3 { get; set; }
     public enum ObjectFitMode
     {
         Fill,
@@ -21,7 +23,8 @@
     }
 
 
-    [Parameter] public ObjectFitMode FitMode { get; set; } = ObjectFitMode.Cover;
+    [Parameter]
+    public ObjectFitMode FitMode { get; set; } = ObjectFitMode.Cover;
 
     // protected override void BuildRenderTree(RenderTreeBuilder builder)
     // {
@@ -37,6 +40,6 @@
         aUrl = $"./images/warnning/IMG_0170.JPG";
         aUrl2 = $"./images/warnning/IMG_0171.JPG";
         aUrl3 = $"./images/warnning/IMG_0172.JPG";
-    }
 
+    }
 }

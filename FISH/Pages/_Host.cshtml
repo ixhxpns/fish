@@ -6,40 +6,40 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <base href="~/"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <base href="~/" />
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="icons/Logo256.ico"/>
-    <link rel="apple-touch-icon" href="icons/Logo256.ico"/>
+    <link rel="icon" type="image/png" href="icons/Logo256.ico" />
+    <link rel="apple-touch-icon" href="icons/Logo256.ico" />
 
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="icon" type="image/png" href="/images/Logo.png"/>
-    <link rel="stylesheet" href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css"/>
-    <link rel="stylesheet" href="_content/BootstrapBlazor/css/motronic.min.css"/>
+    <link rel="stylesheet" href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css" />
+    <link rel="stylesheet" href="_content/BootstrapBlazor/css/motronic.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet"/>
-    <link href="FISH.styles.css" rel="stylesheet"/>
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="FISH.styles.css" rel="stylesheet" />
     <script src="js/publicscript.js"></script>
-    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered"/>
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
-<component type="typeof(App)" render-mode="ServerPrerendered"/>
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
 
-<div id="blazor-error-ui">
-    <environment include="Staging,Production">
-        發生錯誤。此應用程式可能不再響應，直到重新加載。
-    </environment>
-    <environment include="Development">
-        發生了未處理的異常。請查看瀏覽器開發者工具以獲取詳情。
-    </environment>
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
-<script>
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            發生錯誤。此應用程式可能不再響應，直到重新加載。
+        </environment>
+        <environment include="Development">
+            發生了未處理的異常。請查看瀏覽器開發者工具以獲取詳情。
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('js/service-worker.js')
                 .then(function (registration) {
@@ -49,10 +49,10 @@
                 });
         }
     </script>
-<script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script>
+    <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script>
 
-<script src="_framework/blazor.web.js"></script>
-<script src="_framework/blazor.server.js"></script>
+    <script src="_framework/blazor.web.js"></script>
+    <script src="_framework/blazor.server.js"></script>
 </body>
 
 

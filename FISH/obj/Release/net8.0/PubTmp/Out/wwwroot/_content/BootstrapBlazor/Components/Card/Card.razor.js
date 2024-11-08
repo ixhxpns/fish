@@ -17,7 +17,7 @@ export function init(id, invoke, callback) {
         e.stopPropagation()
         invoke.invokeMethodAsync(callback, false)
     })
-    Data.set(id, {el, invoke, callback})
+    Data.set(id, { el, invoke, callback })
 }
 
 export function dispose(id) {

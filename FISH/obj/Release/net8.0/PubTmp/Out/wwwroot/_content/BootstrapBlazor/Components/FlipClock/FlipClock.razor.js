@@ -25,20 +25,22 @@ export function init(id, options) {
         if (options.viewMode === "Count") {
             counter += 1000;
             now = new Date(new Date().getTimezoneOffset() * 60 * 1000 - options.startValue + counter);
-        } else if (countDown) {
+        }
+        else if (countDown) {
             counter += 1000;
             now = new Date(new Date().getTimezoneOffset() * 60 * 1000 + options.startValue - counter);
-        } else {
+        }
+        else {
             now = new Date();
         }
-        return {hours: now.getHours(), minutes: now.getMinutes(), seconds: now.getSeconds()};
+        return { hours: now.getHours(), minutes: now.getMinutes(), seconds: now.getSeconds() };
     }
 
     let lastHour;
     let lastMinute;
     let lastSecond;
     const go = () => {
-        const {hours, minutes, seconds} = getDate();
+        const { hours, minutes, seconds } = getDate();
 
         if (lastSecond !== seconds) {
             lastSecond = seconds;
@@ -52,7 +54,7 @@ export function init(id, options) {
             lastHour = hours;
             setTime(listHour, hours, countDown);
         }
-        return {hours, minutes, seconds}
+        return { hours, minutes, seconds }
     }
 
     let start = void 0
@@ -77,7 +79,7 @@ export function init(id, options) {
 
     requestAnimationFrame(flip);
 
-    Data.set(id, {el, options});
+    Data.set(id, { el, options });
 }
 
 export function dispose(id) {
@@ -118,7 +120,8 @@ const setFlip = (flip, index, countDown) => {
         if (index >= items.length) {
             index = 0;
         }
-    } else {
+    }
+    else {
         index--;
         if (index < 0) {
             index += items.length;
