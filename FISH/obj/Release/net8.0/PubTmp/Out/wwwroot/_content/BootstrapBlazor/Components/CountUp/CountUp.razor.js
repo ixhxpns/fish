@@ -1,4 +1,4 @@
-﻿import { CountUp } from "../../lib/countUp/countUp.min.js"
+﻿import {CountUp} from "../../lib/countUp/countUp.min.js"
 import Data from "../../modules/data.js"
 
 export function init(id, invoke, val, callback, option) {

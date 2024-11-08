@@ -7,7 +7,7 @@ export function init(id) {
         return
     }
     const preventHandler = e => e.preventDefault()
-    const upload = { el, preventHandler }
+    const upload = {el, preventHandler}
     Data.set(id, upload)
 
     const inputFile = el.querySelector('[type="file"]')
@@ -32,7 +32,7 @@ export function init(id) {
             }
 
             inputFile.files = e.dataTransfer.files
-            const event = new Event('change', { bubbles: true })
+            const event = new Event('change', {bubbles: true})
             inputFile.dispatchEvent(event)
         } catch (e) {
             console.error(e)
@@ -41,7 +41,7 @@ export function init(id) {
 
     EventHandler.on(el, 'paste', e => {
         inputFile.files = e.clipboardData.files
-        const event = new Event('change', { bubbles: true })
+        const event = new Event('change', {bubbles: true})
         inputFile.dispatchEvent(event)
     })
 

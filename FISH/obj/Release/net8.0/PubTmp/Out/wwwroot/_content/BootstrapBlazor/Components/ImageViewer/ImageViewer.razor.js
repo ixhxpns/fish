@@ -20,7 +20,7 @@ export function init(id, options) {
         return
     }
 
-    const { url, preList, index, async, previewerId, intersection } = options;
+    const {url, preList, index, async, previewerId, intersection} = options;
     const viewer = {
         element: el,
         img: el.querySelector('img'),
@@ -43,8 +43,7 @@ export function init(id, options) {
             }
         });
         observer.observe(viewer.img);
-    }
-    else if (viewer.img && viewer.async) {
+    } else if (viewer.img && viewer.async) {
         viewer.img.setAttribute('src', url)
     }
 

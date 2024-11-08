@@ -2,7 +2,7 @@
 import EventHandler from "./event-handler.js"
 
 export function init(id, invoke, interval, callback) {
-    const m = { invoke, interval, callback, mousePosition: {}, count: 1000 }
+    const m = {invoke, interval, callback, mousePosition: {}, count: 1000}
     Data.set(id, m)
 
     m.fnMouseHandler = e => {

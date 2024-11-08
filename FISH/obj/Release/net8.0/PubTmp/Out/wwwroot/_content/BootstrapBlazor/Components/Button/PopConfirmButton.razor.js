@@ -1,5 +1,5 @@
-﻿import { getDescribedElement, getDescribedOwner, hackPopover, isDisabled } from "../../modules/utility.js"
-import { showTooltip, removeTooltip } from "./Button.razor.js"
+﻿import {getDescribedElement, getDescribedOwner, hackPopover, isDisabled} from "../../modules/utility.js"
+import {showTooltip, removeTooltip} from "./Button.razor.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 

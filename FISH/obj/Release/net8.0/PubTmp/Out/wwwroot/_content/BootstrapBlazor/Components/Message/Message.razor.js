@@ -3,7 +3,7 @@ import EventHandler from "../../modules/event-handler.js"
 
 export function init(id, invoke, callback) {
     const el = document.getElementById(id)
-    const msg = { el, invoke, callback, items: [] }
+    const msg = {el, invoke, callback, items: []}
     Data.set(id, msg)
 }
 
@@ -14,7 +14,7 @@ export function show(id, msgId) {
         return
     }
 
-    const msgItem = { el, animationId: null }
+    const msgItem = {el, animationId: null}
     msg.items.push(msgItem)
     const autoHide = el.getAttribute('data-bb-autohide') === 'true';
 
@@ -30,8 +30,7 @@ export function show(id, msgId) {
             const elapsed = ts - start;
             if (elapsed > delay) {
                 close();
-            }
-            else {
+            } else {
                 msgItem.animationId = requestAnimationFrame(autoCloseAnimation);
             }
         }
@@ -60,7 +59,7 @@ export function show(id, msgId) {
 
         // trigger on-dismiss event callback
         const alert = e.delegateTarget.closest('.alert');
-        if(alert) {
+        if (alert) {
             const alertId = alert.getAttribute('id');
             msg.invoke.invokeMethodAsync('Dismiss', alertId);
         }

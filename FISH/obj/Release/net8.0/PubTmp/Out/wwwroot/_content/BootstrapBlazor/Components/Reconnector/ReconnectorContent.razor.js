@@ -4,8 +4,7 @@
         if (com) {
             if (com.classList.length === 0 || com.classList.contains('components-reconnect-hide')) {
                 return
-            }
-            else {
+            } else {
                 clearInterval(reconnectHandler)
 
                 async function attemptReload() {
@@ -15,9 +14,10 @@
                             clearInterval(reloadHandler)
                         }
                         location.reload()
+                    } catch {
                     }
-                    catch { }
                 }
+
                 await attemptReload()
                 const reloadHandler = setInterval(attemptReload, interval)
             }

@@ -65,15 +65,15 @@
 @* <Card class="card-body">
     <BodyTemplate>
         <div class="card-body">
-            <h5 class="card-title">­q³æ  <u class="text-black">@Order.Id</u></h5>
+            <h5 class="card-title">ï¿½qï¿½ï¿½  <u class="text-black">@Order.Id</u></h5>
             <h6 class="card-subtitle text-muted"><u class="text-black">@Order.Name</u></h6>
             <h6 class="card-subtitle"><u class="text-black">@Order.ContactNumber</u></h6>
-            <p class="card-text text-body-tertiary">­q³æ¤é´Á  <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
-            <p class="card-text text-body-tertiary">¥æ³f¤èªk  <u class="text-black">@Order.DeliveryMethod</u></p>
-            <p class="card-text text-body-tertiary">¥æ³f¦a§}  <u class="text-black">@Order.DeliveryAddress</u></p>
-            <p class="card-text text-body-tertiary">¦¬´Ú¤è¦¡  <u class="text-black">@Order.PricingMethod</u></p>
-            <p class="card-text text-body-tertiary">Á`ª÷ÃB  $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
-            <p class="card-text text-body-tertiary">­q³æ©ú²Ó</p>
+            <p class="card-text text-body-tertiary">ï¿½qï¿½ï¿½ï¿½ï¿½  <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
+            <p class="card-text text-body-tertiary">ï¿½ï¿½fï¿½ï¿½k  <u class="text-black">@Order.DeliveryMethod</u></p>
+            <p class="card-text text-body-tertiary">ï¿½ï¿½fï¿½aï¿½}  <u class="text-black">@Order.DeliveryAddress</u></p>
+            <p class="card-text text-body-tertiary">ï¿½ï¿½ï¿½Ú¤è¦¡  <u class="text-black">@Order.PricingMethod</u></p>
+            <p class="card-text text-body-tertiary">ï¿½`ï¿½ï¿½ï¿½B  $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
+            <p class="card-text text-body-tertiary">ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½</p>
             <div class="order-details">
 
                 @{
@@ -101,45 +101,46 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">­q³æ  <u class="text-black">@Order.Id</u></h5>
-        <h6 class="card-subtitle text-muted"><u class="text-black">@Order.Name</u></h6>
-        <h6 class="card-subtitle"><u class="text-black">@Order.ContactNumber</u></h6>
-        <p class="card-text text-body-tertiary">­q³æ¤é´Á  <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
-        <p class="card-text text-body-tertiary">¥æ³f¤èªk   <u class="text-black">@Order.DeliveryMethod</u></p>
-        <p class="card-text text-body-tertiary">¥æ³f¦a§}   <u class="text-black">@Order.DeliveryAddress</u></p>
-        <p class="card-text text-body-tertiary">¦¬´Ú¤è¦¡   <u class="text-black">@Order.PricingMethod</u></p>
-        <p class="card-text text-body-tertiary">Á`ª÷ÃB  $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
-        <p class="card-text text-body-tertiary">­q³æ©ú²Ó</p>
+        <h5 class="card-title">ï¿½qï¿½ï¿½ <u class="text-black">@Order.Id</u></h5>
+        <h6 class="card-subtitle text-muted">
+            <u class="text-black">@Order.Name</u>
+        </h6>
+        <h6 class="card-subtitle">
+            <u class="text-black">@Order.ContactNumber</u>
+        </h6>
+        <p class="card-text text-body-tertiary">ï¿½qï¿½ï¿½ï¿½ï¿½ <u class="text-black">@Order.OrderCreateDateTime.ToString("yyyy-MM-dd")</u></p>
+        <p class="card-text text-body-tertiary">ï¿½ï¿½fï¿½ï¿½k <u class="text-black">@Order.DeliveryMethod</u></p>
+        <p class="card-text text-body-tertiary">ï¿½ï¿½fï¿½aï¿½} <u class="text-black">@Order.DeliveryAddress</u></p>
+        <p class="card-text text-body-tertiary">ï¿½ï¿½ï¿½Ú¤è¦¡ <u class="text-black">@Order.PricingMethod</u></p>
+        <p class="card-text text-body-tertiary">ï¿½`ï¿½ï¿½ï¿½B $ <u class="text-black">@Order.OrderAmount.ToString()</u></p>
+        <p class="card-text text-body-tertiary">ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½</p>
         <div class="order-details">
-            
-                @{
 
-                    var count = Order_Detail(Order.OrderDetail).Count();
-                    var half = (count + 1) / 2;
-                    <div class="details-columns">
-                        @foreach (var item in @Order_Detail(Order.OrderDetail).Take(half))
-                        {
+            @{
+                var count = Order_Detail(Order.OrderDetail).Count();
+                var half = (count + 1) / 2;
+                <div class="details-columns">
+                    @foreach (var item in @Order_Detail(Order.OrderDetail).Take(half))
+                    {
                         <div class="detail-text text-nowrap">@item</div>
-                        }
-            </div>
-            <div class="details-columns">
-                        @foreach (var item in @Order_Detail(Order.OrderDetail).Skip(half))
-                        {
+                    }
+                </div>
+                <div class="details-columns">
+                    @foreach (var item in @Order_Detail(Order.OrderDetail).Skip(half))
+                    {
                         <div class="detail-text text-nowrap">@item</div>
-                        }
-            </div>
-            <p>_</p>
-                }
+                    }
+                </div>
+                <p>_</p>}
         </div>
     </div>
-</div> 
+</div>
 
 @code {
-    [Parameter]
-    public Orders Order { get; set; }
+    [Parameter] public Orders Order { get; set; }
+
     public IEnumerable<string> Order_Detail(string detail)
     {
-
         var bResult = detail.ToString().Replace("\n", "").Split(";", StringSplitOptions.RemoveEmptyEntries);
         var sResult = new List<string>();
 
@@ -150,4 +151,5 @@
 
         return sResult;
     }
+
 }

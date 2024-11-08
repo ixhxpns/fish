@@ -88,7 +88,7 @@ function getElementEvents(element) {
 
 function bootstrapHandler(element, fn) {
     return function handler(event) {
-        hydrateObj(event, { delegateTarget: element })
+        hydrateObj(event, {delegateTarget: element})
 
         if (handler.oneOff) {
             EventHandler.off(element, event.type, fn)
@@ -102,13 +102,13 @@ function bootstrapDelegationHandler(element, selector, fn) {
     return function handler(event) {
         const domElements = element.querySelectorAll(selector)
 
-        for (let { target } = event; target && target !== this; target = target.parentNode) {
+        for (let {target} = event; target && target !== this; target = target.parentNode) {
             for (const domElement of domElements) {
                 if (domElement !== target) {
                     continue
                 }
 
-                hydrateObj(event, { delegateTarget: target })
+                hydrateObj(event, {delegateTarget: target})
 
                 if (handler.oneOff) {
                     EventHandler.off(element, event.type, selector, fn)
@@ -280,7 +280,7 @@ const EventHandler = {
             defaultPrevented = jQueryEvent.isDefaultPrevented()
         }
 
-        let evt = new Event(event, { bubbles, cancelable: true })
+        let evt = new Event(event, {bubbles, cancelable: true})
         evt = hydrateObj(evt, args)
 
         if (defaultPrevented) {

@@ -1,4 +1,4 @@
-﻿import { isDisabled, getTransitionDelayDurationFromElement } from "../../modules/utility.js"
+﻿import {isDisabled, getTransitionDelayDurationFromElement} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import Popover from "../../modules/base-popover.js"
 import EventHandler from "../../modules/event-handler.js"

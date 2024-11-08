@@ -1,4 +1,4 @@
-﻿import { copy } from "../../modules/utility.js"
+﻿import {copy} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import EventHandler from "../../modules/event-handler.js"
 
@@ -22,8 +22,7 @@ export function init(id) {
         dialog.tooltip = bootstrap.Tooltip.getInstance(element)
         if (dialog.tooltip) {
             dialog.reset(element)
-        }
-        else {
+        } else {
             dialog.show(element)
         }
     }
@@ -51,8 +50,7 @@ export function init(id) {
                 dialog.tooltip.dispose();
                 dialog.show()
             }, 10)
-        }
-        else {
+        } else {
             dialog.show(element)
         }
     }

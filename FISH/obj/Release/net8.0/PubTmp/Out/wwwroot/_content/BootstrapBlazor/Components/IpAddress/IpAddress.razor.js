@@ -19,7 +19,7 @@ export function init(id) {
         return
     }
 
-    const ip = { el, prevValues: [0, 0, 0, 0] }
+    const ip = {el, prevValues: [0, 0, 0, 0]}
     Data.set(id, ip)
 
     el.querySelectorAll(".ipv4-cell").forEach((c, index) => {
@@ -29,37 +29,31 @@ export function init(id) {
                 ip.prevValues[index] = c.value
                 if (c.value === "0") {
                     c.value = ""
-                }
-                else if (c.selectionStart !== c.selectionEnd) {
+                } else if (c.selectionStart !== c.selectionEnd) {
                     const v = c.value.substring(c.selectionStart, c.selectionEnd)
                     const newVal = c.value.replace(v, e.key)
                     const num = Number(newVal)
                     if (num > 255) {
                         e.preventDefault()
                     }
-                }
-                else {
+                } else {
                     const num = Number(c.value + e.key)
                     if (num > 255) {
                         e.preventDefault()
                     }
                 }
-            }
-            else if (e.key === '.') {
+            } else if (e.key === '.') {
                 e.preventDefault()
                 const c = selectCell(el, index + 1)
                 c.select()
-            }
-            else if (e.key === 'Backspace') {
+            } else if (e.key === 'Backspace') {
                 if (c.value.length === 0) {
                     c.value = "0"
                     selectCell(el, index - 1)
                 }
-            }
-            else if (e.key === 'Delete' || e.key === 'Tab' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            } else if (e.key === 'Delete' || e.key === 'Tab' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
 
-            }
-            else {
+            } else {
                 e.preventDefault()
             }
         })

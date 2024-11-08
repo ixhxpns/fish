@@ -34,7 +34,7 @@ function copyTextUsingDOM(str) {
     tempElem.setAttribute("style", "-webkit-user-select: text !important");
     let spanParent = tempElem;
     if (tempElem.attachShadow) {
-        spanParent = tempElem.attachShadow({ mode: "open" });
+        spanParent = tempElem.attachShadow({mode: "open"});
     }
     const span = document.createElement("span");
     span.innerText = str;
@@ -50,8 +50,7 @@ function copyTextUsingDOM(str) {
 const copy = (text = '') => {
     if (navigator.clipboard) {
         navigator.clipboard.writeText(text)
-    }
-    else {
+    } else {
         copyTextUsingDOM(text)
     }
 }
@@ -318,8 +317,7 @@ const autoAdd = (fileList) => {
         const extension = item.match(/\.(\w+)(\?|$)/)[1];
         if (extension === 'js') {
             return addScript(item);
-        }
-        else if (extension === 'css') {
+        } else if (extension === 'css') {
             return addLink(item);
         }
     });
@@ -336,8 +334,7 @@ const autoRemove = (fileList) => {
         const extension = item.match(/\.(\w+)(\?|$)/)[1];
         if (extension === 'js') {
             return removeScript(item);
-        }
-        else if (extension === 'css') {
+        } else if (extension === 'css') {
             return removeLink(item);
         }
     });
@@ -362,8 +359,7 @@ const insertAfter = (element, newEl) => {
         if (parentNode) {
             if (element.nextElementSibling) {
                 parentNode.insertBefore(newEl, element.nextElementSibling)
-            }
-            else {
+            } else {
                 parentNode.appendChild(newEl)
             }
         }
@@ -494,7 +490,7 @@ const getTransitionDurationFromElement = (element) => {
     }
 
     // Get transition-duration of the element
-    let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
+    let {transitionDuration, transitionDelay} = window.getComputedStyle(element)
 
     const floatTransitionDuration = Number.parseFloat(transitionDuration)
     const floatTransitionDelay = Number.parseFloat(transitionDelay)
@@ -616,8 +612,7 @@ const debounce = function (fn, duration = 200, callback = null) {
             handler = setTimeout(() => {
                 handler = null
             }, duration)
-        }
-        else {
+        } else {
             handler = setTimeout(() => {
                 fn.apply(this, arguments)
             }, duration)
@@ -691,8 +686,7 @@ export function getHtml(options) {
     let el = null;
     if (options.id) {
         el = document.getElementById(options.id);
-    }
-    else if (options.selector) {
+    } else if (options.selector) {
         el = document.querySelector(options.selector);
     }
     if (el) {
@@ -726,8 +720,7 @@ export function getAutoThemeValue() {
 export function setTheme(theme, sync) {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
-    }
-    else {
+    } else {
         document.documentElement.setAttribute('data-bs-theme', theme);
     }
 
@@ -769,8 +762,7 @@ export function switchTheme(theme, x = 0, y = 0, sync = true) {
         document.startViewTransition(() => {
             setTheme(theme, sync);
         });
-    }
-    else {
+    } else {
         setTheme(theme, sync);
     }
 }

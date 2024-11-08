@@ -1,4 +1,4 @@
-﻿import { getHeight, getInnerHeight } from "../../modules/utility.js"
+﻿import {getHeight, getInnerHeight} from "../../modules/utility.js"
 import Data from "../../modules/data.js"
 import Drag from "../../modules/drag.js"
 import EventHandler from "../../modules/event-handler.js"
@@ -8,7 +8,7 @@ export function init(id) {
     if (el === null) {
         return
     }
-    const split = { el }
+    const split = {el}
     Data.set(id, split)
 
     let splitWidth = el.offsetWidth
@@ -29,8 +29,7 @@ export function init(id) {
             if (isVertical) {
                 originY = e.clientY || e.touches[0].clientY
                 curVal = splitLeft.offsetHeight * 100 / splitHeight
-            }
-            else {
+            } else {
                 originX = e.clientX || e.touches[0].clientX
                 curVal = splitLeft.offsetWidth * 100 / splitWidth
             }
@@ -40,8 +39,7 @@ export function init(id) {
             if (isVertical) {
                 const eventY = e.clientY || e.changedTouches[0].clientY
                 newVal = Math.ceil((eventY - originY) * 100 / splitHeight) + curVal
-            }
-            else {
+            } else {
                 const eventX = e.clientX || e.changedTouches[0].clientX
                 newVal = Math.ceil((eventX - originX) * 100 / splitWidth) + curVal
             }

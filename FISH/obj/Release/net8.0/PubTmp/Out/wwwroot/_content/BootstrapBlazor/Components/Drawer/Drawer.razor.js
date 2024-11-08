@@ -16,8 +16,7 @@ const initDrag = el => {
             if (isVertical) {
                 height = parseInt(getComputedStyle(drawerBody).getPropertyValue('--bb-drawer-height'))
                 originY = e.clientY || e.touches[0].clientY
-            }
-            else {
+            } else {
                 width = parseInt(getComputedStyle(drawerBody).getPropertyValue('--bb-drawer-width'))
                 originX = e.clientX || e.touches[0].clientX
             }
@@ -29,23 +28,20 @@ const initDrag = el => {
                 let newHeight = 0;
                 if (drawerBody.classList.contains("bottom")) {
                     newHeight = height - moveY
-                }
-                else {
+                } else {
                     newHeight = height + moveY
                 }
                 const maxHeight = window.innerHeight;
                 if (newHeight > 100 && newHeight < maxHeight) {
                     drawerBody.style.setProperty('--bb-drawer-height', `${newHeight}px`)
                 }
-            }
-            else {
+            } else {
                 const eventX = e.clientX || (e.touches.length || e.touches.length > 0 && e.touches[0].clientX)
                 const moveX = eventX - originX
                 let newWidth = 0;
                 if (drawerBody.classList.contains("right")) {
                     newWidth = width - moveX
-                }
-                else {
+                } else {
                     newWidth = width + moveX
                 }
                 const maxWidth = window.innerWidth;
@@ -73,7 +69,7 @@ export function init(id) {
 
 export function execute(id, open) {
     const dw = Data.get(id)
-    const { el, body } = dw
+    const {el, body} = dw
     const drawerBody = el.querySelector('.drawer-body')
 
     let start = void 0
@@ -84,8 +80,7 @@ export function execute(id, open) {
         const elapsed = ts - start;
         if (elapsed < 20) {
             requestAnimationFrame(show);
-        }
-        else {
+        } else {
             drawerBody.classList.add('show')
         }
     }
@@ -97,8 +92,7 @@ export function execute(id, open) {
         const elapsed = ts - start;
         if (elapsed < 320) {
             requestAnimationFrame(hide);
-        }
-        else {
+        } else {
             el.classList.remove('show')
             body.classList.remove('overflow-hidden')
         }
@@ -108,8 +102,7 @@ export function execute(id, open) {
         el.classList.add('show')
         body.classList.add('overflow-hidden')
         requestAnimationFrame(show)
-    }
-    else {
+    } else {
         if (el.classList.contains('show')) {
             drawerBody.classList.remove('show')
             requestAnimationFrame(hide)
@@ -121,7 +114,7 @@ export function dispose(id) {
     const dw = Data.get(id)
     Data.remove(id);
 
-    const { el, body } = dw
+    const {el, body} = dw
     if (el.classList.contains('show')) {
         el.classList.remove('show')
 
