@@ -1,0 +1,109 @@
+pipeline {
+    agent any
+    
+    environment {
+        def BUILDVERSION = sh(script: "echo `date +%Y%m%d%H%M%S`", returnStdout: true).trim()
+    }
+
+    tools {
+        dotnetsdk ".net 6.0.301"
+    }
+
+    stages {
+        stage('环境验证') {
+            steps {
+                sh "dotnet --version"
+            }
+        }
+        stage('拉取源码') {
+            steps {
+                echo '开始拉取代码'
+                git branch: 'publish', credentialsId: '260b288d-5229-4ee9-b2eb-73f1cde84c77', url: 'http://xxx.xxx.xxx.xxx:8929/gitlab-instance-08a71c21/dotnet-sample.git'
+                echo '拉取代码完成'
+            }
+        }
+        stage('还原项目') {
+            steps {
+                dir('./src') {
+                    echo '开始还原项目'
+                    sh "dotnet restore"
+                    echo '还原项目结束'
+                }
+            }
+        }
+        stage('生成项目') {
+            steps{
+                dir('./src') {
+                    echo '删除上次生成结果文件夹'
+                    sh 'rm -rf ./suncere-ui'
+                    sh "rm -rf $WORKSPACE/publish"
+                    sh "mkdir -p $WORKSPACE/publish"
+                    echo '开始生成项目'
+                    sh "dotnet publish -c:Release --runtime linux-x64 -o $WORKSPACE/publish"
+                    sh "mv ./DotNetJenkinsSample/start.sh $WORKSPACE/publish/"
+                    echo '生成项目结束'
+                }
+            }
+        }
+        stage('部署项目') {
+            steps{
+                echo '开始部署'
+                sh 'pwd'
+                sh "zip -r $WORKSPACE/publish.zip ./publish"
+                sshPublisher(
+                    publishers: [
+                      sshPublisherDesc(
+                        configName: 'test', 
+                        transfers: [
+                          sshTransfer(
+                            cleanRemote: false, 
+                            excludes: '', 
+                            execCommand: """
+                                #! /bin/sh
+                                echo "开始备份"
+                                if [ -d "/home/website/dotnet/" ];then
+                                zip -r "/home/website/backup/dotnet-${BUILDVERSION}.zip" /home/website/dotnet
+                                rm -rf /home/website/dotnet
+                                fi
+                                echo "备份结束"
+                                echo "开始部署"
+                                if [ -d "/home/temp/publish/" ];then
+                                rm -rf /home/temp/publish
+                                fi
+                                cd /home/temp
+                                unzip ./publish.zip
+                                mv /home/temp/publish /home/website/dotnet
+                                rm -rf /home/temp/publish.zip
+                                cd /home/website/dotnet
+                                kill -9 `ps -ef | grep DotNetJenkinsSample | grep -v grep | awk '{print $2}'`
+								nohup dotnet DotNetJenkinsSample.dll --urls=Http://*:8003 & > nohup.out
+                                echo "部署结束"
+                            """, 
+                            execTimeout: 0, 
+                            verbose: true,
+                            flatten: false, 
+                            makeEmptyDirs: false, 
+                            noDefaultExcludes: false, 
+                            patternSeparator: '[, ]+', 
+                            remoteDirectory: "/temp",
+                            remoteDirectorySDF: false,
+                            removePrefix: "", 
+                            sourceFiles: "publish.zip"
+                          )
+                        ],
+                        usePromotionTimestamp: false, 
+                        useWorkspaceInPromotion: false, 
+                        verbose: true
+                      )
+                    ]
+                  )
+                echo '部署结束'
+            }
+        }
+    }
+}
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/weixin_37648525/article/details/127217742

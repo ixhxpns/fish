@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  FTP_HOST: "g-mate.org"
+  FTP_USERNAME: "JasonWang"
+  FTP_PASSWORD: "Jason_76114"
+  REMOTE_DOCKER_HOST: "g-mate.org"
+  REMOTE_DOCKER_USER: "JasonWang"
+  REMOTE_DOCKER_PASSWORD: "Jason_76114"
+  BUILD_PATH: "FISH/bin/Release/net8.0/publish"
+  $SSH_PASSWORD: "Jason_76114"
+  $SSH_USERNAME: "JasonWang"
+  $SSH_HOST: "g-mate.org"
+  
+build:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:8.0
+  script:
+    - dotnet restore
+    - dotnet publish -c Release -o $BUILD_PATH
+  artifacts:
+    paths:
+      - $BUILD_PATH
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache lftp openssh
+  script:
+    - lftp -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST -e "mirror -R $BUILD_PATH /Volumes/Backup2/Fishpublish/demo; bye"
+    - sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST 'docker restart myfish-copy'
+  only:
+    - main

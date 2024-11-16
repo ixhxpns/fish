@@ -1,3 +1,5 @@
+http://g-mate.org:30080/g-mate/website/pigfish.git
+
 - 2024/7/15 保固開始
 
 - [ ] 保固期（六個月）

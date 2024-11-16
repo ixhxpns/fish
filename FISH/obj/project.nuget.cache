@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "seJhSNQlkPTxjyXeQAS+YW9dmbZXKAdYhb/AKFjXOA1hk6MuJG++R2BsM6qbWIWgIqHZ4qCni4FuqiCgilkFDg==",
+  "dgSpecHash": "pzzMjpPDoV21tiRvgt0oYbIsz/l6d5RIxwO3naL/A82bq1wKi1unmFuzxk93nXmcTAvj2aUfxj39VmblQn4K/w==",
   "success": true,
-  "projectFilePath": "/Users/jason/pigfish/FISH/FISH.csproj",
+  "projectFilePath": "/Users/jason/GitProject/pigfish_2/FISH/FISH.csproj",
   "expectedPackageFiles": [
     "/Users/jason/.nuget/packages/aspose.html/24.6.0/aspose.html.24.6.0.nupkg.sha512",
     "/Users/jason/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",

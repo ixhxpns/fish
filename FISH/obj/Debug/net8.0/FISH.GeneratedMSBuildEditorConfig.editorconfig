@@ -17,275 +17,275 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FISH
 build_property.RootNamespace = FISH
-build_property.ProjectDir = /Users/jason/pigfish/FISH/
+build_property.ProjectDir = /Users/jason/GitProject/pigfish_2/FISH/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/jason/pigfish/FISH
+build_property.MSBuildProjectDirectory = /Users/jason/GitProject/pigfish_2/FISH
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/jason/pigfish/FISH/App.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/AtentionPage.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/AtentionPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXRlbnRpb25QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Counter.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/CreateOrder.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/CreateOrder.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3JlYXRlT3JkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/EditTemplate.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/EditTemplate.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdFRlbXBsYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/FetchData.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Index.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/MOrders.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/MOrders.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTU9yZGVycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/NPrintPage.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/NPrintPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTlByaW50UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/OrderCard.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/OrderCard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT3JkZXJDYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/PrintPage.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/PrintPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpbnRQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/Component/Verification.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/Component/Verification.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0NvbXBvbmVudC9WZXJpZmljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/LoginDisplay.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/ManageOrderTable.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/ManageOrderTable.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01hbmFnZU9yZGVyVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/PrintLayout.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/PrintLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1ByaW50TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/SurveyPrompt.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/WarningImage.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/WarningImage.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1dhcm5pbmdJbWFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/_Imports.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Shared/MainLayout.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-n330yr6632
 
-[/Users/jason/pigfish/FISH/Shared/NavMenu.razor]
+[/Users/jason/GitProject/pigfish_2/FISH/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-zvijltraee
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Db25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Db25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9FeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Lockout.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Login.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/LogOut.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/LogOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dPdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/Register.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Error.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/_ViewImports.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Areas/Identity/Pages/_ViewStart.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Error.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Shared/_Layout.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Shared/_LoginPartial.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/_Host.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jason/pigfish/FISH/Pages/_ViewImports.cshtml]
+[/Users/jason/GitProject/pigfish_2/FISH/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
