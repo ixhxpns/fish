@@ -15,10 +15,15 @@ pipeline {
                 sh "dotnet --version"
             }
         }
+        stage('檢查工作空間') {
+            steps {
+                sh "ls -l $WORKSPACE"
+            }
+        }
         stage('拉取源码') {
             steps {
                 echo '开始拉取代码'
-                git branch: 'publish', credentialsId: '260b288d-5229-4ee9-b2eb-73f1cde84c77', url: 'http://xxx.xxx.xxx.xxx:8929/gitlab-instance-08a71c21/dotnet-sample.git'
+                git branch: 'main', credentialsId: '260b288d-5229-4ee9-b2eb-73f1cde84c77', url: 'http://g-mate.org:30080/g-mate/website/pigfish.git'
                 echo '拉取代码完成'
             }
         }
@@ -62,7 +67,7 @@ pipeline {
                                 #! /bin/sh
                                 echo "开始备份"
                                 if [ -d "/home/website/dotnet/" ];then
-                                zip -r "/home/website/backup/dotnet-${BUILDVERSION}.zip" /home/website/dotnet
+                                zip -r "/home/website/backup/dotnet-${%Y%m%d%H%M%S}.zip" /home/website/dotnet
                                 rm -rf /home/website/dotnet
                                 fi
                                 echo "备份结束"
@@ -102,8 +107,3 @@ pipeline {
         }
     }
 }
-————————————————
-
-                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
-                        
-原文链接：https://blog.csdn.net/weixin_37648525/article/details/127217742
